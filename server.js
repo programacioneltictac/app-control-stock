@@ -84,6 +84,11 @@ app.post('/save', async (req, res) => {
     });
   }
 
+  // Convertir código a string si es número
+  if (typeof code === 'number') {
+    code = code.toString();
+  }
+
   // Validación adicional para el código como texto
   if (typeof code !== 'string') {
     return res.status(400).json({ 
