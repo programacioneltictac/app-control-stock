@@ -46,7 +46,7 @@ async function initDatabase() {
     await pool.query(`
       CREATE TABLE IF NOT EXISTS scanned_products (
         id SERIAL PRIMARY KEY,
-        code INTEGER NOT NULL,
+        code VARCHAR(50) NOT NULL,  -- Cambiado a VARCHAR
         name TEXT NOT NULL,
         quantity INTEGER NOT NULL,
         session_id TEXT NOT NULL,
@@ -70,6 +70,7 @@ app.post('/save', async (req, res) => {
 
   console.log('Datos recibidos:', { code, name, quantity }); // Para debugging
 
+  // Validación de campos requeridos
   if (!code || !name || !quantity) {
     return res.status(400).json({ 
       error: 'Faltan datos requeridos',
@@ -80,11 +81,29 @@ app.post('/save', async (req, res) => {
     });
   }
 
+  // Validación adicional para el código como texto
+  if (typeof code !== 'string') {
+    return res.status(400).json({ 
+      error: 'El código debe ser una cadena de texto',
+      received_type: typeof code,
+      example_valid_format: 'ABC123 o 123456'
+    });
+  }
+
+  // Validación de longitud máxima (opcional pero recomendado)
+  if (code.length > 50) {
+    return res.status(400).json({
+      error: 'El código es demasiado largo',
+      max_length_allowed: 50,
+      received_length: code.length
+    });
+  }
+
   try {
     const result = await pool.query(
       `INSERT INTO scanned_products (code, name, quantity, session_id)
-       VALUES ($1, $2, $3, $4) RETURNING id`,
-      [code, name, quantity, sessionId]
+       VALUES ($1::VARCHAR, $2, $3::INTEGER, $4) RETURNING id`,
+      [code, name, parseInt(quantity), sessionId]
     );
     
     res.status(200).json({ 
@@ -95,7 +114,7 @@ app.post('/save', async (req, res) => {
     console.error('Error al guardar:', err);
     res.status(500).json({ 
       error: 'Error interno del servidor',
-      details: err.message
+      details: process.env.NODE_ENV === 'development' ? err.message : undefined
     });
   }
 });
@@ -112,7 +131,7 @@ app.put('/save/:id', async (req, res) => {
   try {
     const result = await pool.query(
       `UPDATE scanned_products 
-       SET code = $1, name = $2, quantity = $3 
+       SET code = $1::VARCHAR, name = $2, quantity = $3 
        WHERE id = $4 AND session_id = $5`,
       [code, name, quantity, id, sessionId]
     );

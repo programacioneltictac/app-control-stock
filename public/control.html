@@ -349,9 +349,9 @@
           'Authorization': sessionId 
         },
         body: JSON.stringify({ 
-          code: parseInt(code), 
+          code: code,  // Se envía como texto
           name, 
-          quantity: newQuantity 
+          quantity: parseInt(quantity) 
         })
       })
       .then(response => {
