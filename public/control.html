@@ -205,8 +205,8 @@
 
   <script>
     const API_BASE_URL = window.location.hostname === 'localhost' 
-    ? 'http://localhost:3000' 
-    : 'https://tu-app-en-render.onrender.com'; // Cambia esto por tu URL de Render
+    ? 'http://localhost:10000' 
+    : 'https://app-control-stock.onrender.com'; // Cambia esto por tu URL de Render
 
     let products = [];
     let currentUser = decodeURIComponent(new URLSearchParams(window.location.search).get('user') || 'Usuario1');
@@ -561,7 +561,7 @@
       });
     }
   </script>
-  <audio id="successSound" src="sounds/beep-success.mp3" preload="auto"></audio>
-  <audio id="errorSound" src="sounds/beep-error.mp3" preload="auto"></audio>
+  <audio id="successSound" src="public/sounds/beep-success.mp3" preload="auto"></audio>
+  <audio id="errorSound" src="public/sounds/beep-error.mp3" preload="auto"></audio>
 </body>
 </html>
