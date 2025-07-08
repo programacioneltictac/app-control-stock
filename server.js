@@ -1,15 +1,19 @@
 require('dotenv').config();
+const path = require('path');
 const express = require('express');
 const { Pool } = require('pg');
 const exceljs = require('exceljs');
 const basicAuth = require('express-basic-auth');
+const fs = require('fs'); // Añadido para manejo de archivos
+
 const app = express();
+const PORT = process.env.PORT || 10000;
 
 // Configuración de PostgreSQL para Render
 const pool = new Pool({
   connectionString: process.env.DATABASE_URL,
   ssl: { 
-    rejectUnauthorized: false // Necesario para Render
+    rejectUnauthorized: false
   }
 });
 
@@ -22,6 +26,8 @@ app.use((req, res, next) => {
 });
 
 app.use(express.json());
+app.use(express.static(path.join(__dirname, 'public'))); // Servir archivos estáticos desde /public
+
 app.use(basicAuth({
   users: { 
     [process.env.AUTH_USER]: process.env.AUTH_PASSWORD 
@@ -208,8 +214,23 @@ app.get('/export', async (req, res) => {
   }
 });
 
+// Nuevo endpoint para servir el index.html
+app.get('/', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public', 'index.html'));
+});
+
+// Nuevo endpoint para servir control.html
+app.get('/control', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public', 'control.html'));
+});
+
+// Endpoint para servir productos.json
+app.get('/productos.json', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public', 'productos.json'));
+});
+
 // Iniciar servidor
-const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
-  console.log(`Servidor listo en http://localhost:${PORT}`);
+  console.log(`Servidor listo en puerto ${PORT}`);
+  console.log(`URL: https://app-control-stock.onrender.com`);
 });
