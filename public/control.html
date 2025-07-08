@@ -232,42 +232,77 @@
     }
 
     function insert() {
-      setLoading(true); // 👈 Activa el estado de carga
+      const codeInput = document.getElementById('code');
+      const nameInput = document.getElementById('name');
+      const quantityInput = document.getElementById('quantity');
       
+      const code = codeInput.value.trim();
+      const name = nameInput.value.trim();
+      const quantity = quantityInput.value.trim();
+
+      // Validación básica
+      if (!code || !name || !quantity) {
+        showError('Todos los campos son requeridos');
+        playErrorFeedback();
+        return;
+      }
+
+      // Verificar si el código existe en los productos
+      const productExists = products.some(p => p.Codigo === parseInt(code));
+      if (!productExists) {
+        showError('Código de producto no válido');
+        playErrorFeedback();
+        return;
+      }
+
+      setLoading(true);
+
+      // Crear objeto con los datos
+      const productData = {
+        code: parseInt(code),
+        name: name,
+        quantity: parseInt(quantity)
+      };
+
+      console.log('Enviando datos:', productData); // Para debugging
+
       fetch(`${API_BASE_URL}/save`, {
         method: 'POST',
         headers: { 
-          'Content-Type': 'application/json', 
+          'Content-Type': 'application/json',
           'Authorization': sessionId 
         },
-        body: JSON.stringify({ 
-          code: parseInt(code), 
-          name, 
-          quantity: parseInt(quantity) 
-        })
+        body: JSON.stringify(productData)
       })
-      .then(response => response.json())
+      .then(response => {
+        if (!response.ok) {
+          return response.json().then(err => { throw err; });
+        }
+        return response.json();
+      })
       .then(data => {
         if (data.id) {
-          playSuccessFeedback();
           renderRow({
             id: data.id,
             code: code,
             name: name,
             quantity: quantity
           });
+          showError('✅ Producto agregado');
+          playSuccessFeedback();
+          
+          // Limpiar formulario
+          codeInput.value = '';
+          nameInput.value = '';
+          quantityInput.value = '1';
         }
       })
       .catch(err => {
         console.error('Error saving:', err);
+        showError(err.error || 'Error al guardar');
         playErrorFeedback();
       })
-      .finally(() => {
-        setLoading(false); // 👈 Desactiva el estado de carga (siempre se ejecuta)
-        document.getElementById('code').value = '';
-        document.getElementById('name').value = '';
-        document.getElementById('quantity').value = '1';
-      });
+      .finally(() => setLoading(false));
     }
 
     // Funciones para el feedback

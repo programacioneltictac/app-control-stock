@@ -68,8 +68,16 @@ app.post('/save', async (req, res) => {
   const { code, name, quantity } = req.body;
   const sessionId = getSessionId(req);
 
+  console.log('Datos recibidos:', { code, name, quantity }); // Para debugging
+
   if (!code || !name || !quantity) {
-    return res.status(400).json({ error: 'Faltan datos requeridos' });
+    return res.status(400).json({ 
+      error: 'Faltan datos requeridos',
+      details: {
+        received: req.body,
+        required: ['code', 'name', 'quantity']
+      }
+    });
   }
 
   try {
@@ -78,13 +86,17 @@ app.post('/save', async (req, res) => {
        VALUES ($1, $2, $3, $4) RETURNING id`,
       [code, name, quantity, sessionId]
     );
+    
     res.status(200).json({ 
       message: 'Registro guardado exitosamente', 
       id: result.rows[0].id 
     });
   } catch (err) {
     console.error('Error al guardar:', err);
-    res.status(500).json({ error: 'Error interno del servidor' });
+    res.status(500).json({ 
+      error: 'Error interno del servidor',
+      details: err.message
+    });
   }
 });
 
