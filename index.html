@@ -1,0 +1,134 @@
+<script type="text/javascript">
+  var gk_isXlsx = false;
+  var gk_xlsxFileLookup = {};
+  var gk_fileData = {};
+  function filledCell(cell) {
+    return cell !== '' && cell != null;
+  }
+  function loadFileData(filename) {
+  if (gk_isXlsx && gk_xlsxFileLookup[filename]) {
+    try {
+      var workbook = XLSX.read(gk_fileData[filename], { type: 'base64' });
+      var firstSheetName = workbook.SheetNames[0];
+      var worksheet = workbook.Sheets[firstSheetName];
+
+      // Convert sheet to JSON to filter blank rows
+      var jsonData = XLSX.utils.sheet_to_json(worksheet, { header: 1, blankrows: false, defval: '' });
+      // Filter out blank rows (rows where all cells are empty, null, or undefined)
+      var filteredData = jsonData.filter(row => row.some(filledCell));
+
+      // Heuristic to find the header row by ignoring rows with fewer filled cells than the next row
+      var headerRowIndex = filteredData.findIndex((row, index) =>
+        row.filter(filledCell).length >= filteredData[index + 1]?.filter(filledCell).length
+      );
+      // Fallback
+      if (headerRowIndex === -1 || headerRowIndex > 25) {
+        headerRowIndex = 0;
+      }
+
+      // Convert filtered JSON back to CSV
+      var csv = XLSX.utils.aoa_to_sheet(filteredData.slice(headerRowIndex)); // Create a new sheet from filtered array of arrays
+      csv = XLSX.utils.sheet_to_csv(csv, { header: 1 });
+      return csv;
+    } catch (e) {
+      console.error(e);
+      return "";
+    }
+  }
+  return gk_fileData[filename] || "";
+  }
+</script>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Inicio de Sesión</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: #061F40;
+      color: #051326;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+    .login-container {
+      background-color: #F2F2F2;
+      padding: 20px;
+      border-radius: 5px;
+      text-align: center;
+      width: 300px;
+    }
+    .login-container h2 {
+      margin-top: 0;
+      color: #051326;
+    }
+    .login-container input {
+      width: 80%;
+      padding: 8px;
+      margin: 10px 0;
+      border: 1px solid #979DA6;
+      border-radius: 5px;
+      box-sizing: border-box;
+    }
+    .login-container button {
+      width: 80%;
+      padding: 10px;
+      margin: 10px 0;
+      background-color: #32CD32;
+      border: none;
+      border-radius: 5px;
+      color: white;
+      font-size: 16px;
+      cursor: pointer;
+    }
+    .login-container .error {
+      color: #FF3333;
+      display: none;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+  <div class="login-container">
+    <h2>Inicio de Sesión</h2>
+    <input type="text" id="username" placeholder="Usuario">
+    <input type="password" id="password" placeholder="Contraseña">
+    <button onclick="login()">Ingresar</button>
+    <div id="errorMessage" class="error">Usuario No Registrado/Autorizado</div>
+  </div>
+
+  <script>
+    let users = []; // Almacena los usuarios del JSON
+
+    // Carga los usuarios al iniciar
+    fetch('usuarios.json')
+      .then(response => response.json())
+      .then(data => users = data)
+      .catch(error => console.error('Error loading users:', error));
+
+    function login() {
+      const username = document.getElementById('username').value.trim();
+      const password = document.getElementById('password').value.trim();
+      const errorMessage = document.getElementById('errorMessage');
+
+      const user = users.find(u => u.usuario === username && u.contraseña === password && u.autorizado === true);
+      if (user) {
+        window.location.href = `control.html?user=${encodeURIComponent(username)}`;
+      } else {
+        errorMessage.style.display = 'block';
+        // Limpia el formulario
+        document.getElementById('username').value = '';
+        document.getElementById('password').value = '';
+        // Oculta el mensaje después de 4000 ms
+        setTimeout(() => {
+          errorMessage.style.display = 'none';
+        }, 4000);
+      }
+    }
+  </script>
+</body>
+</html>

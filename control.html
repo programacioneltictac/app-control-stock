@@ -1,0 +1,567 @@
+<script type="text/javascript"> 
+  var gk_isXlsx = false;
+  var gk_xlsxFileLookup = {};
+  var gk_fileData = {};
+  function filledCell(cell) {
+    return cell !== '' && cell != null;
+  }
+  function loadFileData(filename) {
+    if (gk_isXlsx && gk_xlsxFileLookup[filename]) {
+      try {
+        var workbook = XLSX.read(gk_fileData[filename], { type: 'base64' });
+        var firstSheetName = workbook.SheetNames[0];
+        var worksheet = workbook.Sheets[firstSheetName];
+
+        // Convert sheet to JSON to filter blank rows
+        var jsonData = XLSX.utils.sheet_to_json(worksheet, { header: 1, blankrows: false, defval: '' });
+        // Filter out blank rows (rows where all cells are empty, null, or undefined)
+        var filteredData = jsonData.filter(row => row.some(filledCell));
+
+        // Heuristic to find the header row by ignoring rows with fewer filled cells than the next row
+        var headerRowIndex = filteredData.findIndex((row, index) =>
+          row.filter(filledCell).length >= filteredData[index + 1]?.filter(filledCell).length
+        );
+        // Fallback
+        if (headerRowIndex === -1 || headerRowIndex > 25) {
+          headerRowIndex = 0;
+        }
+
+        // Convert filtered JSON back to CSV
+        var csv = XLSX.utils.aoa_to_sheet(filteredData.slice(headerRowIndex)); // Create a new sheet from filtered array of arrays
+        csv = XLSX.utils.sheet_to_csv(csv, { header: 1 });
+        return csv;
+      } catch (e) {
+        console.error(e);
+        return "";
+      }
+    }
+    return gk_fileData[filename] || "";
+  }
+</script>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Control</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: #061F40;
+      color: #051326;
+    }
+    .header {
+      background-color: #979DA6;
+      padding: 10px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .header .user { font-weight: bold; }
+    .header button {
+      padding: 5px 10px;
+      margin: 0 5px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    .header .logout { background-color: #FF3333; color: white; }
+    .header .save { background-color: #666; color: white; }
+    .header .finish { background-color: #1E90FF; color: white; }
+    .form-container {
+      background-color: #F2F2F2;
+      padding: 20px;
+      margin: 10px;
+      display: flex;
+      justify-content: space-between;
+    }
+    .form-container input {
+      padding: 5px;
+      margin-right: 10px;
+      border: 1px solid #979DA6;
+      border-radius: 5px;
+    }
+    .form-container button {
+      padding: 5px 10px;
+      background-color: #32CD32;
+      border: none;
+      border-radius: 5px;
+      color: white;
+      cursor: pointer;
+    }
+    .table-container {
+      margin: 10px;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      background-color: #F2F2F2;
+    }
+    th, td {
+      border: 1px solid #979DA6;
+      padding: 8px;
+      text-align: left;
+    }
+    th {
+      background-color: #979DA6;
+      color: white;
+    }
+    .delete-btn {
+      color: #FF3333;
+      cursor: pointer;
+      text-align: center;
+    }
+    .quantity-input {
+      width: 50px;
+      padding: 2px;
+      border: 1px solid #979DA6;
+      border-radius: 3px;
+      text-align: center;
+    }
+    .recover-btn {
+      background-color: #FFA500;
+      color: white;
+      margin-top: 10px;
+    }
+    .error-message {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background-color: #ff3333;
+      color: white;
+      padding: 10px 20px;
+      border-radius: 5px;
+      z-index: 1000;
+      animation: fadeIn 0.3s;
+    }
+    button:disabled {
+      opacity: 0.7;
+      cursor: not-allowed;
+    }
+    .loading-spinner {
+      display: inline-block;
+      width: 16px;
+      height: 16px;
+      border: 2px solid rgba(255,255,255,0.3);
+      border-radius: 50%;
+      border-top-color: #fff;
+      animation: spin 1s ease-in-out infinite;
+    }
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+    /* Efectos de flash */
+    @keyframes flash-green {
+      0% { background-color: normal; }
+      10% { background-color: rgba(50, 205, 50, 0.3); }
+      100% { background-color: normal; }
+    }    
+    @keyframes flash-red {
+      0% { background-color: normal; }
+      10% { background-color: rgba(255, 0, 0, 0.3); }
+      100% { background-color: normal; }
+    }    
+    .flash-green {
+      animation: flash-green 0.5s;
+    }    
+    .flash-red {
+      animation: flash-red 0.5s;
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <div class="user">Usuario: <span id="currentUser"></span> <button class="logout" onclick="logout()" data-original-text="Salir">Salir</button></div>
+    <div>
+      <button class="save" onclick="save()" data-original-text="Guardar">Guardar</button>
+      <button class="finish" onclick="finalize()" data-original-text="Finalizar">Finalizar</button>
+    </div>
+  </div>
+  <div class="form-container">
+    <input type="text" id="code" placeholder="Código" oninput="lookupProduct()">
+    <input type="text" style="width: 500px;" id="name" placeholder="Nombre" oninput="lookupProduct()">
+    <input type="number" id="quantity" placeholder="Cantidad" min="1" value="1">
+    <button onclick="insert()" data-original-text="Insertar">Insertar</button>
+  </div>
+  <div class="table-container">
+    <table id="productTable">
+      <thead>
+        <tr>
+          <th>Código</th>
+          <th>Nombre</th>
+          <th>Cantidad</th>
+          <th>Acción</th>
+        </tr>
+      </thead>
+      <tbody id="tableBody"></tbody>
+    </table>
+    <button class="recover-btn" onclick="recover()" data-original-text="Recuperar Datos">Recuperar Datos</button>
+  </div>
+
+  <script>
+    const API_BASE_URL = window.location.hostname === 'localhost' 
+    ? 'http://localhost:3000' 
+    : 'https://tu-app-en-render.onrender.com'; // Cambia esto por tu URL de Render
+
+    let products = [];
+    let currentUser = decodeURIComponent(new URLSearchParams(window.location.search).get('user') || 'Usuario1');
+    const sessionId = Date.now().toString();
+
+    fetch('productos.json')
+      .then(response => response.json())
+      .then(data => products = data)
+      .catch(error => console.error('Error loading products:', error));
+
+    document.getElementById('currentUser').textContent = currentUser;
+
+    function lookupProduct() {
+      const code = document.getElementById('code').value.trim();
+      const nameInput = document.getElementById('name');
+      if (code) {
+        const product = products.find(p => p.Codigo === parseInt(code));
+        if (product) nameInput.value = product.Nombre;
+      } else if (nameInput.value) {
+        const product = products.find(p => p.Nombre.toLowerCase().includes(nameInput.value.toLowerCase()));
+        if (product) document.getElementById('code').value = product.Codigo;
+      }
+    }
+
+    function insert() {
+      setLoading(true); // 👈 Activa el estado de carga
+      
+      fetch(`${API_BASE_URL}/save`, {
+        method: 'POST',
+        headers: { 
+          'Content-Type': 'application/json', 
+          'Authorization': sessionId 
+        },
+        body: JSON.stringify({ 
+          code: parseInt(code), 
+          name, 
+          quantity: parseInt(quantity) 
+        })
+      })
+      .then(response => response.json())
+      .then(data => {
+        if (data.id) {
+          playSuccessFeedback();
+          renderRow({
+            id: data.id,
+            code: code,
+            name: name,
+            quantity: quantity
+          });
+        }
+      })
+      .catch(err => {
+        console.error('Error saving:', err);
+        playErrorFeedback();
+      })
+      .finally(() => {
+        setLoading(false); // 👈 Desactiva el estado de carga (siempre se ejecuta)
+        document.getElementById('code').value = '';
+        document.getElementById('name').value = '';
+        document.getElementById('quantity').value = '1';
+      });
+    }
+
+    // Funciones para el feedback
+    function playSuccessFeedback() {
+      // Sonido
+      const successSound = document.getElementById('successSound');
+      successSound.currentTime = 0; // Reinicia si ya está sonando
+      successSound.play().catch(e => console.log("No se pudo reproducir sonido:", e));
+      
+      // Flash verde
+      document.body.classList.add('flash-green');
+      setTimeout(() => {
+        document.body.classList.remove('flash-green');
+      }, 500);
+    }
+
+    function playErrorFeedback() {
+      // Sonido
+      const errorSound = document.getElementById('errorSound');
+      errorSound.currentTime = 0;
+      errorSound.play().catch(e => console.log("No se pudo reproducir sonido:", e));
+      
+      // Flash rojo
+      document.body.classList.add('flash-red');
+      setTimeout(() => {
+        document.body.classList.remove('flash-red');
+      }, 500);
+    }
+
+    function updateQuantity(input) {
+      const row = input.parentElement.parentElement;
+      const code = row.cells[0].textContent;
+      const name = row.cells[1].textContent;
+      const newQuantity = parseInt(input.value);
+      const id = row.querySelector('.delete-btn').getAttribute('data-id');
+
+      setLoading(true);
+      input.disabled = true;
+
+      fetch(`${API_BASE_URL}/save/${id}`, {
+        method: 'PUT',
+        headers: { 
+          'Content-Type': 'application/json', 
+          'Authorization': sessionId 
+        },
+        body: JSON.stringify({ 
+          code: parseInt(code), 
+          name, 
+          quantity: newQuantity 
+        })
+      })
+      .then(response => {
+        if (!response.ok) throw new Error('Error en la actualización');
+        return response.json();
+      })
+      .then(data => {
+        console.log(data.message || 'Cantidad actualizada');
+        showError('✅ Cantidad actualizada');
+      })
+      .catch(err => {
+        console.error('Error updating quantity:', err);
+        showError('Error al actualizar cantidad');
+        input.value = input.defaultValue; // Revertir al valor anterior
+      })
+      .finally(() => {
+        setLoading(false);
+        input.disabled = false;
+      });
+    }
+
+    // Función para eliminar filas - Versión corregida
+    function deleteRow(button, event) {
+      event.preventDefault();
+      event.stopPropagation();
+      
+      const row = button.closest('tr');
+      const id = button.getAttribute('data-id');
+      
+      if (!row || !id) {
+        console.error('Error: No se pudo acceder al id o fila del registro');
+        showError('Error al eliminar');
+        return;
+      }
+
+      if (!confirm('¿Está seguro de eliminar este producto?')) {
+        return;
+      }
+
+      setLoading(true);
+      row.style.opacity = '0.5'; // Efecto visual
+
+      fetch(`${API_BASE_URL}/delete/${id}`, {
+        method: 'DELETE',
+        headers: { 'Authorization': sessionId }
+      })
+      .then(response => {
+        if (!response.ok) throw new Error('Error en el servidor');
+        return response.json();
+      })
+      .then(data => {
+        if (data.message === 'Registro eliminado exitosamente') {
+          row.remove();
+          showError('✅ Producto eliminado');
+        } else {
+          throw new Error(data.error || 'Error desconocido');
+        }
+      })
+      .catch(err => {
+        console.error('Error en la solicitud DELETE:', err);
+        showError('Error al eliminar');
+        row.style.opacity = '1'; // Restaurar visual
+      })
+      .finally(() => setLoading(false));
+    }
+
+    function logout() {
+      window.location.href = 'index.html';
+    }
+
+    function save() {
+      setLoading(true);
+      
+      fetch(`${API_BASE_URL}/records`, {
+        headers: { 'Authorization': sessionId }
+      })
+      .then(response => {
+        if (!response.ok) throw new Error('Error al cargar registros');
+        return response.json();
+      })
+      .then(data => {
+        if (data.length > 0) {
+          alert(`Registros guardados (${data.length}):\n${data.map(item => item.name).join('\n')}`);
+        } else {
+          alert('No hay registros guardados.');
+        }
+      })
+      .catch(err => {
+        console.error('Error fetching records:', err);
+        showError('Error al cargar registros');
+      })
+      .finally(() => setLoading(false));
+    }
+
+    function finalize() {
+      setLoading(true);
+      
+      fetch(`${API_BASE_URL}/export`, {
+        headers: { 'Authorization': sessionId }
+      })
+      .then(response => {
+        if (!response.ok) throw new Error(`Error ${response.status}`);
+        return response.blob();
+      })
+      .then(blob => {
+        const url = window.URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = `inventario_${new Date().toISOString().split('T')[0]}.xlsx`;
+        document.body.appendChild(a);
+        a.click();
+        window.URL.revokeObjectURL(url);
+        showError('✅ Excel generado');
+        setTimeout(() => window.location.href = 'index.html', 1500);
+      })
+      .catch(err => {
+        console.error('Error exporting:', err);
+        showError('Error al generar reporte');
+      })
+      .finally(() => setLoading(false));
+    }
+
+    function recover() {
+      setLoading(true);
+      
+      fetch(`${API_BASE_URL}/recover`, {
+        headers: { 'Authorization': sessionId }
+      })
+      .then(response => {
+        if (!response.ok) throw new Error('Error del servidor');
+        return response.json();
+      })
+      .then(data => {
+        const tableBody = document.getElementById('tableBody');
+        tableBody.innerHTML = '';
+        
+        if (data.length > 0) {
+          data.forEach(item => renderRow(item));
+          showError(`✅ ${data.length} productos recuperados`);
+        } else {
+          showError('No hay datos para recuperar');
+        }
+      })
+      .catch(err => {
+        console.error('Error recovering data:', err);
+        showError('Error al recuperar datos');
+      })
+      .finally(() => setLoading(false));
+    }
+
+    document.getElementById('code').addEventListener('keypress', function(e) {
+      if (e.key === 'Enter') {
+        const code = this.value.trim();
+        const product = products.find(p => p.Codigo === parseInt(code));
+        
+        if (product) {
+          document.getElementById('name').value = product.Nombre;
+          insert(); // Esto activará el feedback de éxito si todo está bien
+        } else {
+          playErrorFeedback();
+        }
+      }
+    });
+
+    // Nueva función para renderizar filas
+    function renderRow(product) {
+      const tableBody = document.getElementById('tableBody');
+      const existingRow = [...tableBody.rows].find(row => 
+          row.cells[0].textContent === product.code.toString() && 
+          row.cells[1].textContent === product.name
+      );
+
+      if (existingRow) {
+          // Actualizar cantidad si el producto ya existe
+          const quantityInput = existingRow.querySelector('.quantity-input');
+          const currentQty = parseInt(quantityInput.value) || 0;
+          quantityInput.value = currentQty + parseInt(product.quantity);
+      } else {
+          // Crear nueva fila si es un producto nuevo
+          const row = document.createElement('tr');
+          row.innerHTML = `
+              <td>${product.code}</td>
+              <td>${product.name}</td>
+              <td><input type="number" class="quantity-input" value="${product.quantity}" min="1" onchange="updateQuantity(this)"></td>
+              <td class="delete-btn" data-id="${product.id}" onclick="deleteRow(this, event)">x</td>
+          `;
+          tableBody.appendChild(row);
+      }
+    }
+
+    // Función para cargar todos los productos al iniciar
+    function loadProducts() {
+      setLoading(true);
+      
+      fetch(`${API_BASE_URL}/recover`, {
+        headers: { 'Authorization': sessionId }
+      })
+      .then(response => {
+        if (!response.ok) throw new Error(`HTTP ${response.status}`);
+        return response.json();
+      })
+      .then(data => {
+        const tableBody = document.getElementById('tableBody');
+        if (!tableBody) throw new Error('Elemento tableBody no encontrado');
+        
+        tableBody.innerHTML = '';
+        if (data.length > 0) {
+          data.forEach(renderRow);
+          console.log(`${data.length} productos cargados`);
+        }
+      })
+      .catch(err => {
+        console.error('Error loading products:', err);
+        showError('Error al cargar productos');
+      })
+      .finally(() => setLoading(false));
+    }
+
+    // Llamar a loadProducts cuando la página cargue
+    document.addEventListener('DOMContentLoaded', function() {
+      loadProducts();
+    });
+
+    // Agregar esta función para mostrar errores
+    function showError(message) {
+      const errorDiv = document.createElement('div');
+      errorDiv.className = 'error-message';
+      errorDiv.textContent = message;
+      document.body.appendChild(errorDiv);
+      setTimeout(() => errorDiv.remove(), 3000);
+    }
+
+    function setLoading(state) {
+      const buttons = document.querySelectorAll('button');
+      buttons.forEach(btn => {
+        btn.disabled = state;
+        if (state) {
+          btn.innerHTML = '<i class="loading-spinner"></i> Procesando...';
+        } else {
+          btn.innerHTML = btn.getAttribute('data-original-text');
+        }
+      });
+    }
+  </script>
+  <audio id="successSound" src="sounds/beep-success.mp3" preload="auto"></audio>
+  <audio id="errorSound" src="sounds/beep-error.mp3" preload="auto"></audio>
+</body>
+</html>

@@ -1,0 +1,12 @@
+[
+    {
+        "usuario": "manuel",
+        "contraseña": "manuel5232",
+        "autorizado": true
+    },
+    {
+        "usuario": "marcela",
+        "contraseña": "marcela123",
+        "autorizado": true
+    }
+]
