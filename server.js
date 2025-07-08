@@ -12,9 +12,9 @@ const PORT = process.env.PORT || 10000;
 // Configuración de PostgreSQL para Render
 const pool = new Pool({
   connectionString: process.env.DATABASE_URL,
-  ssl: { 
-    rejectUnauthorized: false
-  }
+  ssl: process.env.NODE_ENV === 'production' ? { 
+    rejectUnauthorized: false 
+  } : false
 });
 
 // Middlewares
@@ -43,19 +43,22 @@ function getSessionId(req) {
 
 async function initDatabase() {
   try {
-    await pool.query(`
+    const client = await pool.connect();
+    await client.query(`
       CREATE TABLE IF NOT EXISTS scanned_products (
         id SERIAL PRIMARY KEY,
-        code VARCHAR(50) NOT NULL,  -- Cambiado a VARCHAR
+        code VARCHAR(50) NOT NULL,
         name TEXT NOT NULL,
         quantity INTEGER NOT NULL,
         session_id TEXT NOT NULL,
         created_at TIMESTAMP DEFAULT NOW()
       )
     `);
+    client.release();
     console.log('Tabla creada/verificada en PostgreSQL');
   } catch (err) {
     console.error('Error al inicializar la base de datos:', err);
+    console.error('Connection String:', process.env.DATABASE_URL); // Para debugging
     process.exit(1);
   }
 }
