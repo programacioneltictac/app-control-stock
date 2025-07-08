@@ -105,10 +105,18 @@
     let users = []; // Almacena los usuarios del JSON
 
     // Carga los usuarios al iniciar
-    fetch('usuarios.json')
-      .then(response => response.json())
+    fetch('/usuarios.json')
+      .then(response => {
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        return response.json();
+      })
       .then(data => users = data)
-      .catch(error => console.error('Error loading users:', error));
+      .catch(error => {
+        console.error('Error loading users:', error);
+        showError('Error al cargar usuarios. Recarga la página.');
+      });
 
     function login() {
       const username = document.getElementById('username').value.trim();
@@ -128,6 +136,21 @@
           errorMessage.style.display = 'none';
         }, 4000);
       }
+    }
+
+    function showError(message) {
+      const errorDiv = document.createElement('div');
+      errorDiv.style.position = 'fixed';
+      errorDiv.style.bottom = '20px';
+      errorDiv.style.right = '20px';
+      errorDiv.style.backgroundColor = '#FF3333';
+      errorDiv.style.color = 'white';
+      errorDiv.style.padding = '10px 20px';
+      errorDiv.style.borderRadius = '5px';
+      errorDiv.style.zIndex = '1000';
+      errorDiv.textContent = message;
+      document.body.appendChild(errorDiv);
+      setTimeout(() => errorDiv.remove(), 5000);
     }
   </script>
 </body>

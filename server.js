@@ -229,6 +229,11 @@ app.get('/productos.json', (req, res) => {
   res.sendFile(path.join(__dirname, 'public', 'productos.json'));
 });
 
+// Endpoint para servir usuarios.json
+app.get('/usuarios.json', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public', 'usuarios.json'));
+});
+
 // Iniciar servidor
 app.listen(PORT, () => {
   console.log(`Servidor listo en puerto ${PORT}`);
