@@ -27,7 +27,7 @@ app.use((req, res, next) => {
 
 app.use(express.json());
 app.use(express.static(path.join(__dirname, 'public'))); // Servir archivos estáticos desde /public
-
+/*
 app.use(basicAuth({
   users: { 
     [process.env.AUTH_USER]: process.env.AUTH_PASSWORD 
@@ -35,7 +35,7 @@ app.use(basicAuth({
   challenge: true,
   unauthorizedResponse: 'Acceso no autorizado. Necesitas credenciales válidas.'
 }));
-
+*/
 // Helper functions
 function getSessionId(req) {
   return req.headers['authorization'] || 'anonymous';
