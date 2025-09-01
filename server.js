@@ -268,5 +268,5 @@ app.get('/usuarios.json', (req, res) => {
 // Iniciar servidor
 app.listen(PORT, () => {
   console.log(`Servidor listo en puerto ${PORT}`);
-  console.log(`URL: https://app-control-stock.onrender.com`);
+  console.log(`URL: https://app-control-stock-3m2b.onrender.com`);
 });
