@@ -68438,5 +68438,61 @@
     "Nombre": "ARTELAC SPLASH MULTIDOSIS",
     "Rubro": "LIQUIDOS",
     "Costo de Lista": 8901
+  },
+  {
+    "Id": 9782,
+    "Codigo": 5000252043898,
+    "Nombre": "PILAS AUDIFONO PANASONIC\/RAYOVAC Nro 675",
+    "Rubro": "AUDIOLOGIA",
+    "Costo de Lista": 783.6
+  },
+  {
+    "Id": 9783,
+    "Codigo": 96178218,
+    "Nombre": "PILAS AUDIFONO PANASONIC\/RAYOVAC Nro 675",
+    "Rubro": "AUDIOLOGIA",
+    "Costo de Lista": 783.6
+  },
+  {
+    "Id": 9784,
+    "Codigo": 5000252103721,
+    "Nombre": "PILAS AUDIFONO WIDEX Nro 13",
+    "Rubro": "AUDIOLOGIA",
+    "Costo de Lista": 881.55
+  },
+  {
+    "Id": 9785,
+    "Codigo": 5000252103776,
+    "Nombre": "PILAS AUDIFONO WIDEX Nro 312",
+    "Rubro": "AUDIOLOGIA",
+    "Costo de Lista": 881.55
+  },
+  {
+    "Id": 9786,
+    "Codigo": 5000252034636,
+    "Nombre": "PILAS AUDIFONO WIDEX Nro 312",
+    "Rubro": "AUDIOLOGIA",
+    "Costo de Lista": 881.55
+  },
+  {
+    "Id": 9287,
+    "Codigo": 5000252103820,
+    "Nombre": "PILAS AUDIFONO WIDEX Nro 675",
+    "Rubro": "AUDIOLOGIA",
+    "Costo de Lista": 881.55
+  },
+  {
+    "Id": 9788,
+    "Codigo": 5000252103677,
+    "Nombre": "PILAS AUDIFONO WIDEX Nro 10",
+    "Rubro": "AUDIOLOGIA",
+    "Costo de Lista": 881.55
+  },
+  {
+    "Id": 9789,
+    "Codigo": 5000252034643,
+    "Nombre": "PILAS AUDIFONO WIDEX Nro 10",
+    "Rubro": "AUDIOLOGIA",
+    "Costo de Lista": 881.55
   }
 ]
