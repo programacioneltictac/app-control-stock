@@ -65539,5 +65539,2904 @@
     "Nombre": "AUDIFONO WIDEX EVOKE 220 PA",
     "Rubro": "AUDIOLOGIA",
     "Costo de Lista": 0
+  },
+  {
+    "Id": 9366,
+    "Codigo": 545836,
+    "Nombre": "G PERM C",
+    "Rubro": "CONTACTOLOGIA LENTES",
+    "Costo de Lista": 55930
+  },
+  {
+    "Id": 9367,
+    "Codigo": 176700,
+    "Nombre": "G PERM COLORFUL 1",
+    "Rubro": "CONTACTOLOGIA LENTES",
+    "Costo de Lista": 82610
+  },
+  {
+    "Id": 9368,
+    "Codigo": 942857,
+    "Nombre": "G PERM COLORFUL 3",
+    "Rubro": "CONTACTOLOGIA LENTES",
+    "Costo de Lista": 82610
+  },
+  {
+    "Id": 9369,
+    "Codigo": 572584,
+    "Nombre": "G PERM EXCELEN T",
+    "Rubro": "CONTACTOLOGIA LENTES",
+    "Costo de Lista": 105340
+  },
+  {
+    "Id": 9370,
+    "Codigo": 232245,
+    "Nombre": "G PERM EXCELENT T 1 COLOR",
+    "Rubro": "CONTACTOLOGIA LENTES",
+    "Costo de Lista": 149680
+  },
+  {
+    "Id": 9371,
+    "Codigo": 405006,
+    "Nombre": "G PERM EXCELENT T 3 COLOR",
+    "Rubro": "CONTACTOLOGIA LENTES",
+    "Costo de Lista": 149680
+  },
+  {
+    "Id": 9372,
+    "Codigo": 753956,
+    "Nombre": "G PERM PROTESICA PINTADA A MANO",
+    "Rubro": "CONTACTOLOGIA LENTES",
+    "Costo de Lista": 405060
+  },
+  {
+    "Id": 9373,
+    "Codigo": 423776,
+    "Nombre": "G PERM PROTESICA STANDART",
+    "Rubro": "CONTACTOLOGIA LENTES",
+    "Costo de Lista": 173860
+  },
+  {
+    "Id": 9374,
+    "Codigo": 561216,
+    "Nombre": "G PERM UF (Ultrafina)",
+    "Rubro": "CONTACTOLOGIA LENTES",
+    "Costo de Lista": 29370
+  },
+  {
+    "Id": 9375,
+    "Codigo": 46146,
+    "Nombre": "G PERM UF (Ultrafina) ALTO GRADO",
+    "Rubro": "CONTACTOLOGIA LENTES",
+    "Costo de Lista": 37310
+  },
+  {
+    "Id": 9376,
+    "Codigo": "OPTIMA 38.",
+    "Nombre": "OPTIMA 38 HASTA 12 DIOPTRIAS",
+    "Rubro": "CONTACTOLOGIA LENTES",
+    "Costo de Lista": 33080
+  },
+  {
+    "Id": 9377,
+    "Codigo": 506294,
+    "Nombre": "AIR FLUX 1 (DK 30)",
+    "Rubro": "CONTACTOLOGIA LENTES",
+    "Costo de Lista": 62881
+  },
+  {
+    "Id": 9378,
+    "Codigo": 506292,
+    "Nombre": "AIR FLUX 2 (DK 50)",
+    "Rubro": "CONTACTOLOGIA LENTES",
+    "Costo de Lista": 65488
+  },
+  {
+    "Id": 9379,
+    "Codigo": 506293,
+    "Nombre": "AIR FLUX 3 (DK100)",
+    "Rubro": "CONTACTOLOGIA LENTES",
+    "Costo de Lista": 78452
+  },
+  {
+    "Id": 9380,
+    "Codigo": 899791,
+    "Nombre": "AIR FLUX KERACOM",
+    "Rubro": "CONTACTOLOGIA LENTES",
+    "Costo de Lista": 118960
+  },
+  {
+    "Id": 9381,
+    "Codigo": 489023,
+    "Nombre": "AIR FLUX QUERATO",
+    "Rubro": "CONTACTOLOGIA LENTES",
+    "Costo de Lista": 118960
+  },
+  {
+    "Id": 9382,
+    "Codigo": 998866,
+    "Nombre": "G PERM F100",
+    "Rubro": "CONTACTOLOGIA LENTES",
+    "Costo de Lista": 97570
+  },
+  {
+    "Id": 9383,
+    "Codigo": 107065,
+    "Nombre": "G PERM F30",
+    "Rubro": "CONTACTOLOGIA LENTES",
+    "Costo de Lista": 68520
+  },
+  {
+    "Id": 9384,
+    "Codigo": 121352,
+    "Nombre": "G PERM F50",
+    "Rubro": "CONTACTOLOGIA LENTES",
+    "Costo de Lista": 69700
+  },
+  {
+    "Id": 9385,
+    "Codigo": 777500,
+    "Nombre": "G PERM  PMMA",
+    "Rubro": "CONTACTOLOGIA LENTES",
+    "Costo de Lista": 39420
+  },
+  {
+    "Id": 9386,
+    "Codigo": 536518,
+    "Nombre": "PMMA Permealent",
+    "Rubro": "CONTACTOLOGIA LENTES",
+    "Costo de Lista": 45507
+  },
+  {
+    "Id": 9387,
+    "Codigo": 43502,
+    "Nombre": "LUNARE COLOR GRADUADA",
+    "Rubro": "CONTACTOLOGIA LENTES",
+    "Costo de Lista": 20830
+  },
+  {
+    "Id": 9388,
+    "Codigo": 755770,
+    "Nombre": "LUNARE COLOR NEUTRA",
+    "Rubro": "CONTACTOLOGIA LENTES",
+    "Costo de Lista": 19665
+  },
+  {
+    "Id": 9389,
+    "Codigo": 511189,
+    "Nombre": "PURE VISION 2",
+    "Rubro": "CONTACTOLOGIA LENTES",
+    "Costo de Lista": 9690
+  },
+  {
+    "Id": 9390,
+    "Codigo": 512767,
+    "Nombre": "SOFLENS 59 ESFERICAS",
+    "Rubro": "CONTACTOLOGIA LENTES",
+    "Costo de Lista": 7804.17
+  },
+  {
+    "Id": 9391,
+    "Codigo": 511187,
+    "Nombre": "SOFLENS 66 TORIC",
+    "Rubro": "CONTACTOLOGIA LENTES",
+    "Costo de Lista": 13806.67
+  },
+  {
+    "Id": 9392,
+    "Codigo": 113616,
+    "Nombre": "SOFLENS MULTIFOCAL",
+    "Rubro": "CONTACTOLOGIA LENTES",
+    "Costo de Lista": 12249.17
+  },
+  {
+    "Id": 9393,
+    "Codigo": 949978,
+    "Nombre": "SOFLENS MULTIFOCAL DX",
+    "Rubro": "CONTACTOLOGIA LENTES",
+    "Costo de Lista": 12249.17
+  },
+  {
+    "Id": 9394,
+    "Codigo": 747320,
+    "Nombre": "ULTRA ESFERICAS",
+    "Rubro": "CONTACTOLOGIA LENTES",
+    "Costo de Lista": 9140
+  },
+  {
+    "Id": 9395,
+    "Codigo": 247058,
+    "Nombre": "ULTRA MULTIFOCAL",
+    "Rubro": "CONTACTOLOGIA LENTES",
+    "Costo de Lista": 12648.33
+  },
+  {
+    "Id": 9396,
+    "Codigo": 69043,
+    "Nombre": "ULTRA TORIC",
+    "Rubro": "CONTACTOLOGIA LENTES",
+    "Costo de Lista": 80770
+  },
+  {
+    "Id": 9397,
+    "Codigo": 703136,
+    "Nombre": "DESIO ATTITUDE SHAMELESS HAZEL GRADUADA",
+    "Rubro": "CONTACTOLOGIA LENTES",
+    "Costo de Lista": 18400
+  },
+  {
+    "Id": 9398,
+    "Codigo": 91396,
+    "Nombre": "FRESHLOOK COLORBLENDS BLUE GRADUADAS",
+    "Rubro": "CONTACTOLOGIA LENTES",
+    "Costo de Lista": 17724
+  },
+  {
+    "Id": 9399,
+    "Codigo": 639918,
+    "Nombre": "FRESHLOOK COLORBLENDS BLUE NEUTRAS",
+    "Rubro": "CONTACTOLOGIA LENTES",
+    "Costo de Lista": 17724
+  },
+  {
+    "Id": 9400,
+    "Codigo": 106065,
+    "Nombre": "FRESHLOOK COLORBLENDS GRAY GRADUADAS",
+    "Rubro": "CONTACTOLOGIA LENTES",
+    "Costo de Lista": 17724
+  },
+  {
+    "Id": 9401,
+    "Codigo": 463603,
+    "Nombre": "FRESHLOOK COLORBLENDS GRAY NEUTRAS",
+    "Rubro": "CONTACTOLOGIA LENTES",
+    "Costo de Lista": 17724
+  },
+  {
+    "Id": 9402,
+    "Codigo": 715809,
+    "Nombre": "FRESHLOOK COLORBLENDS GREEN GRADUADAS",
+    "Rubro": "CONTACTOLOGIA LENTES",
+    "Costo de Lista": 17724
+  },
+  {
+    "Id": 9403,
+    "Codigo": 361839,
+    "Nombre": "FRESHLOOK COLORBLENDS GREEN NEUTRAS",
+    "Rubro": "CONTACTOLOGIA LENTES",
+    "Costo de Lista": 17724
+  },
+  {
+    "Id": 9404,
+    "Codigo": 369444,
+    "Nombre": "FRESHLOOK COLORBLENDS HONEY GRADUADAS",
+    "Rubro": "CONTACTOLOGIA LENTES",
+    "Costo de Lista": 17724
+  },
+  {
+    "Id": 9405,
+    "Codigo": 231053,
+    "Nombre": "FRESHLOOK COLORBLENDS HONEY NEUTRAS",
+    "Rubro": "CONTACTOLOGIA LENTES",
+    "Costo de Lista": 17724
+  },
+  {
+    "Id": 9406,
+    "Codigo": 60075,
+    "Nombre": "FRESHLOOK COLORBLENDS TRUE SHAPPIRE NEUTRAS",
+    "Rubro": "CONTACTOLOGIA LENTES",
+    "Costo de Lista": 17724
+  },
+  {
+    "Id": 9407,
+    "Codigo": 657111,
+    "Nombre": "FRESHLOOK COLORBLENDS TURQUOISE GRADUADAS",
+    "Rubro": "CONTACTOLOGIA LENTES",
+    "Costo de Lista": 17724
+  },
+  {
+    "Id": 9408,
+    "Codigo": 915736,
+    "Nombre": "FRESHLOOK COLORBLENDS TURQUOISE NEUTRAS",
+    "Rubro": "CONTACTOLOGIA LENTES",
+    "Costo de Lista": 17724
+  },
+  {
+    "Id": 9409,
+    "Codigo": 90639,
+    "Nombre": "AIR OPTIX COLOR CON GRADUACION",
+    "Rubro": "CONTACTOLOGIA LENTES",
+    "Costo de Lista": 19604.5
+  },
+  {
+    "Id": 9410,
+    "Codigo": 316550,
+    "Nombre": "AIR OPTIX COLOR NEUTRA",
+    "Rubro": "CONTACTOLOGIA LENTES",
+    "Costo de Lista": 20389
+  },
+  {
+    "Id": 9411,
+    "Codigo": 171747,
+    "Nombre": "AIR OPTIX MULTIFOCAL",
+    "Rubro": "CONTACTOLOGIA LENTES",
+    "Costo de Lista": 15594.83
+  },
+  {
+    "Id": 9412,
+    "Codigo": 234386,
+    "Nombre": "AIR OPTIX MULTIFOCAL DX",
+    "Rubro": "CONTACTOLOGIA LENTES"
+  },
+  {
+    "Id": 9413,
+    "Codigo": 264207,
+    "Nombre": "AIR OPTIX PLUS",
+    "Rubro": "CONTACTOLOGIA LENTES",
+    "Costo de Lista": 8892.33
+  },
+  {
+    "Id": 9414,
+    "Codigo": 684928,
+    "Nombre": "AIR OPTIX TORIC",
+    "Rubro": "CONTACTOLOGIA LENTES",
+    "Costo de Lista": 13226.67
+  },
+  {
+    "Id": 9415,
+    "Codigo": 640882,
+    "Nombre": "AIR OPTIX TORIC DX",
+    "Rubro": "CONTACTOLOGIA LENTES"
+  },
+  {
+    "Id": 9416,
+    "Codigo": 786718,
+    "Nombre": "AVAIRA VITALITY",
+    "Rubro": "CONTACTOLOGIA LENTES",
+    "Costo de Lista": 6526.67
+  },
+  {
+    "Id": 9417,
+    "Codigo": 901710,
+    "Nombre": "AVAIRA VITALITY TORIC",
+    "Rubro": "CONTACTOLOGIA LENTES",
+    "Costo de Lista": 9933.33
+  },
+  {
+    "Id": 9418,
+    "Codigo": 18601,
+    "Nombre": "BIOFINITY",
+    "Rubro": "CONTACTOLOGIA LENTES",
+    "Costo de Lista": 8141.7
+  },
+  {
+    "Id": 9419,
+    "Codigo": 510944,
+    "Nombre": "BIOFINITY TORIC",
+    "Rubro": "CONTACTOLOGIA LENTES",
+    "Costo de Lista": 12233.33
+  },
+  {
+    "Id": 9420,
+    "Codigo": 400032,
+    "Nombre": "BIOFINITY XR ESF -11.50",
+    "Rubro": "CONTACTOLOGIA LENTES",
+    "Costo de Lista": 11950
+  },
+  {
+    "Id": 9421,
+    "Codigo": 776360,
+    "Nombre": "BIOFINITY XR ESF -12.50",
+    "Rubro": "CONTACTOLOGIA LENTES",
+    "Costo de Lista": 11950
+  },
+  {
+    "Id": 9422,
+    "Codigo": 894870,
+    "Nombre": "BIOFINITY XR ESF -13.00",
+    "Rubro": "CONTACTOLOGIA LENTES",
+    "Costo de Lista": 11950
+  },
+  {
+    "Id": 9423,
+    "Codigo": 135584,
+    "Nombre": "BIOFINITY XR ESF -13.50",
+    "Rubro": "CONTACTOLOGIA LENTES",
+    "Costo de Lista": 11950
+  },
+  {
+    "Id": 9424,
+    "Codigo": 580460,
+    "Nombre": "BIOFINITY XR ESF -14.00",
+    "Rubro": "CONTACTOLOGIA LENTES",
+    "Costo de Lista": 11950
+  },
+  {
+    "Id": 9425,
+    "Codigo": 920983,
+    "Nombre": "BIOFINITY XR ESF -14.50",
+    "Rubro": "CONTACTOLOGIA LENTES",
+    "Costo de Lista": 11950
+  },
+  {
+    "Id": 9426,
+    "Codigo": 89671,
+    "Nombre": "BIOFINITY XR ESF -15.00",
+    "Rubro": "CONTACTOLOGIA LENTES",
+    "Costo de Lista": 11950
+  },
+  {
+    "Id": 9427,
+    "Codigo": 586996,
+    "Nombre": "BIOFINITY XR ESF -15.50",
+    "Rubro": "CONTACTOLOGIA LENTES",
+    "Costo de Lista": 11950
+  },
+  {
+    "Id": 9428,
+    "Codigo": 437772,
+    "Nombre": "BIOFINITY XR ESF -16.00",
+    "Rubro": "CONTACTOLOGIA LENTES",
+    "Costo de Lista": 11950
+  },
+  {
+    "Id": 9429,
+    "Codigo": 711047,
+    "Nombre": "BIOFINITY XR ESF -16.50",
+    "Rubro": "CONTACTOLOGIA LENTES",
+    "Costo de Lista": 11950
+  },
+  {
+    "Id": 9430,
+    "Codigo": 284100,
+    "Nombre": "BIOFINITY XR ESF -17.00",
+    "Rubro": "CONTACTOLOGIA LENTES",
+    "Costo de Lista": 11950
+  },
+  {
+    "Id": 9431,
+    "Codigo": 699096,
+    "Nombre": "BIOFINITY XR ESF -17.50",
+    "Rubro": "CONTACTOLOGIA LENTES",
+    "Costo de Lista": 11950
+  },
+  {
+    "Id": 9432,
+    "Codigo": 634222,
+    "Nombre": "BIOFINITY XR ESF -18.00",
+    "Rubro": "CONTACTOLOGIA LENTES",
+    "Costo de Lista": 11950
+  },
+  {
+    "Id": 9433,
+    "Codigo": 258501,
+    "Nombre": "BIOFINITY XR ESF -18.50",
+    "Rubro": "CONTACTOLOGIA LENTES",
+    "Costo de Lista": 11950
+  },
+  {
+    "Id": 9434,
+    "Codigo": 323799,
+    "Nombre": "BIOFINITY XR ESF -19.00",
+    "Rubro": "CONTACTOLOGIA LENTES",
+    "Costo de Lista": 11950
+  },
+  {
+    "Id": 9435,
+    "Codigo": 249436,
+    "Nombre": "BIOFINITY XR ESF -19.50",
+    "Rubro": "CONTACTOLOGIA LENTES",
+    "Costo de Lista": 11950
+  },
+  {
+    "Id": 9436,
+    "Codigo": 494509,
+    "Nombre": "BIOFINITY XR ESF -20.00",
+    "Rubro": "CONTACTOLOGIA LENTES",
+    "Costo de Lista": 11950
+  },
+  {
+    "Id": 9437,
+    "Codigo": 844374,
+    "Nombre": "BIOFINITY XR ESF +10.00",
+    "Rubro": "CONTACTOLOGIA LENTES",
+    "Costo de Lista": 11950
+  },
+  {
+    "Id": 9438,
+    "Codigo": 64422,
+    "Nombre": "BIOFINITY XR ESF +10.50",
+    "Rubro": "CONTACTOLOGIA LENTES",
+    "Costo de Lista": 11950
+  },
+  {
+    "Id": 9439,
+    "Codigo": 30978,
+    "Nombre": "BIOFINITY XR ESF +11.00",
+    "Rubro": "CONTACTOLOGIA LENTES",
+    "Costo de Lista": 11950
+  },
+  {
+    "Id": 9440,
+    "Codigo": 314516,
+    "Nombre": "BIOFINITY XR ESF +11.50",
+    "Rubro": "CONTACTOLOGIA LENTES",
+    "Costo de Lista": 11950
+  },
+  {
+    "Id": 9441,
+    "Codigo": 215095,
+    "Nombre": "BIOFINITY XR ESF +12.00",
+    "Rubro": "CONTACTOLOGIA LENTES",
+    "Costo de Lista": 11950
+  },
+  {
+    "Id": 9442,
+    "Codigo": 187139,
+    "Nombre": "BIOFINITY XR ESF +12.50",
+    "Rubro": "CONTACTOLOGIA LENTES",
+    "Costo de Lista": 11950
+  },
+  {
+    "Id": 9443,
+    "Codigo": 878383,
+    "Nombre": "BIOFINITY XR ESF +13.00",
+    "Rubro": "CONTACTOLOGIA LENTES",
+    "Costo de Lista": 11950
+  },
+  {
+    "Id": 9444,
+    "Codigo": 638440,
+    "Nombre": "BIOFINITY XR ESF +13.50",
+    "Rubro": "CONTACTOLOGIA LENTES",
+    "Costo de Lista": 11950
+  },
+  {
+    "Id": 9445,
+    "Codigo": 18889,
+    "Nombre": "BIOFINITY XR ESF +14.00",
+    "Rubro": "CONTACTOLOGIA LENTES",
+    "Costo de Lista": 11950
+  },
+  {
+    "Id": 9446,
+    "Codigo": 529990,
+    "Nombre": "BIOFINITY XR ESF +14.50",
+    "Rubro": "CONTACTOLOGIA LENTES",
+    "Costo de Lista": 11950
+  },
+  {
+    "Id": 9447,
+    "Codigo": 8653,
+    "Nombre": "BIOFINITY XR ESF +15.00",
+    "Rubro": "CONTACTOLOGIA LENTES",
+    "Costo de Lista": 11950
+  },
+  {
+    "Id": 9448,
+    "Codigo": 97680,
+    "Nombre": "BIOFINITY XR ESF +8.50",
+    "Rubro": "CONTACTOLOGIA LENTES",
+    "Costo de Lista": 11950
+  },
+  {
+    "Id": 9449,
+    "Codigo": 322962,
+    "Nombre": "BIOFINITY XR ESF +9.00",
+    "Rubro": "CONTACTOLOGIA LENTES",
+    "Costo de Lista": 11950
+  },
+  {
+    "Id": 9450,
+    "Codigo": 649831,
+    "Nombre": "BIOFINITY XR ESF +9.50",
+    "Rubro": "CONTACTOLOGIA LENTES",
+    "Costo de Lista": 11950
+  },
+  {
+    "Id": 9451,
+    "Codigo": 510943,
+    "Nombre": "BIOFINITY XR TORIC",
+    "Rubro": "CONTACTOLOGIA LENTES",
+    "Costo de Lista": 32216.67
+  },
+  {
+    "Id": 9452,
+    "Codigo": 514,
+    "Nombre": "BIOMEDICS ESF-0.50",
+    "Rubro": "CONTACTOLOGIA LENTES",
+    "Costo de Lista": 7533.33
+  },
+  {
+    "Id": 9453,
+    "Codigo": 515,
+    "Nombre": "BIOMEDICS ESF-0.75",
+    "Rubro": "CONTACTOLOGIA LENTES",
+    "Costo de Lista": 7533.33
+  },
+  {
+    "Id": 9454,
+    "Codigo": 516,
+    "Nombre": "BIOMEDICS ESF-1.00",
+    "Rubro": "CONTACTOLOGIA LENTES",
+    "Costo de Lista": 7533.33
+  },
+  {
+    "Id": 9455,
+    "Codigo": 517,
+    "Nombre": "BIOMEDICS ESF-1.25",
+    "Rubro": "CONTACTOLOGIA LENTES",
+    "Costo de Lista": 7533.33
+  },
+  {
+    "Id": 9456,
+    "Codigo": 518,
+    "Nombre": "BIOMEDICS ESF-1.50",
+    "Rubro": "CONTACTOLOGIA LENTES",
+    "Costo de Lista": 7533.33
+  },
+  {
+    "Id": 9457,
+    "Codigo": 519,
+    "Nombre": "BIOMEDICS ESF-1.75",
+    "Rubro": "CONTACTOLOGIA LENTES",
+    "Costo de Lista": 7533.34
+  },
+  {
+    "Id": 9458,
+    "Codigo": 544,
+    "Nombre": "BIOMEDICS ESF-10.00",
+    "Rubro": "CONTACTOLOGIA LENTES",
+    "Costo de Lista": 7533.33
+  },
+  {
+    "Id": 9459,
+    "Codigo": 520,
+    "Nombre": "BIOMEDICS ESF-2.00",
+    "Rubro": "CONTACTOLOGIA LENTES",
+    "Costo de Lista": 7533.33
+  },
+  {
+    "Id": 9460,
+    "Codigo": 521,
+    "Nombre": "BIOMEDICS ESF-2.25",
+    "Rubro": "CONTACTOLOGIA LENTES",
+    "Costo de Lista": 7533.33
+  },
+  {
+    "Id": 9461,
+    "Codigo": 522,
+    "Nombre": "BIOMEDICS ESF-2.50",
+    "Rubro": "CONTACTOLOGIA LENTES",
+    "Costo de Lista": 7533.34
+  },
+  {
+    "Id": 9462,
+    "Codigo": 523,
+    "Nombre": "BIOMEDICS ESF-2.75",
+    "Rubro": "CONTACTOLOGIA LENTES",
+    "Costo de Lista": 7533.33
+  },
+  {
+    "Id": 9463,
+    "Codigo": 524,
+    "Nombre": "BIOMEDICS ESF-3.00",
+    "Rubro": "CONTACTOLOGIA LENTES",
+    "Costo de Lista": 7533.34
+  },
+  {
+    "Id": 9464,
+    "Codigo": 525,
+    "Nombre": "BIOMEDICS ESF-3.25",
+    "Rubro": "CONTACTOLOGIA LENTES",
+    "Costo de Lista": 7533.33
+  },
+  {
+    "Id": 9465,
+    "Codigo": 526,
+    "Nombre": "BIOMEDICS ESF-3.50",
+    "Rubro": "CONTACTOLOGIA LENTES",
+    "Costo de Lista": 7533.34
+  },
+  {
+    "Id": 9466,
+    "Codigo": 527,
+    "Nombre": "BIOMEDICS ESF-3.75",
+    "Rubro": "CONTACTOLOGIA LENTES",
+    "Costo de Lista": 7533.33
+  },
+  {
+    "Id": 9467,
+    "Codigo": 528,
+    "Nombre": "BIOMEDICS ESF-4.00",
+    "Rubro": "CONTACTOLOGIA LENTES",
+    "Costo de Lista": 7533.34
+  },
+  {
+    "Id": 9468,
+    "Codigo": 529,
+    "Nombre": "BIOMEDICS ESF-4.25",
+    "Rubro": "CONTACTOLOGIA LENTES",
+    "Costo de Lista": 7533.33
+  },
+  {
+    "Id": 9469,
+    "Codigo": 530,
+    "Nombre": "BIOMEDICS ESF-4.50",
+    "Rubro": "CONTACTOLOGIA LENTES",
+    "Costo de Lista": 7533.33
+  },
+  {
+    "Id": 9470,
+    "Codigo": 531,
+    "Nombre": "BIOMEDICS ESF-4.75",
+    "Rubro": "CONTACTOLOGIA LENTES",
+    "Costo de Lista": 7533.33
+  },
+  {
+    "Id": 9471,
+    "Codigo": 532,
+    "Nombre": "BIOMEDICS ESF-5.00",
+    "Rubro": "CONTACTOLOGIA LENTES",
+    "Costo de Lista": 7533.34
+  },
+  {
+    "Id": 9472,
+    "Codigo": 183820,
+    "Nombre": "BIOMEDICS ESF-5.25",
+    "Rubro": "CONTACTOLOGIA LENTES",
+    "Costo de Lista": 7533.33
+  },
+  {
+    "Id": 9473,
+    "Codigo": 534,
+    "Nombre": "BIOMEDICS ESF-5.50",
+    "Rubro": "CONTACTOLOGIA LENTES",
+    "Costo de Lista": 7533.33
+  },
+  {
+    "Id": 9474,
+    "Codigo": 535,
+    "Nombre": "BIOMEDICS ESF-5.75",
+    "Rubro": "CONTACTOLOGIA LENTES",
+    "Costo de Lista": 7533.33
+  },
+  {
+    "Id": 9475,
+    "Codigo": 536,
+    "Nombre": "BIOMEDICS ESF-6.00",
+    "Rubro": "CONTACTOLOGIA LENTES",
+    "Costo de Lista": 7533.33
+  },
+  {
+    "Id": 9476,
+    "Codigo": 537,
+    "Nombre": "BIOMEDICS ESF-6.50",
+    "Rubro": "CONTACTOLOGIA LENTES",
+    "Costo de Lista": 7533.33
+  },
+  {
+    "Id": 9477,
+    "Codigo": 538,
+    "Nombre": "BIOMEDICS ESF-7.00",
+    "Rubro": "CONTACTOLOGIA LENTES",
+    "Costo de Lista": 7533.33
+  },
+  {
+    "Id": 9478,
+    "Codigo": 539,
+    "Nombre": "BIOMEDICS ESF-7.50",
+    "Rubro": "CONTACTOLOGIA LENTES",
+    "Costo de Lista": 7533.33
+  },
+  {
+    "Id": 9479,
+    "Codigo": 540,
+    "Nombre": "BIOMEDICS ESF-8.00",
+    "Rubro": "CONTACTOLOGIA LENTES",
+    "Costo de Lista": 7533.33
+  },
+  {
+    "Id": 9480,
+    "Codigo": 541,
+    "Nombre": "BIOMEDICS ESF-8.50",
+    "Rubro": "CONTACTOLOGIA LENTES",
+    "Costo de Lista": 7533.33
+  },
+  {
+    "Id": 9481,
+    "Codigo": 542,
+    "Nombre": "BIOMEDICS ESF-9.00",
+    "Rubro": "CONTACTOLOGIA LENTES",
+    "Costo de Lista": 7533.33
+  },
+  {
+    "Id": 9482,
+    "Codigo": 543,
+    "Nombre": "BIOMEDICS ESF-9.50",
+    "Rubro": "CONTACTOLOGIA LENTES",
+    "Costo de Lista": 7533.33
+  },
+  {
+    "Id": 9483,
+    "Codigo": 545,
+    "Nombre": "BIOMEDICS ESF+0.50",
+    "Rubro": "CONTACTOLOGIA LENTES",
+    "Costo de Lista": 7533.33
+  },
+  {
+    "Id": 9484,
+    "Codigo": 546,
+    "Nombre": "BIOMEDICS ESF+0.75",
+    "Rubro": "CONTACTOLOGIA LENTES",
+    "Costo de Lista": 7533.33
+  },
+  {
+    "Id": 9485,
+    "Codigo": 547,
+    "Nombre": "BIOMEDICS ESF+1.00",
+    "Rubro": "CONTACTOLOGIA LENTES",
+    "Costo de Lista": 7533.33
+  },
+  {
+    "Id": 9486,
+    "Codigo": 548,
+    "Nombre": "BIOMEDICS ESF+1.25",
+    "Rubro": "CONTACTOLOGIA LENTES",
+    "Costo de Lista": 7533.34
+  },
+  {
+    "Id": 9487,
+    "Codigo": 549,
+    "Nombre": "BIOMEDICS ESF+1.50",
+    "Rubro": "CONTACTOLOGIA LENTES",
+    "Costo de Lista": 7533.33
+  },
+  {
+    "Id": 9488,
+    "Codigo": 550,
+    "Nombre": "BIOMEDICS ESF+1.75",
+    "Rubro": "CONTACTOLOGIA LENTES",
+    "Costo de Lista": 7533.33
+  },
+  {
+    "Id": 9489,
+    "Codigo": 551,
+    "Nombre": "BIOMEDICS ESF+2.00",
+    "Rubro": "CONTACTOLOGIA LENTES",
+    "Costo de Lista": 7533.33
+  },
+  {
+    "Id": 9490,
+    "Codigo": 552,
+    "Nombre": "BIOMEDICS ESF+2.25",
+    "Rubro": "CONTACTOLOGIA LENTES",
+    "Costo de Lista": 7533.33
+  },
+  {
+    "Id": 9491,
+    "Codigo": 553,
+    "Nombre": "BIOMEDICS ESF+2.50",
+    "Rubro": "CONTACTOLOGIA LENTES",
+    "Costo de Lista": 7533.33
+  },
+  {
+    "Id": 9492,
+    "Codigo": 554,
+    "Nombre": "BIOMEDICS ESF+2.75",
+    "Rubro": "CONTACTOLOGIA LENTES",
+    "Costo de Lista": 7533.33
+  },
+  {
+    "Id": 9493,
+    "Codigo": 555,
+    "Nombre": "BIOMEDICS ESF+3.00",
+    "Rubro": "CONTACTOLOGIA LENTES",
+    "Costo de Lista": 7533.34
+  },
+  {
+    "Id": 9494,
+    "Codigo": 556,
+    "Nombre": "BIOMEDICS ESF+3.25",
+    "Rubro": "CONTACTOLOGIA LENTES",
+    "Costo de Lista": 7533.34
+  },
+  {
+    "Id": 9495,
+    "Codigo": 557,
+    "Nombre": "BIOMEDICS ESF+3.50",
+    "Rubro": "CONTACTOLOGIA LENTES",
+    "Costo de Lista": 7533.33
+  },
+  {
+    "Id": 9496,
+    "Codigo": 558,
+    "Nombre": "BIOMEDICS ESF+3.75",
+    "Rubro": "CONTACTOLOGIA LENTES",
+    "Costo de Lista": 7533.33
+  },
+  {
+    "Id": 9497,
+    "Codigo": 559,
+    "Nombre": "BIOMEDICS ESF+4.00",
+    "Rubro": "CONTACTOLOGIA LENTES",
+    "Costo de Lista": 7533.33
+  },
+  {
+    "Id": 9498,
+    "Codigo": 560,
+    "Nombre": "BIOMEDICS ESF+4.25",
+    "Rubro": "CONTACTOLOGIA LENTES",
+    "Costo de Lista": 7533.33
+  },
+  {
+    "Id": 9499,
+    "Codigo": 561,
+    "Nombre": "BIOMEDICS ESF+4.50",
+    "Rubro": "CONTACTOLOGIA LENTES",
+    "Costo de Lista": 7533.33
+  },
+  {
+    "Id": 9500,
+    "Codigo": 562,
+    "Nombre": "BIOMEDICS ESF+4.75",
+    "Rubro": "CONTACTOLOGIA LENTES",
+    "Costo de Lista": 7533.33
+  },
+  {
+    "Id": 9501,
+    "Codigo": 563,
+    "Nombre": "BIOMEDICS ESF+5.00",
+    "Rubro": "CONTACTOLOGIA LENTES",
+    "Costo de Lista": 7533.33
+  },
+  {
+    "Id": 9502,
+    "Codigo": 564,
+    "Nombre": "BIOMEDICS ESF+5.50",
+    "Rubro": "CONTACTOLOGIA LENTES",
+    "Costo de Lista": 7533.33
+  },
+  {
+    "Id": 9503,
+    "Codigo": 565,
+    "Nombre": "BIOMEDICS ESF+6.00",
+    "Rubro": "CONTACTOLOGIA LENTES",
+    "Costo de Lista": 7533.33
+  },
+  {
+    "Id": 9504,
+    "Codigo": 510942,
+    "Nombre": "BIOMEDICS TORIC",
+    "Rubro": "CONTACTOLOGIA LENTES",
+    "Costo de Lista": 9966.67
+  },
+  {
+    "Id": 9505,
+    "Codigo": "PROMOBM",
+    "Nombre": "promobm biomedics",
+    "Rubro": "CONTACTOLOGIA LENTES"
+  },
+  {
+    "Id": 9506,
+    "Codigo": 312397,
+    "Nombre": "PROCLEAR ESF-11.50",
+    "Rubro": "CONTACTOLOGIA LENTES",
+    "Costo de Lista": 11916.67
+  },
+  {
+    "Id": 9507,
+    "Codigo": 511214,
+    "Nombre": "PROCLEAR ESF-12.00",
+    "Rubro": "CONTACTOLOGIA LENTES",
+    "Costo de Lista": 11916.67
+  },
+  {
+    "Id": 9508,
+    "Codigo": 2130,
+    "Nombre": "PROCLEAR ESF-12.50",
+    "Rubro": "CONTACTOLOGIA LENTES",
+    "Costo de Lista": 11916.67
+  },
+  {
+    "Id": 9509,
+    "Codigo": 579,
+    "Nombre": "PROCLEAR ESF-13.00",
+    "Rubro": "CONTACTOLOGIA LENTES",
+    "Costo de Lista": 11916.67
+  },
+  {
+    "Id": 9510,
+    "Codigo": 580,
+    "Nombre": "PROCLEAR ESF-13.50",
+    "Rubro": "CONTACTOLOGIA LENTES",
+    "Costo de Lista": 11916.67
+  },
+  {
+    "Id": 9511,
+    "Codigo": 581,
+    "Nombre": "PROCLEAR ESF-14.00",
+    "Rubro": "CONTACTOLOGIA LENTES",
+    "Costo de Lista": 11916.67
+  },
+  {
+    "Id": 9512,
+    "Codigo": 582,
+    "Nombre": "PROCLEAR ESF-14.50",
+    "Rubro": "CONTACTOLOGIA LENTES",
+    "Costo de Lista": 11916.67
+  },
+  {
+    "Id": 9513,
+    "Codigo": 583,
+    "Nombre": "PROCLEAR ESF-15.00",
+    "Rubro": "CONTACTOLOGIA LENTES",
+    "Costo de Lista": 11916.67
+  },
+  {
+    "Id": 9514,
+    "Codigo": 584,
+    "Nombre": "PROCLEAR ESF-15.50",
+    "Rubro": "CONTACTOLOGIA LENTES",
+    "Costo de Lista": 11916.67
+  },
+  {
+    "Id": 9515,
+    "Codigo": 585,
+    "Nombre": "PROCLEAR ESF-16.00",
+    "Rubro": "CONTACTOLOGIA LENTES",
+    "Costo de Lista": 11916.67
+  },
+  {
+    "Id": 9516,
+    "Codigo": 586,
+    "Nombre": "PROCLEAR ESF-16.50",
+    "Rubro": "CONTACTOLOGIA LENTES",
+    "Costo de Lista": 11916.67
+  },
+  {
+    "Id": 9517,
+    "Codigo": 587,
+    "Nombre": "PROCLEAR ESF-17.00",
+    "Rubro": "CONTACTOLOGIA LENTES",
+    "Costo de Lista": 11916.67
+  },
+  {
+    "Id": 9518,
+    "Codigo": 588,
+    "Nombre": "PROCLEAR ESF-17.50",
+    "Rubro": "CONTACTOLOGIA LENTES",
+    "Costo de Lista": 11916.67
+  },
+  {
+    "Id": 9519,
+    "Codigo": 589,
+    "Nombre": "PROCLEAR ESF-18.00",
+    "Rubro": "CONTACTOLOGIA LENTES",
+    "Costo de Lista": 11916.67
+  },
+  {
+    "Id": 9520,
+    "Codigo": 590,
+    "Nombre": "PROCLEAR ESF-18.50",
+    "Rubro": "CONTACTOLOGIA LENTES",
+    "Costo de Lista": 11916.67
+  },
+  {
+    "Id": 9521,
+    "Codigo": 591,
+    "Nombre": "PROCLEAR ESF-19.00",
+    "Rubro": "CONTACTOLOGIA LENTES",
+    "Costo de Lista": 11916.67
+  },
+  {
+    "Id": 9522,
+    "Codigo": 592,
+    "Nombre": "PROCLEAR ESF-19.50",
+    "Rubro": "CONTACTOLOGIA LENTES",
+    "Costo de Lista": 11916.67
+  },
+  {
+    "Id": 9523,
+    "Codigo": 593,
+    "Nombre": "PROCLEAR ESF-20.00",
+    "Rubro": "CONTACTOLOGIA LENTES",
+    "Costo de Lista": 11916.67
+  },
+  {
+    "Id": 9524,
+    "Codigo": 511213,
+    "Nombre": "PROCLEAR ESF-8.00",
+    "Rubro": "CONTACTOLOGIA LENTES",
+    "Costo de Lista": 11916.67
+  },
+  {
+    "Id": 9525,
+    "Codigo": 368334,
+    "Nombre": "PROCLEAR ESF+13.00",
+    "Rubro": "CONTACTOLOGIA LENTES",
+    "Costo de Lista": 11916.67
+  },
+  {
+    "Id": 9526,
+    "Codigo": 37411,
+    "Nombre": "PROCLEAR ESF+15.00",
+    "Rubro": "CONTACTOLOGIA LENTES",
+    "Costo de Lista": 11916.67
+  },
+  {
+    "Id": 9527,
+    "Codigo": 393548,
+    "Nombre": "PROCLEAR ESF+15.50",
+    "Rubro": "CONTACTOLOGIA LENTES",
+    "Costo de Lista": 11916.67
+  },
+  {
+    "Id": 9528,
+    "Codigo": 511271,
+    "Nombre": "PROCLEAR ESF+8.00",
+    "Rubro": "CONTACTOLOGIA LENTES",
+    "Costo de Lista": 11916.67
+  },
+  {
+    "Id": 9529,
+    "Codigo": 436427,
+    "Nombre": "PROCLEAR MULTIFOCAL",
+    "Rubro": "CONTACTOLOGIA LENTES",
+    "Costo de Lista": 5630
+  },
+  {
+    "Id": 9530,
+    "Codigo": "AC2-0.50",
+    "Nombre": "ACUVUE 2 ESF-0.50",
+    "Rubro": "CONTACTOLOGIA LENTES",
+    "Costo de Lista": 6315.37
+  },
+  {
+    "Id": 9531,
+    "Codigo": "AC2-0.75",
+    "Nombre": "ACUVUE 2 ESF-0.75",
+    "Rubro": "CONTACTOLOGIA LENTES",
+    "Costo de Lista": 6315.37
+  },
+  {
+    "Id": 9532,
+    "Codigo": "AC2-1.00",
+    "Nombre": "ACUVUE 2 ESF-1.00",
+    "Rubro": "CONTACTOLOGIA LENTES",
+    "Costo de Lista": 6315.37
+  },
+  {
+    "Id": 9533,
+    "Codigo": "AC2-1.25",
+    "Nombre": "ACUVUE 2 ESF-1.25",
+    "Rubro": "CONTACTOLOGIA LENTES",
+    "Costo de Lista": 6315.37
+  },
+  {
+    "Id": 9534,
+    "Codigo": "AC2-1.50",
+    "Nombre": "ACUVUE 2 ESF-1.50",
+    "Rubro": "CONTACTOLOGIA LENTES",
+    "Costo de Lista": 6315.37
+  },
+  {
+    "Id": 9535,
+    "Codigo": "AC2-1.75",
+    "Nombre": "ACUVUE 2 ESF-1.75",
+    "Rubro": "CONTACTOLOGIA LENTES",
+    "Costo de Lista": 6315.37
+  },
+  {
+    "Id": 9536,
+    "Codigo": "AC2-10.00",
+    "Nombre": "ACUVUE 2 ESF-10.00",
+    "Rubro": "CONTACTOLOGIA LENTES",
+    "Costo de Lista": 6315.37
+  },
+  {
+    "Id": 9537,
+    "Codigo": "AC2-10.50",
+    "Nombre": "ACUVUE 2 ESF-10.50",
+    "Rubro": "CONTACTOLOGIA LENTES",
+    "Costo de Lista": 6315.37
+  },
+  {
+    "Id": 9538,
+    "Codigo": "AC2-11.00",
+    "Nombre": "ACUVUE 2 ESF-11.00",
+    "Rubro": "CONTACTOLOGIA LENTES",
+    "Costo de Lista": 6315.37
+  },
+  {
+    "Id": 9539,
+    "Codigo": "AC2-11.50",
+    "Nombre": "ACUVUE 2 ESF-11.50",
+    "Rubro": "CONTACTOLOGIA LENTES",
+    "Costo de Lista": 6315.37
+  },
+  {
+    "Id": 9540,
+    "Codigo": "AC2-12.00",
+    "Nombre": "ACUVUE 2 ESF-12.00",
+    "Rubro": "CONTACTOLOGIA LENTES",
+    "Costo de Lista": 6315.37
+  },
+  {
+    "Id": 9541,
+    "Codigo": "AC2-2.00",
+    "Nombre": "ACUVUE 2 ESF-2.00",
+    "Rubro": "CONTACTOLOGIA LENTES",
+    "Costo de Lista": 6315.37
+  },
+  {
+    "Id": 9542,
+    "Codigo": "AC2-2.25",
+    "Nombre": "ACUVUE 2 ESF-2.25",
+    "Rubro": "CONTACTOLOGIA LENTES",
+    "Costo de Lista": 6315.37
+  },
+  {
+    "Id": 9543,
+    "Codigo": "AC2-2.50",
+    "Nombre": "ACUVUE 2 ESF-2.50",
+    "Rubro": "CONTACTOLOGIA LENTES",
+    "Costo de Lista": 6315.37
+  },
+  {
+    "Id": 9544,
+    "Codigo": "AC2-2.75",
+    "Nombre": "ACUVUE 2 ESF-2.75",
+    "Rubro": "CONTACTOLOGIA LENTES",
+    "Costo de Lista": 6315.37
+  },
+  {
+    "Id": 9545,
+    "Codigo": "AC2-3.00",
+    "Nombre": "ACUVUE 2 ESF-3.00",
+    "Rubro": "CONTACTOLOGIA LENTES",
+    "Costo de Lista": 6315.37
+  },
+  {
+    "Id": 9546,
+    "Codigo": "AC2-3.25",
+    "Nombre": "ACUVUE 2 ESF-3.25",
+    "Rubro": "CONTACTOLOGIA LENTES",
+    "Costo de Lista": 6315.37
+  },
+  {
+    "Id": 9547,
+    "Codigo": "AC2-3.50",
+    "Nombre": "ACUVUE 2 ESF-3.50",
+    "Rubro": "CONTACTOLOGIA LENTES",
+    "Costo de Lista": 6315.37
+  },
+  {
+    "Id": 9548,
+    "Codigo": "AC2-3.75",
+    "Nombre": "ACUVUE 2 ESF-3.75",
+    "Rubro": "CONTACTOLOGIA LENTES",
+    "Costo de Lista": 6315.37
+  },
+  {
+    "Id": 9549,
+    "Codigo": "AC2-4.00",
+    "Nombre": "ACUVUE 2 ESF-4.00",
+    "Rubro": "CONTACTOLOGIA LENTES",
+    "Costo de Lista": 6315.37
+  },
+  {
+    "Id": 9550,
+    "Codigo": "AC2-4.25",
+    "Nombre": "ACUVUE 2 ESF-4.25",
+    "Rubro": "CONTACTOLOGIA LENTES",
+    "Costo de Lista": 6315.37
+  },
+  {
+    "Id": 9551,
+    "Codigo": "AC2-4.50",
+    "Nombre": "ACUVUE 2 ESF-4.50",
+    "Rubro": "CONTACTOLOGIA LENTES",
+    "Costo de Lista": 6315.37
+  },
+  {
+    "Id": 9552,
+    "Codigo": "AC2-4.75",
+    "Nombre": "ACUVUE 2 ESF-4.75",
+    "Rubro": "CONTACTOLOGIA LENTES",
+    "Costo de Lista": 6315.37
+  },
+  {
+    "Id": 9553,
+    "Codigo": "AC2-5.00",
+    "Nombre": "ACUVUE 2 ESF-5.00",
+    "Rubro": "CONTACTOLOGIA LENTES",
+    "Costo de Lista": 6315.37
+  },
+  {
+    "Id": 9554,
+    "Codigo": "AC2-5.25",
+    "Nombre": "ACUVUE 2 ESF-5.25",
+    "Rubro": "CONTACTOLOGIA LENTES",
+    "Costo de Lista": 6315.37
+  },
+  {
+    "Id": 9555,
+    "Codigo": "AC2-5.50",
+    "Nombre": "ACUVUE 2 ESF-5.50",
+    "Rubro": "CONTACTOLOGIA LENTES",
+    "Costo de Lista": 6315.37
+  },
+  {
+    "Id": 9556,
+    "Codigo": "AC2-5.75",
+    "Nombre": "ACUVUE 2 ESF-5.75",
+    "Rubro": "CONTACTOLOGIA LENTES",
+    "Costo de Lista": 6315.3
+  },
+  {
+    "Id": 9557,
+    "Codigo": "AC2-6.00",
+    "Nombre": "ACUVUE 2 ESF-6.00",
+    "Rubro": "CONTACTOLOGIA LENTES",
+    "Costo de Lista": 6315.37
+  },
+  {
+    "Id": 9558,
+    "Codigo": "AC2-6.50",
+    "Nombre": "ACUVUE 2 ESF-6.50",
+    "Rubro": "CONTACTOLOGIA LENTES",
+    "Costo de Lista": 6315.37
+  },
+  {
+    "Id": 9559,
+    "Codigo": "AC2-7.00",
+    "Nombre": "ACUVUE 2 ESF-7.00",
+    "Rubro": "CONTACTOLOGIA LENTES",
+    "Costo de Lista": 6315.37
+  },
+  {
+    "Id": 9560,
+    "Codigo": "AC2-7.50",
+    "Nombre": "ACUVUE 2 ESF-7.50",
+    "Rubro": "CONTACTOLOGIA LENTES",
+    "Costo de Lista": 6315.37
+  },
+  {
+    "Id": 9561,
+    "Codigo": "AC2-8.00",
+    "Nombre": "ACUVUE 2 ESF-8.00",
+    "Rubro": "CONTACTOLOGIA LENTES",
+    "Costo de Lista": 6315.37
+  },
+  {
+    "Id": 9562,
+    "Codigo": "AC2-8.50",
+    "Nombre": "ACUVUE 2 ESF-8.50",
+    "Rubro": "CONTACTOLOGIA LENTES",
+    "Costo de Lista": 6315.37
+  },
+  {
+    "Id": 9563,
+    "Codigo": "AC2-9.00",
+    "Nombre": "ACUVUE 2 ESF-9.00",
+    "Rubro": "CONTACTOLOGIA LENTES",
+    "Costo de Lista": 6315.37
+  },
+  {
+    "Id": 9564,
+    "Codigo": "AC2-9.50",
+    "Nombre": "ACUVUE 2 ESF-9.50",
+    "Rubro": "CONTACTOLOGIA LENTES",
+    "Costo de Lista": 6315.37
+  },
+  {
+    "Id": 9565,
+    "Codigo": "AC2+0.50",
+    "Nombre": "ACUVUE 2 ESF+0.50",
+    "Rubro": "CONTACTOLOGIA LENTES",
+    "Costo de Lista": 6315.37
+  },
+  {
+    "Id": 9566,
+    "Codigo": "AC2+0.75",
+    "Nombre": "ACUVUE 2 ESF+0.75",
+    "Rubro": "CONTACTOLOGIA LENTES",
+    "Costo de Lista": 6315.37
+  },
+  {
+    "Id": 9567,
+    "Codigo": "AC2+1.00",
+    "Nombre": "ACUVUE 2 ESF+1.00",
+    "Rubro": "CONTACTOLOGIA LENTES",
+    "Costo de Lista": 6315.37
+  },
+  {
+    "Id": 9568,
+    "Codigo": "AC2+1.25",
+    "Nombre": "ACUVUE 2 ESF+1.25",
+    "Rubro": "CONTACTOLOGIA LENTES",
+    "Costo de Lista": 6315.37
+  },
+  {
+    "Id": 9569,
+    "Codigo": "AC2+1.50",
+    "Nombre": "ACUVUE 2 ESF+1.50",
+    "Rubro": "CONTACTOLOGIA LENTES",
+    "Costo de Lista": 6315.37
+  },
+  {
+    "Id": 9570,
+    "Codigo": "AC2+1.75",
+    "Nombre": "ACUVUE 2 ESF+1.75",
+    "Rubro": "CONTACTOLOGIA LENTES",
+    "Costo de Lista": 6315.37
+  },
+  {
+    "Id": 9571,
+    "Codigo": "AC2+2.00",
+    "Nombre": "ACUVUE 2 ESF+2.00",
+    "Rubro": "CONTACTOLOGIA LENTES",
+    "Costo de Lista": 6315.37
+  },
+  {
+    "Id": 9572,
+    "Codigo": "AC2+2.25",
+    "Nombre": "ACUVUE 2 ESF+2.25",
+    "Rubro": "CONTACTOLOGIA LENTES",
+    "Costo de Lista": 6315.37
+  },
+  {
+    "Id": 9573,
+    "Codigo": "AC2+2.50",
+    "Nombre": "ACUVUE 2 ESF+2.50",
+    "Rubro": "CONTACTOLOGIA LENTES",
+    "Costo de Lista": 6315.37
+  },
+  {
+    "Id": 9574,
+    "Codigo": "AC2+2.75",
+    "Nombre": "ACUVUE 2 ESF+2.75",
+    "Rubro": "CONTACTOLOGIA LENTES",
+    "Costo de Lista": 6315.3
+  },
+  {
+    "Id": 9575,
+    "Codigo": "AC2+3.00",
+    "Nombre": "ACUVUE 2 ESF+3.00",
+    "Rubro": "CONTACTOLOGIA LENTES",
+    "Costo de Lista": 6315.37
+  },
+  {
+    "Id": 9576,
+    "Codigo": "AC2+3.25",
+    "Nombre": "ACUVUE 2 ESF+3.25",
+    "Rubro": "CONTACTOLOGIA LENTES",
+    "Costo de Lista": 6315.37
+  },
+  {
+    "Id": 9577,
+    "Codigo": "AC2+3.50",
+    "Nombre": "ACUVUE 2 ESF+3.50",
+    "Rubro": "CONTACTOLOGIA LENTES",
+    "Costo de Lista": 6315.37
+  },
+  {
+    "Id": 9578,
+    "Codigo": "AC2+3.75",
+    "Nombre": "ACUVUE 2 ESF+3.75",
+    "Rubro": "CONTACTOLOGIA LENTES",
+    "Costo de Lista": 6315.37
+  },
+  {
+    "Id": 9579,
+    "Codigo": "AC2+4.00",
+    "Nombre": "ACUVUE 2 ESF+4.00",
+    "Rubro": "CONTACTOLOGIA LENTES",
+    "Costo de Lista": 6315.37
+  },
+  {
+    "Id": 9580,
+    "Codigo": "AC2+4.25",
+    "Nombre": "ACUVUE 2 ESF+4.25",
+    "Rubro": "CONTACTOLOGIA LENTES",
+    "Costo de Lista": 6315.37
+  },
+  {
+    "Id": 9581,
+    "Codigo": "AC2+4.50",
+    "Nombre": "ACUVUE 2 ESF+4.50",
+    "Rubro": "CONTACTOLOGIA LENTES",
+    "Costo de Lista": 6315.37
+  },
+  {
+    "Id": 9582,
+    "Codigo": "AC2+4.75",
+    "Nombre": "ACUVUE 2 ESF+4.75",
+    "Rubro": "CONTACTOLOGIA LENTES",
+    "Costo de Lista": 6315.37
+  },
+  {
+    "Id": 9583,
+    "Codigo": "AC2+5.00",
+    "Nombre": "ACUVUE 2 ESF+5.00",
+    "Rubro": "CONTACTOLOGIA LENTES",
+    "Costo de Lista": 6315.37
+  },
+  {
+    "Id": 9584,
+    "Codigo": "AC2+5.25",
+    "Nombre": "ACUVUE 2 ESF+5.25",
+    "Rubro": "CONTACTOLOGIA LENTES",
+    "Costo de Lista": 6315.3
+  },
+  {
+    "Id": 9585,
+    "Codigo": "AC2+5.50",
+    "Nombre": "ACUVUE 2 ESF+5.50",
+    "Rubro": "CONTACTOLOGIA LENTES",
+    "Costo de Lista": 6315.37
+  },
+  {
+    "Id": 9586,
+    "Codigo": "AC2+5.75",
+    "Nombre": "ACUVUE 2 ESF+5.75",
+    "Rubro": "CONTACTOLOGIA LENTES",
+    "Costo de Lista": 6315.3
+  },
+  {
+    "Id": 9587,
+    "Codigo": "AC2+6.00",
+    "Nombre": "ACUVUE 2 ESF+6.00",
+    "Rubro": "CONTACTOLOGIA LENTES",
+    "Costo de Lista": 6315.37
+  },
+  {
+    "Id": 9588,
+    "Codigo": "AC2+6.50",
+    "Nombre": "ACUVUE 2 ESF+6.50",
+    "Rubro": "CONTACTOLOGIA LENTES",
+    "Costo de Lista": 6315.37
+  },
+  {
+    "Id": 9589,
+    "Codigo": "AC2+7.00",
+    "Nombre": "ACUVUE 2 ESF+7.00",
+    "Rubro": "CONTACTOLOGIA LENTES",
+    "Costo de Lista": 6315.37
+  },
+  {
+    "Id": 9590,
+    "Codigo": "AC2+7.50",
+    "Nombre": "ACUVUE 2 ESF+7.50",
+    "Rubro": "CONTACTOLOGIA LENTES",
+    "Costo de Lista": 6315.37
+  },
+  {
+    "Id": 9591,
+    "Codigo": "AC2+8.00",
+    "Nombre": "ACUVUE 2 ESF+8.00",
+    "Rubro": "CONTACTOLOGIA LENTES",
+    "Costo de Lista": 6315.37
+  },
+  {
+    "Id": 9592,
+    "Codigo": 510952,
+    "Nombre": "ACUVUE ONE DAY MOIST",
+    "Rubro": "CONTACTOLOGIA LENTES",
+    "Costo de Lista": 1121.75
+  },
+  {
+    "Id": 9593,
+    "Codigo": 510948,
+    "Nombre": "ACUVUE ONE DAY MOIST TORIC",
+    "Rubro": "CONTACTOLOGIA LENTES",
+    "Costo de Lista": 1599.52
+  },
+  {
+    "Id": 9594,
+    "Codigo": 479,
+    "Nombre": "ACUVUE OASYS ESF-0.50",
+    "Rubro": "CONTACTOLOGIA LENTES",
+    "Costo de Lista": 7241.1
+  },
+  {
+    "Id": 9595,
+    "Codigo": 480,
+    "Nombre": "ACUVUE OASYS ESF-0.75",
+    "Rubro": "CONTACTOLOGIA LENTES",
+    "Costo de Lista": 7241.04
+  },
+  {
+    "Id": 9596,
+    "Codigo": 481,
+    "Nombre": "ACUVUE OASYS ESF-1.00",
+    "Rubro": "CONTACTOLOGIA LENTES",
+    "Costo de Lista": 7241.1
+  },
+  {
+    "Id": 9597,
+    "Codigo": 482,
+    "Nombre": "ACUVUE OASYS ESF-1.25",
+    "Rubro": "CONTACTOLOGIA LENTES",
+    "Costo de Lista": 7241.1
+  },
+  {
+    "Id": 9598,
+    "Codigo": 483,
+    "Nombre": "ACUVUE OASYS ESF-1.50",
+    "Rubro": "CONTACTOLOGIA LENTES",
+    "Costo de Lista": 7241.1
+  },
+  {
+    "Id": 9599,
+    "Codigo": 484,
+    "Nombre": "ACUVUE OASYS ESF-1.75",
+    "Rubro": "CONTACTOLOGIA LENTES",
+    "Costo de Lista": 7241.1
+  },
+  {
+    "Id": 9600,
+    "Codigo": 508,
+    "Nombre": "ACUVUE OASYS ESF-10.00",
+    "Rubro": "CONTACTOLOGIA LENTES",
+    "Costo de Lista": 7241.08
+  },
+  {
+    "Id": 9601,
+    "Codigo": 509,
+    "Nombre": "ACUVUE OASYS ESF-10.50",
+    "Rubro": "CONTACTOLOGIA LENTES",
+    "Costo de Lista": 7241.1
+  },
+  {
+    "Id": 9602,
+    "Codigo": 510,
+    "Nombre": "ACUVUE OASYS ESF-11.00",
+    "Rubro": "CONTACTOLOGIA LENTES",
+    "Costo de Lista": 7241.04
+  },
+  {
+    "Id": 9603,
+    "Codigo": 511,
+    "Nombre": "ACUVUE OASYS ESF-11.50",
+    "Rubro": "CONTACTOLOGIA LENTES",
+    "Costo de Lista": 7241.04
+  },
+  {
+    "Id": 9604,
+    "Codigo": 512,
+    "Nombre": "ACUVUE OASYS ESF-12.00",
+    "Rubro": "CONTACTOLOGIA LENTES",
+    "Costo de Lista": 7241.08
+  },
+  {
+    "Id": 9605,
+    "Codigo": 485,
+    "Nombre": "ACUVUE OASYS ESF-2.00",
+    "Rubro": "CONTACTOLOGIA LENTES",
+    "Costo de Lista": 7241.1
+  },
+  {
+    "Id": 9606,
+    "Codigo": 486,
+    "Nombre": "ACUVUE OASYS ESF-2.25",
+    "Rubro": "CONTACTOLOGIA LENTES",
+    "Costo de Lista": 7241.1
+  },
+  {
+    "Id": 9607,
+    "Codigo": 487,
+    "Nombre": "ACUVUE OASYS ESF-2.50",
+    "Rubro": "CONTACTOLOGIA LENTES",
+    "Costo de Lista": 7241.1
+  },
+  {
+    "Id": 9608,
+    "Codigo": 488,
+    "Nombre": "ACUVUE OASYS ESF-2.75",
+    "Rubro": "CONTACTOLOGIA LENTES",
+    "Costo de Lista": 7241.1
+  },
+  {
+    "Id": 9609,
+    "Codigo": 489,
+    "Nombre": "ACUVUE OASYS ESF-3.00",
+    "Rubro": "CONTACTOLOGIA LENTES",
+    "Costo de Lista": 7241.1
+  },
+  {
+    "Id": 9610,
+    "Codigo": 490,
+    "Nombre": "ACUVUE OASYS ESF-3.25",
+    "Rubro": "CONTACTOLOGIA LENTES",
+    "Costo de Lista": 7241.04
+  },
+  {
+    "Id": 9611,
+    "Codigo": 491,
+    "Nombre": "ACUVUE OASYS ESF-3.50",
+    "Rubro": "CONTACTOLOGIA LENTES",
+    "Costo de Lista": 7241.04
+  },
+  {
+    "Id": 9612,
+    "Codigo": 492,
+    "Nombre": "ACUVUE OASYS ESF-3.75",
+    "Rubro": "CONTACTOLOGIA LENTES",
+    "Costo de Lista": 7241.04
+  },
+  {
+    "Id": 9613,
+    "Codigo": 493,
+    "Nombre": "ACUVUE OASYS ESF-4.00",
+    "Rubro": "CONTACTOLOGIA LENTES",
+    "Costo de Lista": 7241.1
+  },
+  {
+    "Id": 9614,
+    "Codigo": 495,
+    "Nombre": "ACUVUE OASYS ESF-4.25",
+    "Rubro": "CONTACTOLOGIA LENTES",
+    "Costo de Lista": 7241.04
+  },
+  {
+    "Id": 9615,
+    "Codigo": 494,
+    "Nombre": "ACUVUE OASYS ESF-4.50",
+    "Rubro": "CONTACTOLOGIA LENTES",
+    "Costo de Lista": 7241.1
+  },
+  {
+    "Id": 9616,
+    "Codigo": 496,
+    "Nombre": "ACUVUE OASYS ESF-4.75",
+    "Rubro": "CONTACTOLOGIA LENTES",
+    "Costo de Lista": 7241.04
+  },
+  {
+    "Id": 9617,
+    "Codigo": 497,
+    "Nombre": "ACUVUE OASYS ESF-5.00",
+    "Rubro": "CONTACTOLOGIA LENTES",
+    "Costo de Lista": 7241.1
+  },
+  {
+    "Id": 9618,
+    "Codigo": 498,
+    "Nombre": "ACUVUE OASYS ESF-5.25",
+    "Rubro": "CONTACTOLOGIA LENTES",
+    "Costo de Lista": 7241.04
+  },
+  {
+    "Id": 9619,
+    "Codigo": 499,
+    "Nombre": "ACUVUE OASYS ESF-5.50",
+    "Rubro": "CONTACTOLOGIA LENTES",
+    "Costo de Lista": 7241.08
+  },
+  {
+    "Id": 9620,
+    "Codigo": 500,
+    "Nombre": "ACUVUE OASYS ESF-5.75",
+    "Rubro": "CONTACTOLOGIA LENTES",
+    "Costo de Lista": 7241.04
+  },
+  {
+    "Id": 9621,
+    "Codigo": 513,
+    "Nombre": "ACUVUE OASYS ESF-6.00",
+    "Rubro": "CONTACTOLOGIA LENTES",
+    "Costo de Lista": 7241.1
+  },
+  {
+    "Id": 9622,
+    "Codigo": 501,
+    "Nombre": "ACUVUE OASYS ESF-6.50",
+    "Rubro": "CONTACTOLOGIA LENTES",
+    "Costo de Lista": 7241.04
+  },
+  {
+    "Id": 9623,
+    "Codigo": 502,
+    "Nombre": "ACUVUE OASYS ESF-7.00",
+    "Rubro": "CONTACTOLOGIA LENTES",
+    "Costo de Lista": 7241.1
+  },
+  {
+    "Id": 9624,
+    "Codigo": 503,
+    "Nombre": "ACUVUE OASYS ESF-7.50",
+    "Rubro": "CONTACTOLOGIA LENTES",
+    "Costo de Lista": 7241.08
+  },
+  {
+    "Id": 9625,
+    "Codigo": 504,
+    "Nombre": "ACUVUE OASYS ESF-8.00",
+    "Rubro": "CONTACTOLOGIA LENTES",
+    "Costo de Lista": 7241.04
+  },
+  {
+    "Id": 9626,
+    "Codigo": 505,
+    "Nombre": "ACUVUE OASYS ESF-8.50",
+    "Rubro": "CONTACTOLOGIA LENTES",
+    "Costo de Lista": 7241.04
+  },
+  {
+    "Id": 9627,
+    "Codigo": 506,
+    "Nombre": "ACUVUE OASYS ESF-9.00",
+    "Rubro": "CONTACTOLOGIA LENTES",
+    "Costo de Lista": 7241.04
+  },
+  {
+    "Id": 9628,
+    "Codigo": 507,
+    "Nombre": "ACUVUE OASYS ESF-9.50",
+    "Rubro": "CONTACTOLOGIA LENTES",
+    "Costo de Lista": 7241.08
+  },
+  {
+    "Id": 9629,
+    "Codigo": 454,
+    "Nombre": "ACUVUE OASYS ESF+0.50",
+    "Rubro": "CONTACTOLOGIA LENTES",
+    "Costo de Lista": 7241.04
+  },
+  {
+    "Id": 9630,
+    "Codigo": 455,
+    "Nombre": "ACUVUE OASYS ESF+0.75",
+    "Rubro": "CONTACTOLOGIA LENTES",
+    "Costo de Lista": 7241.04
+  },
+  {
+    "Id": 9631,
+    "Codigo": 456,
+    "Nombre": "ACUVUE OASYS ESF+1.00",
+    "Rubro": "CONTACTOLOGIA LENTES",
+    "Costo de Lista": 7241.04
+  },
+  {
+    "Id": 9632,
+    "Codigo": 457,
+    "Nombre": "ACUVUE OASYS ESF+1.25",
+    "Rubro": "CONTACTOLOGIA LENTES",
+    "Costo de Lista": 7241.04
+  },
+  {
+    "Id": 9633,
+    "Codigo": 460,
+    "Nombre": "ACUVUE OASYS ESF+1.50",
+    "Rubro": "CONTACTOLOGIA LENTES",
+    "Costo de Lista": 7241.1
+  },
+  {
+    "Id": 9634,
+    "Codigo": 459,
+    "Nombre": "ACUVUE OASYS ESF+1.75",
+    "Rubro": "CONTACTOLOGIA LENTES",
+    "Costo de Lista": 7241.04
+  },
+  {
+    "Id": 9635,
+    "Codigo": 458,
+    "Nombre": "ACUVUE OASYS ESF+2.00",
+    "Rubro": "CONTACTOLOGIA LENTES",
+    "Costo de Lista": 7241.1
+  },
+  {
+    "Id": 9636,
+    "Codigo": 461,
+    "Nombre": "ACUVUE OASYS ESF+2.25",
+    "Rubro": "CONTACTOLOGIA LENTES",
+    "Costo de Lista": 7241.1
+  },
+  {
+    "Id": 9637,
+    "Codigo": 462,
+    "Nombre": "ACUVUE OASYS ESF+2.50",
+    "Rubro": "CONTACTOLOGIA LENTES",
+    "Costo de Lista": 7241.04
+  },
+  {
+    "Id": 9638,
+    "Codigo": 463,
+    "Nombre": "ACUVUE OASYS ESF+2.75",
+    "Rubro": "CONTACTOLOGIA LENTES",
+    "Costo de Lista": 7241.08
+  },
+  {
+    "Id": 9639,
+    "Codigo": 464,
+    "Nombre": "ACUVUE OASYS ESF+3.00",
+    "Rubro": "CONTACTOLOGIA LENTES",
+    "Costo de Lista": 7241.04
+  },
+  {
+    "Id": 9640,
+    "Codigo": 465,
+    "Nombre": "ACUVUE OASYS ESF+3.25",
+    "Rubro": "CONTACTOLOGIA LENTES",
+    "Costo de Lista": 7241.04
+  },
+  {
+    "Id": 9641,
+    "Codigo": 466,
+    "Nombre": "ACUVUE OASYS ESF+3.50",
+    "Rubro": "CONTACTOLOGIA LENTES",
+    "Costo de Lista": 7241.1
+  },
+  {
+    "Id": 9642,
+    "Codigo": 467,
+    "Nombre": "ACUVUE OASYS ESF+3.75",
+    "Rubro": "CONTACTOLOGIA LENTES",
+    "Costo de Lista": 7241.04
+  },
+  {
+    "Id": 9643,
+    "Codigo": 468,
+    "Nombre": "ACUVUE OASYS ESF+4.00",
+    "Rubro": "CONTACTOLOGIA LENTES",
+    "Costo de Lista": 7241.04
+  },
+  {
+    "Id": 9644,
+    "Codigo": 469,
+    "Nombre": "ACUVUE OASYS ESF+4.25",
+    "Rubro": "CONTACTOLOGIA LENTES",
+    "Costo de Lista": 7241.04
+  },
+  {
+    "Id": 9645,
+    "Codigo": 470,
+    "Nombre": "ACUVUE OASYS ESF+4.50",
+    "Rubro": "CONTACTOLOGIA LENTES",
+    "Costo de Lista": 7241.08
+  },
+  {
+    "Id": 9646,
+    "Codigo": 471,
+    "Nombre": "ACUVUE OASYS ESF+4.75",
+    "Rubro": "CONTACTOLOGIA LENTES",
+    "Costo de Lista": 7241.04
+  },
+  {
+    "Id": 9647,
+    "Codigo": 472,
+    "Nombre": "ACUVUE OASYS ESF+5.00",
+    "Rubro": "CONTACTOLOGIA LENTES",
+    "Costo de Lista": 7241.08
+  },
+  {
+    "Id": 9648,
+    "Codigo": 626,
+    "Nombre": "ACUVUE OASYS ESF+5.25",
+    "Rubro": "CONTACTOLOGIA LENTES",
+    "Costo de Lista": 7241.04
+  },
+  {
+    "Id": 9649,
+    "Codigo": 473,
+    "Nombre": "ACUVUE OASYS ESF+5.50",
+    "Rubro": "CONTACTOLOGIA LENTES",
+    "Costo de Lista": 7241.04
+  },
+  {
+    "Id": 9650,
+    "Codigo": 627,
+    "Nombre": "ACUVUE OASYS ESF+5.75",
+    "Rubro": "CONTACTOLOGIA LENTES",
+    "Costo de Lista": 7241.04
+  },
+  {
+    "Id": 9651,
+    "Codigo": 474,
+    "Nombre": "ACUVUE OASYS ESF+6.00",
+    "Rubro": "CONTACTOLOGIA LENTES",
+    "Costo de Lista": 7241.04
+  },
+  {
+    "Id": 9652,
+    "Codigo": 475,
+    "Nombre": "ACUVUE OASYS ESF+6.50",
+    "Rubro": "CONTACTOLOGIA LENTES",
+    "Costo de Lista": 7241.04
+  },
+  {
+    "Id": 9653,
+    "Codigo": 476,
+    "Nombre": "ACUVUE OASYS ESF+7.00",
+    "Rubro": "CONTACTOLOGIA LENTES",
+    "Costo de Lista": 7241.04
+  },
+  {
+    "Id": 9654,
+    "Codigo": 477,
+    "Nombre": "ACUVUE OASYS ESF+7.50",
+    "Rubro": "CONTACTOLOGIA LENTES",
+    "Costo de Lista": 7241.04
+  },
+  {
+    "Id": 9655,
+    "Codigo": 478,
+    "Nombre": "ACUVUE OASYS ESF+8.00",
+    "Rubro": "CONTACTOLOGIA LENTES",
+    "Costo de Lista": 7241.08
+  },
+  {
+    "Id": 9656,
+    "Codigo": 544230,
+    "Nombre": "ACUVUE OASYS MULTIFOCAL",
+    "Rubro": "CONTACTOLOGIA LENTES",
+    "Costo de Lista": 9819.21
+  },
+  {
+    "Id": 9657,
+    "Codigo": 510949,
+    "Nombre": "ACUVUE OASYS TORIC",
+    "Rubro": "CONTACTOLOGIA LENTES",
+    "Costo de Lista": 10631.1
+  },
+  {
+    "Id": 9658,
+    "Codigo": "AO ONE DAY",
+    "Nombre": "ACUVUE ONE DAY OASYS",
+    "Rubro": "CONTACTOLOGIA LENTES",
+    "Costo de Lista": 1121.75
+  },
+  {
+    "Id": 9659,
+    "Codigo": 658508,
+    "Nombre": "ACUVUE ONE DAY OASYS TORIC",
+    "Rubro": "CONTACTOLOGIA LENTES",
+    "Costo de Lista": 54076
+  },
+  {
+    "Id": 9660,
+    "Codigo": 254083,
+    "Nombre": "ACUVUE VITA ESF-0.50",
+    "Rubro": "CONTACTOLOGIA LENTES",
+    "Costo de Lista": 7306.79
+  },
+  {
+    "Id": 9661,
+    "Codigo": 415493,
+    "Nombre": "ACUVUE VITA ESF-0.75",
+    "Rubro": "CONTACTOLOGIA LENTES",
+    "Costo de Lista": 7306.79
+  },
+  {
+    "Id": 9662,
+    "Codigo": 38258,
+    "Nombre": "ACUVUE VITA ESF-1.00",
+    "Rubro": "CONTACTOLOGIA LENTES",
+    "Costo de Lista": 7306.79
+  },
+  {
+    "Id": 9663,
+    "Codigo": 191154,
+    "Nombre": "ACUVUE VITA ESF-1.25",
+    "Rubro": "CONTACTOLOGIA LENTES",
+    "Costo de Lista": 7306.79
+  },
+  {
+    "Id": 9664,
+    "Codigo": 776206,
+    "Nombre": "ACUVUE VITA ESF-1.50",
+    "Rubro": "CONTACTOLOGIA LENTES",
+    "Costo de Lista": 7306.79
+  },
+  {
+    "Id": 9665,
+    "Codigo": 48040,
+    "Nombre": "ACUVUE VITA ESF-1.75",
+    "Rubro": "CONTACTOLOGIA LENTES",
+    "Costo de Lista": 7306.79
+  },
+  {
+    "Id": 9666,
+    "Codigo": 255878,
+    "Nombre": "ACUVUE VITA ESF-10.00",
+    "Rubro": "CONTACTOLOGIA LENTES",
+    "Costo de Lista": 7306.79
+  },
+  {
+    "Id": 9667,
+    "Codigo": 249859,
+    "Nombre": "ACUVUE VITA ESF-10.50",
+    "Rubro": "CONTACTOLOGIA LENTES",
+    "Costo de Lista": 7306.74
+  },
+  {
+    "Id": 9668,
+    "Codigo": 974746,
+    "Nombre": "ACUVUE VITA ESF-11.00",
+    "Rubro": "CONTACTOLOGIA LENTES",
+    "Costo de Lista": 7306.74
+  },
+  {
+    "Id": 9669,
+    "Codigo": 720170,
+    "Nombre": "ACUVUE VITA ESF-11.50",
+    "Rubro": "CONTACTOLOGIA LENTES",
+    "Costo de Lista": 7306.79
+  },
+  {
+    "Id": 9670,
+    "Codigo": 905985,
+    "Nombre": "ACUVUE VITA ESF-12.00",
+    "Rubro": "CONTACTOLOGIA LENTES",
+    "Costo de Lista": 7306.79
+  },
+  {
+    "Id": 9671,
+    "Codigo": 698780,
+    "Nombre": "ACUVUE VITA ESF-2.00",
+    "Rubro": "CONTACTOLOGIA LENTES",
+    "Costo de Lista": 7306.79
+  },
+  {
+    "Id": 9672,
+    "Codigo": 313666,
+    "Nombre": "ACUVUE VITA ESF-2.25",
+    "Rubro": "CONTACTOLOGIA LENTES",
+    "Costo de Lista": 7306.79
+  },
+  {
+    "Id": 9673,
+    "Codigo": 153259,
+    "Nombre": "ACUVUE VITA ESF-2.50",
+    "Rubro": "CONTACTOLOGIA LENTES",
+    "Costo de Lista": 7306.79
+  },
+  {
+    "Id": 9674,
+    "Codigo": 551103,
+    "Nombre": "ACUVUE VITA ESF-2.75",
+    "Rubro": "CONTACTOLOGIA LENTES",
+    "Costo de Lista": 7306.79
+  },
+  {
+    "Id": 9675,
+    "Codigo": 238148,
+    "Nombre": "ACUVUE VITA ESF-3.00",
+    "Rubro": "CONTACTOLOGIA LENTES",
+    "Costo de Lista": 7306.79
+  },
+  {
+    "Id": 9676,
+    "Codigo": 378132,
+    "Nombre": "ACUVUE VITA ESF-3.25",
+    "Rubro": "CONTACTOLOGIA LENTES",
+    "Costo de Lista": 7306.79
+  },
+  {
+    "Id": 9677,
+    "Codigo": 80012,
+    "Nombre": "ACUVUE VITA ESF-3.50",
+    "Rubro": "CONTACTOLOGIA LENTES",
+    "Costo de Lista": 7306.79
+  },
+  {
+    "Id": 9678,
+    "Codigo": 928429,
+    "Nombre": "ACUVUE VITA ESF-3.75",
+    "Rubro": "CONTACTOLOGIA LENTES",
+    "Costo de Lista": 7306.79
+  },
+  {
+    "Id": 9679,
+    "Codigo": 379589,
+    "Nombre": "ACUVUE VITA ESF-4.00",
+    "Rubro": "CONTACTOLOGIA LENTES",
+    "Costo de Lista": 7306.79
+  },
+  {
+    "Id": 9680,
+    "Codigo": 207063,
+    "Nombre": "ACUVUE VITA ESF-4.25",
+    "Rubro": "CONTACTOLOGIA LENTES",
+    "Costo de Lista": 7306.79
+  },
+  {
+    "Id": 9681,
+    "Codigo": 348999,
+    "Nombre": "ACUVUE VITA ESF-4.50",
+    "Rubro": "CONTACTOLOGIA LENTES",
+    "Costo de Lista": 7306.79
+  },
+  {
+    "Id": 9682,
+    "Codigo": 516638,
+    "Nombre": "ACUVUE VITA ESF-4.75",
+    "Rubro": "CONTACTOLOGIA LENTES",
+    "Costo de Lista": 7306.79
+  },
+  {
+    "Id": 9683,
+    "Codigo": 114786,
+    "Nombre": "ACUVUE VITA ESF-5.00",
+    "Rubro": "CONTACTOLOGIA LENTES",
+    "Costo de Lista": 7306.79
+  },
+  {
+    "Id": 9684,
+    "Codigo": 464806,
+    "Nombre": "ACUVUE VITA ESF-5.25",
+    "Rubro": "CONTACTOLOGIA LENTES",
+    "Costo de Lista": 7306.79
+  },
+  {
+    "Id": 9685,
+    "Codigo": 701345,
+    "Nombre": "ACUVUE VITA ESF-5.50",
+    "Rubro": "CONTACTOLOGIA LENTES",
+    "Costo de Lista": 7306.79
+  },
+  {
+    "Id": 9686,
+    "Codigo": 306290,
+    "Nombre": "ACUVUE VITA ESF-5.75",
+    "Rubro": "CONTACTOLOGIA LENTES",
+    "Costo de Lista": 7306.79
+  },
+  {
+    "Id": 9687,
+    "Codigo": 853311,
+    "Nombre": "ACUVUE VITA ESF-6.00",
+    "Rubro": "CONTACTOLOGIA LENTES",
+    "Costo de Lista": 7306.79
+  },
+  {
+    "Id": 9688,
+    "Codigo": 812815,
+    "Nombre": "ACUVUE VITA ESF-6.50",
+    "Rubro": "CONTACTOLOGIA LENTES",
+    "Costo de Lista": 7306.79
+  },
+  {
+    "Id": 9689,
+    "Codigo": 16678,
+    "Nombre": "ACUVUE VITA ESF-7.00",
+    "Rubro": "CONTACTOLOGIA LENTES",
+    "Costo de Lista": 7306.79
+  },
+  {
+    "Id": 9690,
+    "Codigo": 67823,
+    "Nombre": "ACUVUE VITA ESF-7.50",
+    "Rubro": "CONTACTOLOGIA LENTES",
+    "Costo de Lista": 7306.79
+  },
+  {
+    "Id": 9691,
+    "Codigo": 66898,
+    "Nombre": "ACUVUE VITA ESF-8.00",
+    "Rubro": "CONTACTOLOGIA LENTES",
+    "Costo de Lista": 7306.74
+  },
+  {
+    "Id": 9692,
+    "Codigo": 432170,
+    "Nombre": "ACUVUE VITA ESF-8.50",
+    "Rubro": "CONTACTOLOGIA LENTES",
+    "Costo de Lista": 7306.79
+  },
+  {
+    "Id": 9693,
+    "Codigo": 106080,
+    "Nombre": "ACUVUE VITA ESF-9.00",
+    "Rubro": "CONTACTOLOGIA LENTES",
+    "Costo de Lista": 7306.79
+  },
+  {
+    "Id": 9694,
+    "Codigo": 258051,
+    "Nombre": "ACUVUE VITA ESF-9.50",
+    "Rubro": "CONTACTOLOGIA LENTES",
+    "Costo de Lista": 7306.79
+  },
+  {
+    "Id": 9695,
+    "Codigo": 208375,
+    "Nombre": "ACUVUE VITA ESF+0.50",
+    "Rubro": "CONTACTOLOGIA LENTES",
+    "Costo de Lista": 7306.74
+  },
+  {
+    "Id": 9696,
+    "Codigo": 154119,
+    "Nombre": "ACUVUE VITA ESF+0.75",
+    "Rubro": "CONTACTOLOGIA LENTES",
+    "Costo de Lista": 7306.74
+  },
+  {
+    "Id": 9697,
+    "Codigo": 513929,
+    "Nombre": "ACUVUE VITA ESF+1.00",
+    "Rubro": "CONTACTOLOGIA LENTES",
+    "Costo de Lista": 7306.79
+  },
+  {
+    "Id": 9698,
+    "Codigo": 458234,
+    "Nombre": "ACUVUE VITA ESF+1.25",
+    "Rubro": "CONTACTOLOGIA LENTES",
+    "Costo de Lista": 7306.79
+  },
+  {
+    "Id": 9699,
+    "Codigo": 128865,
+    "Nombre": "ACUVUE VITA ESF+1.50",
+    "Rubro": "CONTACTOLOGIA LENTES",
+    "Costo de Lista": 7306.79
+  },
+  {
+    "Id": 9700,
+    "Codigo": 234098,
+    "Nombre": "ACUVUE VITA ESF+1.75",
+    "Rubro": "CONTACTOLOGIA LENTES",
+    "Costo de Lista": 7306.79
+  },
+  {
+    "Id": 9701,
+    "Codigo": 364219,
+    "Nombre": "ACUVUE VITA ESF+2.00",
+    "Rubro": "CONTACTOLOGIA LENTES",
+    "Costo de Lista": 7306.79
+  },
+  {
+    "Id": 9702,
+    "Codigo": 827645,
+    "Nombre": "ACUVUE VITA ESF+2.25",
+    "Rubro": "CONTACTOLOGIA LENTES",
+    "Costo de Lista": 7306.79
+  },
+  {
+    "Id": 9703,
+    "Codigo": 547763,
+    "Nombre": "ACUVUE VITA ESF+2.50",
+    "Rubro": "CONTACTOLOGIA LENTES",
+    "Costo de Lista": 7306.79
+  },
+  {
+    "Id": 9704,
+    "Codigo": 517477,
+    "Nombre": "ACUVUE VITA ESF+2.75",
+    "Rubro": "CONTACTOLOGIA LENTES",
+    "Costo de Lista": 7306.79
+  },
+  {
+    "Id": 9705,
+    "Codigo": 378748,
+    "Nombre": "ACUVUE VITA ESF+3.00",
+    "Rubro": "CONTACTOLOGIA LENTES",
+    "Costo de Lista": 7306.79
+  },
+  {
+    "Id": 9706,
+    "Codigo": 785911,
+    "Nombre": "ACUVUE VITA ESF+3.25",
+    "Rubro": "CONTACTOLOGIA LENTES",
+    "Costo de Lista": 7306.79
+  },
+  {
+    "Id": 9707,
+    "Codigo": 895609,
+    "Nombre": "ACUVUE VITA ESF+3.50",
+    "Rubro": "CONTACTOLOGIA LENTES",
+    "Costo de Lista": 7306.79
+  },
+  {
+    "Id": 9708,
+    "Codigo": 458759,
+    "Nombre": "ACUVUE VITA ESF+3.75",
+    "Rubro": "CONTACTOLOGIA LENTES",
+    "Costo de Lista": 7306.79
+  },
+  {
+    "Id": 9709,
+    "Codigo": 714339,
+    "Nombre": "ACUVUE VITA ESF+4.00",
+    "Rubro": "CONTACTOLOGIA LENTES",
+    "Costo de Lista": 7306.79
+  },
+  {
+    "Id": 9710,
+    "Codigo": 275197,
+    "Nombre": "ACUVUE VITA ESF+4.25",
+    "Rubro": "CONTACTOLOGIA LENTES",
+    "Costo de Lista": 7306.79
+  },
+  {
+    "Id": 9711,
+    "Codigo": 665822,
+    "Nombre": "ACUVUE VITA ESF+4.50",
+    "Rubro": "CONTACTOLOGIA LENTES",
+    "Costo de Lista": 7306.79
+  },
+  {
+    "Id": 9712,
+    "Codigo": 63337,
+    "Nombre": "ACUVUE VITA ESF+4.75",
+    "Rubro": "CONTACTOLOGIA LENTES",
+    "Costo de Lista": 7306.79
+  },
+  {
+    "Id": 9713,
+    "Codigo": 791835,
+    "Nombre": "ACUVUE VITA ESF+5.00",
+    "Rubro": "CONTACTOLOGIA LENTES",
+    "Costo de Lista": 7306.79
+  },
+  {
+    "Id": 9714,
+    "Codigo": 780608,
+    "Nombre": "ACUVUE VITA ESF+5.25",
+    "Rubro": "CONTACTOLOGIA LENTES",
+    "Costo de Lista": 7306.69
+  },
+  {
+    "Id": 9715,
+    "Codigo": 528143,
+    "Nombre": "ACUVUE VITA ESF+5.50",
+    "Rubro": "CONTACTOLOGIA LENTES",
+    "Costo de Lista": 7306.79
+  },
+  {
+    "Id": 9716,
+    "Codigo": 493180,
+    "Nombre": "ACUVUE VITA ESF+5.75",
+    "Rubro": "CONTACTOLOGIA LENTES",
+    "Costo de Lista": 7306.74
+  },
+  {
+    "Id": 9717,
+    "Codigo": 86897,
+    "Nombre": "ACUVUE VITA ESF+6.00",
+    "Rubro": "CONTACTOLOGIA LENTES",
+    "Costo de Lista": 7306.79
+  },
+  {
+    "Id": 9718,
+    "Codigo": 381453,
+    "Nombre": "ACUVUE VITA ESF+6.50",
+    "Rubro": "CONTACTOLOGIA LENTES",
+    "Costo de Lista": 7306.79
+  },
+  {
+    "Id": 9719,
+    "Codigo": 305995,
+    "Nombre": "ACUVUE VITA ESF+7.00",
+    "Rubro": "CONTACTOLOGIA LENTES",
+    "Costo de Lista": 7306.79
+  },
+  {
+    "Id": 9720,
+    "Codigo": 103574,
+    "Nombre": "ACUVUE VITA ESF+7.50",
+    "Rubro": "CONTACTOLOGIA LENTES",
+    "Costo de Lista": 7306.79
+  },
+  {
+    "Id": 9721,
+    "Codigo": 449275,
+    "Nombre": "ACUVUE VITA ESF+8.00",
+    "Rubro": "CONTACTOLOGIA LENTES",
+    "Costo de Lista": 7306.79
+  },
+  {
+    "Id": 9722,
+    "Codigo": 605662,
+    "Nombre": "ACUVUE VITA TORIC",
+    "Rubro": "CONTACTOLOGIA LENTES",
+    "Costo de Lista": 10965.6
+  },
+  {
+    "Id": 9723,
+    "Codigo": 54303,
+    "Nombre": "ACUVUE OASYS DX",
+    "Rubro": "CONTACTOLOGIA LENTES"
+  },
+  {
+    "Id": 9724,
+    "Codigo": 633070,
+    "Nombre": "ACUVUE OASYS MULTIFOCAL DX",
+    "Rubro": "CONTACTOLOGIA LENTES"
+  },
+  {
+    "Id": 9725,
+    "Codigo": 410989,
+    "Nombre": "ACUVUE OASYS TORIC DX",
+    "Rubro": "CONTACTOLOGIA LENTES"
+  },
+  {
+    "Id": 9726,
+    "Codigo": 127878,
+    "Nombre": "ACUVUE OASYS TRANSITIONS DX",
+    "Rubro": "CONTACTOLOGIA LENTES"
+  },
+  {
+    "Id": 9727,
+    "Codigo": 717578,
+    "Nombre": "ACUVUE ONE DAY MOIST DX",
+    "Rubro": "CONTACTOLOGIA LENTES"
+  },
+  {
+    "Id": 9728,
+    "Codigo": 298311,
+    "Nombre": "ACUVUE ONE DAY MOIST TORIC DX",
+    "Rubro": "CONTACTOLOGIA LENTES",
+    "Costo de Lista": 1599.52
+  },
+  {
+    "Id": 9729,
+    "Codigo": 480007,
+    "Nombre": "ACUVUE ONE DAY OASYS DX",
+    "Rubro": "CONTACTOLOGIA LENTES"
+  },
+  {
+    "Id": 9730,
+    "Codigo": 876557,
+    "Nombre": "ACUVUE ONE DAY OASYS TORIC DX",
+    "Rubro": "CONTACTOLOGIA LENTES"
+  },
+  {
+    "Id": 9731,
+    "Codigo": 420871,
+    "Nombre": "ACUVUE VITA DX",
+    "Rubro": "CONTACTOLOGIA LENTES"
+  },
+  {
+    "Id": 9732,
+    "Codigo": 440149,
+    "Nombre": "ACUVUE VITA TORIC DX",
+    "Rubro": "CONTACTOLOGIA LENTES"
+  },
+  {
+    "Id": 9733,
+    "Codigo": 709055,
+    "Nombre": "AVAIRA VITALITY DX",
+    "Rubro": "CONTACTOLOGIA LENTES",
+    "Costo de Lista": 6526.67
+  },
+  {
+    "Id": 9734,
+    "Codigo": 724329,
+    "Nombre": "AVAIRA VITALITY TORIC DX",
+    "Rubro": "CONTACTOLOGIA LENTES",
+    "Costo de Lista": 9933.33
+  },
+  {
+    "Id": 9735,
+    "Codigo": 882795,
+    "Nombre": "BIOFINITY DX",
+    "Rubro": "CONTACTOLOGIA LENTES",
+    "Costo de Lista": 11950
+  },
+  {
+    "Id": 9736,
+    "Codigo": 743802,
+    "Nombre": "BIOFINITY TORIC DX",
+    "Rubro": "CONTACTOLOGIA LENTES",
+    "Costo de Lista": 12233.3
+  },
+  {
+    "Id": 9737,
+    "Codigo": 75602,
+    "Nombre": "BIOFINITY XR TORIC DX",
+    "Rubro": "CONTACTOLOGIA LENTES",
+    "Costo de Lista": 32216.67
+  },
+  {
+    "Id": 9738,
+    "Codigo": 232167,
+    "Nombre": "BIOMEDICS TORIC DX",
+    "Rubro": "CONTACTOLOGIA LENTES",
+    "Costo de Lista": 9966.67
+  },
+  {
+    "Id": 9739,
+    "Codigo": 594670,
+    "Nombre": "PROCLEAR MULTIFOCAL DX",
+    "Rubro": "CONTACTOLOGIA LENTES"
+  },
+  {
+    "Id": 9740,
+    "Codigo": 47113504001,
+    "Nombre": "PASTILLA REMOVEDORA DE PROTEINAS (x unidad)",
+    "Rubro": "LIQUIDOS",
+    "Costo de Lista": 893.8
+  },
+  {
+    "Id": 9741,
+    "Codigo": 4030571005070,
+    "Nombre": "ARTELAC REBALANCE X 10 ml",
+    "Rubro": "LIQUIDOS",
+    "Costo de Lista": 7690
+  },
+  {
+    "Id": 9742,
+    "Codigo": 8470001548559,
+    "Nombre": "ARTELAC SPLASH MULTIDOSIS",
+    "Rubro": "LIQUIDOS",
+    "Costo de Lista": 8901
+  },
+  {
+    "Id": 9743,
+    "Codigo": 310119037805,
+    "Nombre": "BIO TRUE X 120 ml",
+    "Rubro": "LIQUIDOS",
+    "Costo de Lista": 7125
+  },
+  {
+    "Id": 9744,
+    "Codigo": 310119037812,
+    "Nombre": "BIO TRUE X 300 ml",
+    "Rubro": "LIQUIDOS",
+    "Costo de Lista": 11055
+  },
+  {
+    "Id": 9745,
+    "Codigo": 310119037799,
+    "Nombre": "BIO TRUE X 60 ml",
+    "Rubro": "LIQUIDOS",
+    "Costo de Lista": 4805
+  },
+  {
+    "Id": 9746,
+    "Codigo": 47144060477,
+    "Nombre": "BOSTON ADVANCE LIMPIADOR x 30 ml",
+    "Rubro": "LIQUIDOS",
+    "Costo de Lista": 10005
+  },
+  {
+    "Id": 9747,
+    "Codigo": 310119056738,
+    "Nombre": "BOSTON SIMPLUS X 120 ml",
+    "Rubro": "LIQUIDOS",
+    "Costo de Lista": 11470
+  },
+  {
+    "Id": 9748,
+    "Codigo": 310119303290,
+    "Nombre": "NATURA EXPRESS X 120 ml",
+    "Rubro": "LIQUIDOS",
+    "Costo de Lista": 6005
+  },
+  {
+    "Id": 9749,
+    "Codigo": 310119303306,
+    "Nombre": "NATURA EXPRESS X 355 ml",
+    "Rubro": "LIQUIDOS",
+    "Costo de Lista": 9170
+  },
+  {
+    "Id": 9750,
+    "Codigo": 310119303313,
+    "Nombre": "NATURA EXPRESS X 500 ml",
+    "Rubro": "LIQUIDOS",
+    "Costo de Lista": 11005
+  },
+  {
+    "Id": 9751,
+    "Codigo": 310119033227,
+    "Nombre": "RENU FRESH x 120 ml",
+    "Rubro": "LIQUIDOS",
+    "Costo de Lista": 6675
+  },
+  {
+    "Id": 9752,
+    "Codigo": 310119033340,
+    "Nombre": "RENU FRESH x 355 ml",
+    "Rubro": "LIQUIDOS",
+    "Costo de Lista": 10230
+  },
+  {
+    "Id": 9753,
+    "Codigo": 310119033289,
+    "Nombre": "RENU FRESH X 500 ml",
+    "Rubro": "LIQUIDOS",
+    "Costo de Lista": 12315
+  },
+  {
+    "Id": 9754,
+    "Codigo": 310119034347,
+    "Nombre": "RENU FRESH x 60 ml",
+    "Rubro": "LIQUIDOS",
+    "Costo de Lista": 4425
+  },
+  {
+    "Id": 9755,
+    "Codigo": 310119052136,
+    "Nombre": "RENU GOTAS LUBRICANTES x 8 ml",
+    "Rubro": "LIQUIDOS",
+    "Costo de Lista": 6415
+  },
+  {
+    "Id": 9756,
+    "Codigo": 8431306070787,
+    "Nombre": "ALVERA X 350ML",
+    "Rubro": "LIQUIDOS",
+    "Costo de Lista": 19476
+  },
+  {
+    "Id": 9757,
+    "Codigo": 8431306062119,
+    "Nombre": "AVIZOR UNICA SENSITIVE CON ACIDO HIALURONICO X 100ML",
+    "Rubro": "LIQUIDOS",
+    "Costo de Lista": 7869
+  },
+  {
+    "Id": 9758,
+    "Codigo": 8431306061259,
+    "Nombre": "AVIZOR UNICA SENSITIVE CON ACIDO HIALURONICO X 350ML",
+    "Rubro": "LIQUIDOS",
+    "Costo de Lista": 10664
+  },
+  {
+    "Id": 9759,
+    "Codigo": 8431306061204,
+    "Nombre": "LACRIFRESH CLEANING X 15ML",
+    "Rubro": "LIQUIDOS",
+    "Costo de Lista": 8720
+  },
+  {
+    "Id": 9760,
+    "Codigo": 8431306067374,
+    "Nombre": "LACRIFRESH MOISTURE X 15ML",
+    "Rubro": "LIQUIDOS",
+    "Costo de Lista": 8720
+  },
+  {
+    "Id": 9761,
+    "Codigo": 7798195030782,
+    "Nombre": "ARLYT CLEAN SOLUCION LIMPIADORA x 35 ml",
+    "Rubro": "LIQUIDOS",
+    "Costo de Lista": 7790
+  },
+  {
+    "Id": 9762,
+    "Codigo": 7798195030034,
+    "Nombre": "ARLYT EXPRESS X 120 ml",
+    "Rubro": "LIQUIDOS",
+    "Costo de Lista": 6329
+  },
+  {
+    "Id": 9763,
+    "Codigo": 7798195030157,
+    "Nombre": "ARLYT EXPRESS X 240 ml",
+    "Rubro": "LIQUIDOS",
+    "Costo de Lista": 8131
+  },
+  {
+    "Id": 9764,
+    "Codigo": 7798195030041,
+    "Nombre": "ARLYT EXPRESS X 360 ml",
+    "Rubro": "LIQUIDOS",
+    "Costo de Lista": 9640
+  },
+  {
+    "Id": 9765,
+    "Codigo": 7798195031062,
+    "Nombre": "ARLYT EXPRESS X 500 ml",
+    "Rubro": "LIQUIDOS",
+    "Costo de Lista": 11685
+  },
+  {
+    "Id": 9766,
+    "Codigo": 7798195030201,
+    "Nombre": "ARLYT EXPRESS X 60 ml",
+    "Rubro": "LIQUIDOS",
+    "Costo de Lista": 4187
+  },
+  {
+    "Id": 9767,
+    "Codigo": 7798195030065,
+    "Nombre": "ARLYT FRESH X 15 ml",
+    "Rubro": "LIQUIDOS",
+    "Costo de Lista": 6816
+  },
+  {
+    "Id": 9768,
+    "Codigo": 7798195030072,
+    "Nombre": "ARLYT LUBRICANTE X 15 ml",
+    "Rubro": "LIQUIDOS",
+    "Costo de Lista": 7741
+  },
+  {
+    "Id": 9769,
+    "Codigo": 7798195030010,
+    "Nombre": "ARLYT PREMIUM X 120 ml",
+    "Rubro": "LIQUIDOS",
+    "Costo de Lista": 6816
+  },
+  {
+    "Id": 9770,
+    "Codigo": 7798195030164,
+    "Nombre": "ARLYT PREMIUM X 240 ml",
+    "Rubro": "LIQUIDOS",
+    "Costo de Lista": 9835
+  },
+  {
+    "Id": 9771,
+    "Codigo": 7798195030058,
+    "Nombre": "ARLYT RGP X 120 ml",
+    "Rubro": "LIQUIDOS",
+    "Costo de Lista": 10955
+  },
+  {
+    "Id": 9772,
+    "Codigo": 7798195031031,
+    "Nombre": "ARLYT SOLUCION SALINA X 500 ml",
+    "Rubro": "LIQUIDOS",
+    "Costo de Lista": 8423
+  },
+  {
+    "Id": 9773,
+    "Codigo": 300650363754,
+    "Nombre": "AO SEPT PLUS X 360 ml",
+    "Rubro": "LIQUIDOS",
+    "Costo de Lista": 18097
+  },
+  {
+    "Id": 9774,
+    "Codigo": 300653145333,
+    "Nombre": "OPTI FREE EXPRESS X 355ML",
+    "Rubro": "LIQUIDOS",
+    "Costo de Lista": 14044
+  },
+  {
+    "Id": 9775,
+    "Codigo": 300653610800,
+    "Nombre": "OPTI FREE PURE MOIST x 120ml",
+    "Rubro": "LIQUIDOS",
+    "Costo de Lista": 10366
+  },
+  {
+    "Id": 9776,
+    "Codigo": 300653610824,
+    "Nombre": "OPTI FREE PURE MOIST x 300 ml",
+    "Rubro": "LIQUIDOS",
+    "Costo de Lista": 14700
+  },
+  {
+    "Id": 9777,
+    "Codigo": 8435080002057,
+    "Nombre": "ACUAISS DROPS INMEDIATE 15ML",
+    "Rubro": "LIQUIDOS",
+    "Costo de Lista": 6460
+  },
+  {
+    "Id": 9778,
+    "Codigo": 8435080005683,
+    "Nombre": "ACUAISS ULTRA GOTAS 10ML",
+    "Rubro": "LIQUIDOS",
+    "Costo de Lista": 8427
+  },
+  {
+    "Id": 9779,
+    "Codigo": 8435080001647,
+    "Nombre": "DUA ELITE X 100ML",
+    "Rubro": "LIQUIDOS",
+    "Costo de Lista": 5250
+  },
+  {
+    "Id": 9780,
+    "Codigo": 8435080002347,
+    "Nombre": "DUA ELITE X 360ML",
+    "Rubro": "LIQUIDOS",
+    "Costo de Lista": 8360
+  },
+  {
+    "Id": 9781,
+    "Codigo": 6332569,
+    "Nombre": "ARTELAC SPLASH MULTIDOSIS",
+    "Rubro": "LIQUIDOS",
+    "Costo de Lista": 8901
   }
 ]
