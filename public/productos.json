@@ -48656,5 +48656,680 @@
     "Nombre": "VAINAS C\/U",
     "Rubro": "OPTICA VARIOS",
     "Costo de Lista": 916
+  },
+  {
+    "Id": 6956,
+    "Codigo": 329,
+    "Nombre": "PILAS AUDIFONO PANASONIC\/RAYOVAC Nro 675",
+    "Rubro": "AUDIOLOGIA",
+    "Costo de Lista": 783.6
+  },
+  {
+    "Id": 6957,
+    "Codigo": 330,
+    "Nombre": "PILAS AUDIFONO PANASONIC\/RAYOVAC Nro 312",
+    "Rubro": "AUDIOLOGIA",
+    "Costo de Lista": 612.7
+  },
+  {
+    "Id": 6958,
+    "Codigo": 331,
+    "Nombre": "PILAS AUDIFONO PANASONIC\/RAYOVAC Nro 13",
+    "Rubro": "AUDIOLOGIA",
+    "Costo de Lista": 612.7
+  },
+  {
+    "Id": 6959,
+    "Codigo": 332,
+    "Nombre": "PILAS AUDIFONO PANASONIC\/RAYOVAC Nro 10",
+    "Rubro": "AUDIOLOGIA",
+    "Costo de Lista": 612.7
+  },
+  {
+    "Id": 6960,
+    "Codigo": 1266,
+    "Nombre": "AUDIFONO WIDEX MOMENT 220 MRB2D",
+    "Rubro": "AUDIOLOGIA",
+    "Costo de Lista": 1092768.6
+  },
+  {
+    "Id": 6961,
+    "Codigo": 47027,
+    "Nombre": "TAPON DE AGUA \/ RUIDO",
+    "Rubro": "AUDIOLOGIA",
+    "Costo de Lista": 15537
+  },
+  {
+    "Id": 6962,
+    "Codigo": 49890,
+    "Nombre": "AUDIFONO WIDEX EVOKE 50 FS",
+    "Rubro": "AUDIOLOGIA",
+    "Costo de Lista": 514363.64
+  },
+  {
+    "Id": 6963,
+    "Codigo": 103734,
+    "Nombre": "WIDEX ANTIHUMEDAD - DESHIDRATADOR DE AUDIFONOS",
+    "Rubro": "AUDIOLOGIA",
+    "Costo de Lista": 19834.7
+  },
+  {
+    "Id": 6964,
+    "Codigo": 116493,
+    "Nombre": "MOLDE EXTRA BLANDO",
+    "Rubro": "AUDIOLOGIA",
+    "Costo de Lista": 12892.57
+  },
+  {
+    "Id": 6965,
+    "Codigo": 121820,
+    "Nombre": "AUDIFONO WIDEX EVOKE 220 FA MINI",
+    "Rubro": "AUDIOLOGIA",
+    "Costo de Lista": 889462.81
+  },
+  {
+    "Id": 6966,
+    "Codigo": 133914,
+    "Nombre": "CODO MICRO",
+    "Rubro": "AUDIOLOGIA",
+    "Costo de Lista": 3305.8
+  },
+  {
+    "Id": 6967,
+    "Codigo": 139187,
+    "Nombre": "AUDIFONO WIDEX MOMENT 110 MRB0 (PA)",
+    "Rubro": "AUDIOLOGIA",
+    "Costo de Lista": 721735.54
+  },
+  {
+    "Id": 6968,
+    "Codigo": 148878,
+    "Nombre": "AUDIFONO WIDEX EVOKE 100 FA POWER",
+    "Rubro": "AUDIOLOGIA",
+    "Costo de Lista": 570272.73
+  },
+  {
+    "Id": 6969,
+    "Codigo": 152691,
+    "Nombre": "AUDIFONO WIDEX EVOKE 220 FA POWER",
+    "Rubro": "AUDIOLOGIA",
+    "Costo de Lista": 894545.45
+  },
+  {
+    "Id": 6970,
+    "Codigo": 158950,
+    "Nombre": "AUDIFONO WIDEX EVOKE 50 FA POWER",
+    "Rubro": "AUDIOLOGIA",
+    "Costo de Lista": 531136.36
+  },
+  {
+    "Id": 6971,
+    "Codigo": 166909,
+    "Nombre": "AUDIFONO WIDEX EVOKE 330 XP",
+    "Rubro": "AUDIOLOGIA",
+    "Costo de Lista": 1118181.82
+  },
+  {
+    "Id": 6972,
+    "Codigo": 167796,
+    "Nombre": "AUDIFONO WIDEX EVOKE 330 FA",
+    "Rubro": "AUDIOLOGIA",
+    "Costo de Lista": 1041942.15
+  },
+  {
+    "Id": 6973,
+    "Codigo": 174710,
+    "Nombre": "MOLDE ACRILICO",
+    "Rubro": "AUDIOLOGIA",
+    "Costo de Lista": 9586.78
+  },
+  {
+    "Id": 6974,
+    "Codigo": 191998,
+    "Nombre": "TIP INSTANTANEO OPEN ROUND S \/ M \/ L UNICA VENTILACION",
+    "Rubro": "AUDIOLOGIA",
+    "Costo de Lista": 1851.2
+  },
+  {
+    "Id": 6975,
+    "Codigo": 211319,
+    "Nombre": "AUDIFONO WIDEX EVOKE 100 CIC",
+    "Rubro": "AUDIOLOGIA",
+    "Costo de Lista": 648545.45
+  },
+  {
+    "Id": 6976,
+    "Codigo": 219244,
+    "Nombre": "AURICULAR S - M- P CABLE 0R\/L AL 4R\/L",
+    "Rubro": "AUDIOLOGIA",
+    "Costo de Lista": 40330.6
+  },
+  {
+    "Id": 6977,
+    "Codigo": 223512,
+    "Nombre": "AURICULAR RECEPTOR AUDICENTER",
+    "Rubro": "AUDIOLOGIA",
+    "Costo de Lista": 13160
+  },
+  {
+    "Id": 6978,
+    "Codigo": 225175,
+    "Nombre": "TIP INSTANTANEO TULIPA CONO XS \/ M \/ L",
+    "Rubro": "AUDIOLOGIA",
+    "Costo de Lista": 1851.2
+  },
+  {
+    "Id": 6979,
+    "Codigo": 260807,
+    "Nombre": "AUDIFONO GENERAL",
+    "Rubro": "AUDIOLOGIA"
+  },
+  {
+    "Id": 6980,
+    "Codigo": 289962,
+    "Nombre": "AUDIFONO WIDEX MOMENT 220 MRR4D (m RIC RECARGABLE)",
+    "Rubro": "AUDIOLOGIA",
+    "Costo de Lista": 1182438
+  },
+  {
+    "Id": 6981,
+    "Codigo": 293445,
+    "Nombre": "FILTROS PARA AUDIFONOS x blister (8 unidades)",
+    "Rubro": "AUDIOLOGIA",
+    "Costo de Lista": 5290
+  },
+  {
+    "Id": 6982,
+    "Codigo": 298092,
+    "Nombre": "AUDIFONO WIDEX EVOKE 440 XP",
+    "Rubro": "AUDIOLOGIA",
+    "Costo de Lista": 1275743.8
+  },
+  {
+    "Id": 6983,
+    "Codigo": 322128,
+    "Nombre": "AUDIFONO WIDEX EVOKE 440 CIC",
+    "Rubro": "AUDIOLOGIA",
+    "Costo de Lista": 1382479.34
+  },
+  {
+    "Id": 6984,
+    "Codigo": 340620,
+    "Nombre": "AUDIFONO WIDEX EVOKE 110 XP",
+    "Rubro": "AUDIOLOGIA",
+    "Costo de Lista": 635330.58
+  },
+  {
+    "Id": 6985,
+    "Codigo": 361376,
+    "Nombre": "AUDIFONO WIDEX EVOKE 220 CIC",
+    "Rubro": "AUDIOLOGIA",
+    "Costo de Lista": 955537.19
+  },
+  {
+    "Id": 6986,
+    "Codigo": 378799,
+    "Nombre": "AUDIFONO WIDEX EVOKE 220 FS",
+    "Rubro": "AUDIOLOGIA",
+    "Costo de Lista": 713471
+  },
+  {
+    "Id": 6987,
+    "Codigo": 390218,
+    "Nombre": "AUDIFONO WIDEX EVOKE 330 CIC",
+    "Rubro": "AUDIOLOGIA",
+    "Costo de Lista": 1189338.84
+  },
+  {
+    "Id": 6988,
+    "Codigo": 395501,
+    "Nombre": "KIT DE LIMPIEZA PARA AUDIFONOS",
+    "Rubro": "AUDIOLOGIA"
+  },
+  {
+    "Id": 6989,
+    "Codigo": 399200,
+    "Nombre": "FILTRO DE AURICULAR",
+    "Rubro": "AUDIOLOGIA",
+    "Costo de Lista": 1435
+  },
+  {
+    "Id": 6990,
+    "Codigo": 411565,
+    "Nombre": "AUDIFONO WIDEX MENU 5 me5 - SP",
+    "Rubro": "AUDIOLOGIA",
+    "Costo de Lista": 531136.36
+  },
+  {
+    "Id": 6991,
+    "Codigo": 420601,
+    "Nombre": "AUDIFONO WIDEX EVOKE 110 FA MINI",
+    "Rubro": "AUDIOLOGIA",
+    "Costo de Lista": 660743.8
+  },
+  {
+    "Id": 6992,
+    "Codigo": 422328,
+    "Nombre": "AUDIFONO WIDEX EVOKE 330 FA MINI",
+    "Rubro": "AUDIOLOGIA",
+    "Costo de Lista": 1118181.82
+  },
+  {
+    "Id": 6993,
+    "Codigo": 423925,
+    "Nombre": "TIP INSTANTANEO ABIERTO XS \/ S \/ L",
+    "Rubro": "AUDIOLOGIA",
+    "Costo de Lista": 1851.2
+  },
+  {
+    "Id": 6994,
+    "Codigo": 458326,
+    "Nombre": "AUDIFONO WIDEX MOMENT 440 MRR4D (m RIC RECARGABLE)",
+    "Rubro": "AUDIOLOGIA",
+    "Costo de Lista": 1503099
+  },
+  {
+    "Id": 6995,
+    "Codigo": 459160,
+    "Nombre": "AUDIFONO WIDEX EVOKE 110 FS",
+    "Rubro": "AUDIOLOGIA",
+    "Costo de Lista": 541116
+  },
+  {
+    "Id": 6996,
+    "Codigo": 464049,
+    "Nombre": "AUDIFONO UNITRON MOXI B7 312",
+    "Rubro": "AUDIOLOGIA"
+  },
+  {
+    "Id": 6997,
+    "Codigo": 472257,
+    "Nombre": "FILTROS PARA AUDIFONOS x unidad",
+    "Rubro": "AUDIOLOGIA"
+  },
+  {
+    "Id": 6998,
+    "Codigo": 483146,
+    "Nombre": "AUDIFONO WIDEX MOMENT 330 MBB2",
+    "Rubro": "AUDIOLOGIA",
+    "Costo de Lista": 953967
+  },
+  {
+    "Id": 6999,
+    "Codigo": 488412,
+    "Nombre": "AUDIFONO WIDEX EVOKE 100 XP",
+    "Rubro": "AUDIOLOGIA",
+    "Costo de Lista": 603818.18
+  },
+  {
+    "Id": 7000,
+    "Codigo": 491331,
+    "Nombre": "TIP INSTANTANEO DOBLE COPA S \/ M \/ L",
+    "Rubro": "AUDIOLOGIA",
+    "Costo de Lista": 1851.2
+  },
+  {
+    "Id": 7001,
+    "Codigo": 515258,
+    "Nombre": "AUDIFONO WIDEX EVOKE 100 FS",
+    "Rubro": "AUDIOLOGIA",
+    "Costo de Lista": 489409
+  },
+  {
+    "Id": 7002,
+    "Codigo": 561257,
+    "Nombre": "AUDIFONO WIDEX MOMENT 220 MRB0 (PA)",
+    "Rubro": "AUDIOLOGIA",
+    "Costo de Lista": 925041.32
+  },
+  {
+    "Id": 7003,
+    "Codigo": 567781,
+    "Nombre": "AUDIFONO UNITRON MOXI B5 312",
+    "Rubro": "AUDIOLOGIA"
+  },
+  {
+    "Id": 7004,
+    "Codigo": 571754,
+    "Nombre": "AUDIFONO WIDEX EVOKE 50 CIC",
+    "Rubro": "AUDIOLOGIA",
+    "Costo de Lista": 575863.64
+  },
+  {
+    "Id": 7005,
+    "Codigo": 579961,
+    "Nombre": "MOLDE BLANDO",
+    "Rubro": "AUDIOLOGIA",
+    "Costo de Lista": 650.83
+  },
+  {
+    "Id": 7006,
+    "Codigo": 590557,
+    "Nombre": "AUDIFONO WIDEX CROS FA",
+    "Rubro": "AUDIOLOGIA",
+    "Costo de Lista": 620590.91
+  },
+  {
+    "Id": 7007,
+    "Codigo": 596951,
+    "Nombre": "AUDIFONO WIDEX EVOKE 440 F2",
+    "Rubro": "AUDIOLOGIA"
+  },
+  {
+    "Id": 7008,
+    "Codigo": 599733,
+    "Nombre": "CONTROL RC DEX (CONTROL REMOTO)",
+    "Rubro": "AUDIOLOGIA",
+    "Costo de Lista": 100795.45
+  },
+  {
+    "Id": 7009,
+    "Codigo": 599894,
+    "Nombre": "AUDIFONO WIDEX EVOKE 50 XP",
+    "Rubro": "AUDIOLOGIA",
+    "Costo de Lista": 536727.27
+  },
+  {
+    "Id": 7010,
+    "Codigo": 609251,
+    "Nombre": "AUDIFONO WIDEX EVOKE 100 FA",
+    "Rubro": "AUDIOLOGIA",
+    "Costo de Lista": 536727.27
+  },
+  {
+    "Id": 7011,
+    "Codigo": 642859,
+    "Nombre": "AUDIFONO WIDEX EVOKE 30 FA POWER",
+    "Rubro": "AUDIOLOGIA",
+    "Costo de Lista": 0
+  },
+  {
+    "Id": 7012,
+    "Codigo": 650779,
+    "Nombre": "AUDIFONO WIDEX EVOKE 110 CIC",
+    "Rubro": "AUDIOLOGIA",
+    "Costo de Lista": 557149
+  },
+  {
+    "Id": 7013,
+    "Codigo": 653007,
+    "Nombre": "AUDIFONO WIDEX EVOKE 110 FA",
+    "Rubro": "AUDIOLOGIA",
+    "Costo de Lista": 609917.36
+  },
+  {
+    "Id": 7014,
+    "Codigo": 684968,
+    "Nombre": "AUDIFONO UNITRON MOXI B9 312",
+    "Rubro": "AUDIOLOGIA"
+  },
+  {
+    "Id": 7015,
+    "Codigo": 703845,
+    "Nombre": "CODO ELAN",
+    "Rubro": "AUDIOLOGIA",
+    "Costo de Lista": 3305.8
+  },
+  {
+    "Id": 7016,
+    "Codigo": 707437,
+    "Nombre": "AURICULAR V2",
+    "Rubro": "AUDIOLOGIA",
+    "Costo de Lista": 40330.6
+  },
+  {
+    "Id": 7017,
+    "Codigo": 709466,
+    "Nombre": "AUDIFONO WIDEX EVOKE 30 FA",
+    "Rubro": "AUDIOLOGIA",
+    "Costo de Lista": 0
+  },
+  {
+    "Id": 7018,
+    "Codigo": 725331,
+    "Nombre": "AUDIFONO WIDEX EVOKE 220 F2",
+    "Rubro": "AUDIOLOGIA"
+  },
+  {
+    "Id": 7019,
+    "Codigo": 727990,
+    "Nombre": "TAPA PORTAPILA MICRO",
+    "Rubro": "AUDIOLOGIA",
+    "Costo de Lista": 5950.4
+  },
+  {
+    "Id": 7020,
+    "Codigo": 729562,
+    "Nombre": "AUDIFONO WIDEX EVOKE 110 PA",
+    "Rubro": "AUDIOLOGIA"
+  },
+  {
+    "Id": 7021,
+    "Codigo": 731103,
+    "Nombre": "PILAS IMPLANTE COCLEAR NRO 675",
+    "Rubro": "AUDIOLOGIA",
+    "Costo de Lista": 1072.8
+  },
+  {
+    "Id": 7022,
+    "Codigo": 761034,
+    "Nombre": "AUDIFONO WIDEX MOMENT 110 MBB2",
+    "Rubro": "AUDIOLOGIA",
+    "Costo de Lista": 557149
+  },
+  {
+    "Id": 7023,
+    "Codigo": 766778,
+    "Nombre": "AUDIFONO WIDEX MOMENT 110 M-CIC",
+    "Rubro": "AUDIOLOGIA",
+    "Costo de Lista": 597231
+  },
+  {
+    "Id": 7024,
+    "Codigo": 772413,
+    "Nombre": "AUDIFONO UNITRON MOXI B1 312",
+    "Rubro": "AUDIOLOGIA",
+    "Costo de Lista": 143920
+  },
+  {
+    "Id": 7025,
+    "Codigo": 773288,
+    "Nombre": "ADAPTADOR ELAN MEDIO\/LARGO",
+    "Rubro": "AUDIOLOGIA",
+    "Costo de Lista": 1983.5
+  },
+  {
+    "Id": 7026,
+    "Codigo": 779507,
+    "Nombre": "AUDIFONO WIDEX MOMENT 110 MRR4D (m RIC RECARGABLE)",
+    "Rubro": "AUDIOLOGIA",
+    "Costo de Lista": 1396177.69
+  },
+  {
+    "Id": 7027,
+    "Codigo": 785447,
+    "Nombre": "AUDIFONO WIDEX EVOKE 50 FA MINI",
+    "Rubro": "AUDIOLOGIA",
+    "Costo de Lista": 536727.27
+  },
+  {
+    "Id": 7028,
+    "Codigo": 819615,
+    "Nombre": "AUDIFONO WIDEX MOMENT 110 M-XP",
+    "Rubro": "AUDIOLOGIA",
+    "Costo de Lista": 686157.02
+  },
+  {
+    "Id": 7029,
+    "Codigo": 826510,
+    "Nombre": "AUDIFONO UNITRON DX STRIDE M3",
+    "Rubro": "AUDIOLOGIA",
+    "Costo de Lista": 149520
+  },
+  {
+    "Id": 7030,
+    "Codigo": 828632,
+    "Nombre": "AUDIFONO WIDEX EVOKE 110 FA POWER",
+    "Rubro": "AUDIOLOGIA",
+    "Costo de Lista": 660743.8
+  },
+  {
+    "Id": 7031,
+    "Codigo": 842132,
+    "Nombre": "AUDIFONO UNITRON MOXI B3 312",
+    "Rubro": "AUDIOLOGIA"
+  },
+  {
+    "Id": 7032,
+    "Codigo": 851569,
+    "Nombre": "THIN TUBE 0.9 - 1.4",
+    "Rubro": "AUDIOLOGIA",
+    "Costo de Lista": 3966.9
+  },
+  {
+    "Id": 7033,
+    "Codigo": 859395,
+    "Nombre": "AUDIFONO WIDEX EVOKE 330 FS",
+    "Rubro": "AUDIOLOGIA",
+    "Costo de Lista": 1163925.62
+  },
+  {
+    "Id": 7034,
+    "Codigo": 881252,
+    "Nombre": "AUDIFONO WIDEX EVOKE 220 FA",
+    "Rubro": "AUDIOLOGIA",
+    "Costo de Lista": 645331
+  },
+  {
+    "Id": 7035,
+    "Codigo": 883032,
+    "Nombre": "AURICULAR SP (0 AL 5)",
+    "Rubro": "AUDIOLOGIA",
+    "Costo de Lista": 57851.24
+  },
+  {
+    "Id": 7036,
+    "Codigo": 948537,
+    "Nombre": "DOMOS AUDICENTER",
+    "Rubro": "AUDIOLOGIA",
+    "Costo de Lista": 840
+  },
+  {
+    "Id": 7037,
+    "Codigo": 982079,
+    "Nombre": "TIP INSTANTANEO ELAN ABIERTO S \/ M \/ L",
+    "Rubro": "AUDIOLOGIA",
+    "Costo de Lista": 3305.8
+  },
+  {
+    "Id": 7038,
+    "Codigo": 986781,
+    "Nombre": "AUDIFONO WIDEX EVOKE 220 PA",
+    "Rubro": "AUDIOLOGIA"
+  },
+  {
+    "Id": 7039,
+    "Codigo": 991077,
+    "Nombre": "TIP INSTANTANEO ROUND DOBLE VENTILACION",
+    "Rubro": "AUDIOLOGIA",
+    "Costo de Lista": 1851.2
+  },
+  {
+    "Id": 7040,
+    "Codigo": 993538,
+    "Nombre": "AUDIFONO WIDEX EVOKE 50 FA",
+    "Rubro": "AUDIOLOGIA",
+    "Costo de Lista": 514363.64
+  },
+  {
+    "Id": 7041,
+    "Codigo": 1011481,
+    "Nombre": "PILAS AUDIFONO WIDEX Nro 13",
+    "Rubro": "AUDIOLOGIA",
+    "Costo de Lista": 881.55
+  },
+  {
+    "Id": 7042,
+    "Codigo": 1011482,
+    "Nombre": "PILAS AUDIFONO WIDEX Nro 312",
+    "Rubro": "AUDIOLOGIA",
+    "Costo de Lista": 881.54
+  },
+  {
+    "Id": 7043,
+    "Codigo": 1011483,
+    "Nombre": "PILAS AUDIFONO WIDEX Nro 675",
+    "Rubro": "AUDIOLOGIA",
+    "Costo de Lista": 881.55
+  },
+  {
+    "Id": 7044,
+    "Codigo": 1011484,
+    "Nombre": "PILAS AUDIFONO WIDEX Nro 10",
+    "Rubro": "AUDIOLOGIA",
+    "Costo de Lista": 881.54
+  },
+  {
+    "Id": 7045,
+    "Codigo": 5000252034612,
+    "Nombre": "PILAS AUDIFONO WIDEX Nro 675",
+    "Rubro": "AUDIOLOGIA",
+    "Costo de Lista": 881.55
+  },
+  {
+    "Id": 7046,
+    "Codigo": 5000252034629,
+    "Nombre": "PILAS AUDIFONO WIDEX Nro 13",
+    "Rubro": "AUDIOLOGIA",
+    "Costo de Lista": 881.55
+  },
+  {
+    "Id": 7047,
+    "Codigo": 5000252043843,
+    "Nombre": "PILAS AUDIFONO PANASONIC\/RAYOVAC Nro 13",
+    "Rubro": "AUDIOLOGIA",
+    "Costo de Lista": 612.7
+  },
+  {
+    "Id": 7048,
+    "Codigo": 5000252043898,
+    "Nombre": "PILAS AUDIFONO PANASONIC\/RAYOVAC Nro 675",
+    "Rubro": "AUDIOLOGIA",
+    "Costo de Lista": 783.6
+  },
+  {
+    "Id": 7049,
+    "Codigo": 5000252043942,
+    "Nombre": "PILAS AUDIFONO PANASONIC\/RAYOVAC Nro 312",
+    "Rubro": "AUDIOLOGIA",
+    "Costo de Lista": 612.7
+  },
+  {
+    "Id": 7050,
+    "Codigo": 5000252103677,
+    "Nombre": "PILAS AUDIFONO WIDEX Nro 10",
+    "Rubro": "AUDIOLOGIA",
+    "Costo de Lista": 881.54
+  },
+  {
+    "Id": 7051,
+    "Codigo": 5000252103776,
+    "Nombre": "PILAS AUDIFONO WIDEX Nro 312",
+    "Rubro": "AUDIOLOGIA",
+    "Costo de Lista": 881.54
+  },
+  {
+    "Id": 7052,
+    "Codigo": 105706069971262,
+    "Nombre": "AUDIFONO WIDEX MOMENT 330 MBB2",
+    "Rubro": "AUDIOLOGIA",
+    "Costo de Lista": 953967
+  },
+  {
+    "Id": 7053,
+    "Codigo": "SPAGUETTI",
+    "Nombre": "SPAGUETTI CORTADO",
+    "Rubro": "AUDIOLOGIA",
+    "Costo de Lista": 641.32
   }
 ]
