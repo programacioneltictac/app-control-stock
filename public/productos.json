@@ -49409,5 +49409,19 @@
     "Nombre": "PARCHE OCULAR GRANDE POR UNIDAD",
     "Rubro": "OPTICA VARIOS",
     "Costo de Lista": 0
+  },
+  {
+    "Id": 7065,
+    "Codigo": 96178225,
+    "Nombre": "PILAS AUDIFONO PANASONIC/RAYOVAC Nro 13",
+    "Rubro": "AUDIOLOGIA",
+    "Costo de Lista": 612.7
+  },
+  {
+    "Id": 7066,
+    "Codigo": 96178218,
+    "Nombre": "PILAS AUDIFONO PANASONIC/RAYOVAC Nro 675",
+    "Rubro": "AUDIOLOGIA",
+    "Costo de Lista": 783.6
   }
 ]
