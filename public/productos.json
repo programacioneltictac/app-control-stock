@@ -49374,5 +49374,40 @@
     "Nombre": "ESTUCHE LENTE DE CONTACTO NIÑOS",
     "Rubro": "ESTUCHES",
     "Costo de Lista": 1000
+  },
+  {
+    "Id": 7060,
+    "Codigo": 5000252034643,
+    "Nombre": "PILAS AUDIFONO WIDEX Nro 10",
+    "Rubro": "AUDIOLOGIA",
+    "Costo de Lista": 881.54
+  },
+  {
+    "Id": 7061,
+    "Codigo": 5000252103721,
+    "Nombre": "PILAS AUDIFONO WIDEX Nro 13",
+    "Rubro": "AUDIOLOGIA",
+    "Costo de Lista": 881.55
+  },
+  {
+    "Id": 7062,
+    "Codigo": 5000252034636,
+    "Nombre": "PILAS AUDIFONO WIDEX Nro 312",
+    "Rubro": "AUDIOLOGIA",
+    "Costo de Lista": 881.54
+  },
+  {
+    "Id": 7063,
+    "Codigo": 5000252103820,
+    "Nombre": "PILAS AUDIFONO WIDEX Nro 675",
+    "Rubro": "AUDIOLOGIA",
+    "Costo de Lista": 881.55
+  },
+  {
+    "Id": 7064,
+    "Codigo": 7805070361302,
+    "Nombre": "PARCHE OCULAR GRANDE POR UNIDAD",
+    "Rubro": "OPTICA VARIOS",
+    "Costo de Lista": 0
   }
 ]
