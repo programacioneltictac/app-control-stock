@@ -48660,28 +48660,28 @@
   {
     "Id": 6956,
     "Codigo": 329,
-    "Nombre": "PILAS AUDIFONO PANASONIC\/RAYOVAC Nro 675",
+    "Nombre": "PILAS AUDIFONO PANASONIC/RAYOVAC Nro 675",
     "Rubro": "AUDIOLOGIA",
     "Costo de Lista": 783.6
   },
   {
     "Id": 6957,
     "Codigo": 330,
-    "Nombre": "PILAS AUDIFONO PANASONIC\/RAYOVAC Nro 312",
+    "Nombre": "PILAS AUDIFONO PANASONIC/RAYOVAC Nro 312",
     "Rubro": "AUDIOLOGIA",
     "Costo de Lista": 612.7
   },
   {
     "Id": 6958,
     "Codigo": 331,
-    "Nombre": "PILAS AUDIFONO PANASONIC\/RAYOVAC Nro 13",
+    "Nombre": "PILAS AUDIFONO PANASONIC/RAYOVAC Nro 13",
     "Rubro": "AUDIOLOGIA",
     "Costo de Lista": 612.7
   },
   {
     "Id": 6959,
     "Codigo": 332,
-    "Nombre": "PILAS AUDIFONO PANASONIC\/RAYOVAC Nro 10",
+    "Nombre": "PILAS AUDIFONO PANASONIC/RAYOVAC Nro 10",
     "Rubro": "AUDIOLOGIA",
     "Costo de Lista": 612.7
   },
@@ -49286,21 +49286,21 @@
   {
     "Id": 7047,
     "Codigo": 5000252043843,
-    "Nombre": "PILAS AUDIFONO PANASONIC\/RAYOVAC Nro 13",
+    "Nombre": "PILAS AUDIFONO PANASONIC/RAYOVAC Nro 13",
     "Rubro": "AUDIOLOGIA",
     "Costo de Lista": 612.7
   },
   {
     "Id": 7048,
     "Codigo": 5000252043898,
-    "Nombre": "PILAS AUDIFONO PANASONIC\/RAYOVAC Nro 675",
+    "Nombre": "PILAS AUDIFONO PANASONIC/RAYOVAC Nro 675",
     "Rubro": "AUDIOLOGIA",
     "Costo de Lista": 783.6
   },
   {
     "Id": 7049,
     "Codigo": 5000252043942,
-    "Nombre": "PILAS AUDIFONO PANASONIC\/RAYOVAC Nro 312",
+    "Nombre": "PILAS AUDIFONO PANASONIC/RAYOVAC Nro 312",
     "Rubro": "AUDIOLOGIA",
     "Costo de Lista": 612.7
   },
@@ -49331,5 +49331,48 @@
     "Nombre": "SPAGUETTI CORTADO",
     "Rubro": "AUDIOLOGIA",
     "Costo de Lista": 641.32
+  },
+  {
+    "Id": 7054,
+    "Codigo": 96178249,
+    "Nombre": "PILAS AUDIFONO PANASONIC/RAYOVAC Nro 10",
+    "Rubro": "AUDIOLOGIA",
+    "Costo de Lista": 612.7
+  },
+  {
+    "Id": 7055,
+    "Codigo": 96178232,
+    "Nombre": "PILAS AUDIFONO PANASONIC/RAYOVAC Nro 312",
+    "Rubro": "AUDIOLOGIA",
+    "Costo de Lista": 612.7
+  },
+  {
+    "Id": 7056,
+    "Codigo": 911000,
+    "Nombre": "ESTUCHE LENTES DE CONTACTO COMUNES",
+    "Rubro": "ESTUCHES",
+    "Costo de Lista": 1038
+  },
+  {
+    "Id": 7057,
+    "Codigo": 733626,
+    "Nombre": "PINZA LENTE CONTACTO CON ESTUCHE",
+    "Rubro": "ESTUCHES",
+    "Costo de Lista": 990
+  },
+
+  {
+    "Id": 7058,
+    "Codigo": 611708,
+    "Nombre": "ESTUCHE LENTE DE CONTACTO FANTASIA",
+    "Rubro": "ESTUCHES",
+    "Costo de Lista": 4300
+  },
+  {
+    "Id": 7059,
+    "Codigo": 611709,
+    "Nombre": "ESTUCHE LENTE DE CONTACTO NIÑOS",
+    "Rubro": "ESTUCHES",
+    "Costo de Lista": 1000
   }
 ]
