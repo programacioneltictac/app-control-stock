@@ -3,3 +3,4 @@ node_modules/
 *.xlsx
 *.jpeg
 *.txt
+*.db

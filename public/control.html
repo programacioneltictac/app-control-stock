@@ -1,162 +1,146 @@
-<script type="text/javascript">
-  var gk_isXlsx = false;
-  var gk_xlsxFileLookup = {};
-  var gk_fileData = {};
-  function filledCell(cell) {
-    return cell !== "" && cell != null;
-  }
-  function loadFileData(filename) {
-    if (gk_isXlsx && gk_xlsxFileLookup[filename]) {
-      try {
-        var workbook = XLSX.read(gk_fileData[filename], { type: "base64" });
-        var firstSheetName = workbook.SheetNames[0];
-        var worksheet = workbook.Sheets[firstSheetName];
-
-        // Convert sheet to JSON to filter blank rows
-        var jsonData = XLSX.utils.sheet_to_json(worksheet, {
-          header: 1,
-          blankrows: false,
-          defval: "",
-        });
-        // Filter out blank rows (rows where all cells are empty, null, or undefined)
-        var filteredData = jsonData.filter((row) => row.some(filledCell));
-
-        // Heuristic to find the header row by ignoring rows with fewer filled cells than the next row
-        var headerRowIndex = filteredData.findIndex(
-          (row, index) =>
-            row.filter(filledCell).length >=
-            filteredData[index + 1]?.filter(filledCell).length,
-        );
-        // Fallback
-        if (headerRowIndex === -1 || headerRowIndex > 25) {
-          headerRowIndex = 0;
-        }
-
-        // Convert filtered JSON back to CSV
-        var csv = XLSX.utils.aoa_to_sheet(filteredData.slice(headerRowIndex)); // Create a new sheet from filtered array of arrays
-        csv = XLSX.utils.sheet_to_csv(csv, { header: 1 });
-        return csv;
-      } catch (e) {
-        console.error(e);
-        return "";
-      }
-    }
-    return gk_fileData[filename] || "";
-  }
-</script>
-<!doctype html>
+<!DOCTYPE html>
 <html lang="es">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Control</title>
     <style>
+      :root {
+        --bg: #061f40;
+        --card-bg: #f2f2f2;
+        --header-bg: #979da6;
+        --text: #051326;
+        --text-light: white;
+        --input-bg: #ffffff;
+        --input-text: #051326;
+        --border: #979da6;
+        --btn-green: #32cd32;
+        --btn-red: #ff3333;
+        --btn-blue: #1e90ff;
+        --btn-orange: #ffa500;
+        --table-bg: #f2f2f2;
+      }
+      [data-theme="dark"] {
+        --bg: #0a0a0a;
+        --card-bg: #1e1e1e;
+        --header-bg: #2a2a2a;
+        --text: #e0e0e0;
+        --text-light: #e0e0e0;
+        --input-bg: #2a2a2a;
+        --input-text: #e0e0e0;
+        --border: #555;
+        --table-bg: #1e1e1e;
+      }
+      * { box-sizing: border-box; }
       body {
         margin: 0;
         font-family: Arial, sans-serif;
-        background-color: #061f40;
-        color: #051326;
+        background-color: var(--bg);
+        color: var(--text);
+        transition: background-color 0.3s, color 0.3s;
       }
       .header {
-        background-color: #979da6;
+        background-color: var(--header-bg);
         padding: 10px;
         display: flex;
         justify-content: space-between;
         align-items: center;
+        flex-wrap: wrap;
+        gap: 8px;
       }
-      .header .user {
-        font-weight: bold;
-      }
+      .header .user { font-weight: bold; display: flex; align-items: center; gap: 5px; flex-wrap: wrap; }
       .header button {
         padding: 5px 10px;
-        margin: 0 5px;
+        margin: 0 3px;
         border: none;
         border-radius: 5px;
         cursor: pointer;
+        font-size: 14px;
       }
-      .header .logout {
-        background-color: #ff3333;
+      .header .logout { background-color: var(--btn-red); color: white; }
+      .header .finish { background-color: var(--btn-blue); color: white; }
+      .header .admin-btn { background-color: #9b59b6; color: white; }
+      .theme-toggle {
+        background: var(--border);
+        border: none;
         color: white;
-      }
-      .header .save {
-        background-color: #666;
-        color: white;
-      }
-      .header .finish {
-        background-color: #1e90ff;
-        color: white;
+        padding: 5px 10px;
+        border-radius: 5px;
+        cursor: pointer;
       }
       .form-container {
-        background-color: #f2f2f2;
-        padding: 20px;
+        background-color: var(--card-bg);
+        padding: 15px;
         margin: 10px;
         display: flex;
-        justify-content: space-between;
+        flex-wrap: wrap;
+        gap: 8px;
+        align-items: center;
+        transition: background-color 0.3s;
       }
       .form-container input {
-        padding: 5px;
-        margin-right: 10px;
-        border: 1px solid #979da6;
+        padding: 8px;
+        border: 1px solid var(--border);
         border-radius: 5px;
+        background: var(--input-bg);
+        color: var(--input-text);
+        font-size: 14px;
       }
+      .form-container input#code { width: 120px; }
+      .form-container input#name { flex: 1; min-width: 150px; }
+      .form-container input#quantity { width: 70px; }
       .form-container button {
-        padding: 5px 10px;
-        background-color: #32cd32;
+        padding: 8px 15px;
+        background-color: var(--btn-green);
         border: none;
         border-radius: 5px;
         color: white;
         cursor: pointer;
+        font-size: 14px;
       }
-      .table-container {
-        margin: 10px;
-      }
+      .table-container { margin: 10px; overflow-x: auto; }
       table {
         width: 100%;
         border-collapse: collapse;
-        background-color: #f2f2f2;
+        background-color: var(--table-bg);
+        transition: background-color 0.3s;
       }
-      th,
-      td {
-        border: 1px solid #979da6;
+      th, td {
+        border: 1px solid var(--border);
         padding: 8px;
         text-align: left;
       }
-      th {
-        background-color: #979da6;
-        color: white;
-      }
+      th { background-color: var(--header-bg); color: var(--text-light); }
       .delete-btn {
-        color: #ff3333;
+        color: var(--btn-red);
         cursor: pointer;
         text-align: center;
+        font-weight: bold;
+        min-width: 30px;
       }
       .quantity-input {
-        width: 50px;
-        padding: 2px;
-        border: 1px solid #979da6;
+        width: 55px;
+        padding: 4px;
+        border: 1px solid var(--border);
         border-radius: 3px;
         text-align: center;
+        background: var(--input-bg);
+        color: var(--input-text);
       }
-      .recover-btn {
-        background-color: #ffa500;
-        color: white;
-        margin-top: 10px;
-      }
-      .error-message {
+      .toast {
         position: fixed;
         bottom: 20px;
         right: 20px;
-        background-color: #ff3333;
         color: white;
         padding: 10px 20px;
         border-radius: 5px;
         z-index: 1000;
         animation: fadeIn 0.3s;
+        max-width: 90vw;
       }
-      button:disabled {
-        opacity: 0.7;
-        cursor: not-allowed;
-      }
+      .toast-success { background-color: var(--btn-green); }
+      .toast-error { background-color: var(--btn-red); }
+      button:disabled { opacity: 0.7; cursor: not-allowed; }
       .loading-spinner {
         display: inline-block;
         width: 16px;
@@ -166,262 +150,336 @@
         border-top-color: #fff;
         animation: spin 1s ease-in-out infinite;
       }
-      @keyframes spin {
-        to {
-          transform: rotate(360deg);
-        }
+      .connection-status {
+        display: flex;
+        align-items: center;
+        gap: 4px;
+        font-size: 11px;
       }
-      @keyframes fadeIn {
-        from {
-          opacity: 0;
-        }
-        to {
-          opacity: 1;
-        }
+      .status-dot {
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background-color: #999;
       }
-      /* Efectos de flash */
+      .status-dot.online { background-color: #32CD32; }
+      .status-dot.offline { background-color: #FF3333; }
+      .recover-btn {
+        background-color: var(--btn-orange);
+        color: white;
+        margin-top: 10px;
+        padding: 8px 15px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 14px;
+      }
+
+      /* Modal admin */
+      .modal-overlay {
+        display: none;
+        position: fixed;
+        top: 0; left: 0; right: 0; bottom: 0;
+        background: rgba(0,0,0,0.6);
+        z-index: 2000;
+        justify-content: center;
+        align-items: flex-start;
+        padding-top: 40px;
+        overflow-y: auto;
+      }
+      .modal-overlay.active { display: flex; }
+      .modal {
+        background: var(--card-bg);
+        color: var(--text);
+        border-radius: 8px;
+        padding: 20px;
+        width: 90%;
+        max-width: 700px;
+        max-height: 80vh;
+        overflow-y: auto;
+        margin-bottom: 40px;
+      }
+      .modal h3 { margin-top: 0; }
+      .modal table { font-size: 13px; }
+      .modal input, .modal select {
+        padding: 5px;
+        border: 1px solid var(--border);
+        border-radius: 3px;
+        background: var(--input-bg);
+        color: var(--input-text);
+        font-size: 13px;
+      }
+      .modal button {
+        padding: 5px 10px;
+        border: none;
+        border-radius: 3px;
+        cursor: pointer;
+        color: white;
+        font-size: 13px;
+        margin: 2px;
+      }
+      .tab-bar { display: flex; gap: 5px; margin-bottom: 15px; }
+      .tab-bar button { padding: 8px 15px; }
+      .tab-bar button.active { background-color: var(--btn-blue); color: white; }
+      .tab-bar button:not(.active) { background-color: var(--border); }
+      .tab-content { display: none; }
+      .tab-content.active { display: block; }
+
+      @keyframes spin { to { transform: rotate(360deg); } }
+      @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
       @keyframes flash-green {
-        0% {
-          background-color: normal;
-        }
-        10% {
-          background-color: rgba(50, 205, 50, 0.3);
-        }
-        100% {
-          background-color: normal;
-        }
+        0% { background-color: inherit; }
+        10% { background-color: rgba(50, 205, 50, 0.3); }
+        100% { background-color: inherit; }
       }
       @keyframes flash-red {
-        0% {
-          background-color: normal;
-        }
-        10% {
-          background-color: rgba(255, 0, 0, 0.3);
-        }
-        100% {
-          background-color: normal;
-        }
+        0% { background-color: inherit; }
+        10% { background-color: rgba(255, 0, 0, 0.3); }
+        100% { background-color: inherit; }
       }
-      .flash-green {
-        animation: flash-green 0.5s;
-      }
-      .flash-red {
-        animation: flash-red 0.5s;
+      .flash-green { animation: flash-green 0.5s; }
+      .flash-red { animation: flash-red 0.5s; }
+
+      /* Responsive */
+      @media (max-width: 600px) {
+        .header { flex-direction: column; align-items: stretch; text-align: center; }
+        .header > div { display: flex; justify-content: center; flex-wrap: wrap; }
+        .form-container { flex-direction: column; }
+        .form-container input#code,
+        .form-container input#name,
+        .form-container input#quantity { width: 100%; }
+        .form-container button { width: 100%; }
+        table { font-size: 13px; }
+        th, td { padding: 5px; }
+        .quantity-input { width: 45px; }
+        .modal { width: 95%; padding: 15px; }
       }
     </style>
   </head>
   <body>
     <div class="header">
       <div class="user">
-        Usuario: <span id="currentUser"></span>
-        <button class="logout" onclick="logout()" data-original-text="Salir">
-          Salir
-        </button>
+        <span>Usuario: <span id="currentUser"></span></span>
+        <span id="roleBadge" style="font-size: 11px; background: #9b59b6; color: white; padding: 2px 6px; border-radius: 3px; display: none;"></span>
+        <div class="connection-status">
+          <span class="status-dot" id="statusDot"></span>
+          <span id="statusText"></span>
+        </div>
+        <button class="logout" onclick="logout()" data-original-text="Salir">Salir</button>
+        <button class="theme-toggle" onclick="toggleTheme()">🌙</button>
       </div>
-      <div>
-        <button class="save" onclick="save()" data-original-text="Guardar">
-          Guardar
-        </button>
-        <button
-          class="finish"
-          onclick="finalize()"
-          data-original-text="Finalizar"
-        >
-          Finalizar
-        </button>
+      <div style="display: flex; align-items: center; flex-wrap: wrap; gap: 5px;">
+        <span id="totalUnits" style="color: white; font-weight: bold;">Total: 0 unidades</span>
+        <button class="admin-btn" id="adminBtn" onclick="openAdmin()" style="display:none;" data-original-text="Admin">Admin</button>
+        <button class="finish" onclick="finalize()" data-original-text="Finalizar">Finalizar</button>
       </div>
     </div>
     <div class="form-container">
-      <input
-        type="text"
-        id="code"
-        placeholder="Código"
-        oninput="lookupProduct()"
-      />
-      <input
-        type="text"
-        style="width: 500px"
-        id="name"
-        placeholder="Nombre"
-        oninput="lookupProduct()"
-      />
-      <input
-        type="number"
-        id="quantity"
-        placeholder="Cantidad"
-        min="1"
-        value="1"
-      />
+      <input type="text" id="code" placeholder="Codigo" oninput="lookupByCode()" />
+      <input type="text" id="name" placeholder="Nombre" oninput="lookupByName()" />
+      <input type="number" id="quantity" placeholder="Cant" min="1" value="1" />
       <button onclick="insert()" data-original-text="Insertar">Insertar</button>
     </div>
     <div class="table-container">
       <table id="productTable">
         <thead>
           <tr>
-            <th>Código</th>
+            <th>Codigo</th>
             <th>Nombre</th>
             <th>Cantidad</th>
-            <th>Acción</th>
+            <th>X</th>
           </tr>
         </thead>
         <tbody id="tableBody"></tbody>
       </table>
-      <button
-        class="recover-btn"
-        onclick="recover()"
-        data-original-text="Recuperar Datos"
-      >
-        Recuperar Datos
-      </button>
+      <button class="recover-btn" onclick="recover()" data-original-text="Recuperar Datos">Recuperar Datos</button>
+    </div>
+
+    <!-- Modal Admin -->
+    <div class="modal-overlay" id="adminModal">
+      <div class="modal">
+        <div style="display: flex; justify-content: space-between; align-items: center;">
+          <h3>Panel de Administracion</h3>
+          <button onclick="closeAdmin()" style="background: var(--btn-red);">Cerrar</button>
+        </div>
+        <div class="tab-bar">
+          <button class="active" onclick="switchTab('users', this)">Usuarios</button>
+          <button onclick="switchTab('history', this)">Historial</button>
+        </div>
+
+        <!-- Tab Usuarios -->
+        <div class="tab-content active" id="tab-users">
+          <div style="margin-bottom: 15px; display: flex; flex-wrap: wrap; gap: 5px; align-items: center;">
+            <input type="text" id="newUser" placeholder="Usuario" style="width: 120px;">
+            <input type="password" id="newPass" placeholder="Contrasena" style="width: 120px;">
+            <select id="newRol"><option value="operador">Operador</option><option value="admin">Admin</option></select>
+            <button onclick="createUser()" style="background: var(--btn-green);">Agregar</button>
+          </div>
+          <table>
+            <thead><tr><th>Usuario</th><th>Rol</th><th>Estado</th><th>Acciones</th></tr></thead>
+            <tbody id="usersTableBody"></tbody>
+          </table>
+        </div>
+
+        <!-- Tab Historial -->
+        <div class="tab-content" id="tab-history">
+          <table>
+            <thead><tr><th>Fecha</th><th>Usuario</th><th>Productos</th><th>Unidades</th></tr></thead>
+            <tbody id="historyTableBody"></tbody>
+          </table>
+        </div>
+      </div>
     </div>
 
     <script>
-      const API_BASE_URL =
-        window.location.hostname === "localhost"
-          ? "http://localhost:10000"
-          : "https://app-control-stock-3m2b.onrender.com";
+      const API_BASE_URL = window.location.hostname === "localhost"
+        ? "http://localhost:10000" : window.location.origin;
 
       let products = [];
-      let currentUser = decodeURIComponent(
-        new URLSearchParams(window.location.search).get("user") || "Usuario1",
-      );
-      const sessionId = Date.now().toString();
+      const sessionId = sessionStorage.getItem('sessionId');
+      const currentUser = sessionStorage.getItem('currentUser');
+      const userRole = sessionStorage.getItem('userRole');
 
-      fetch("productos.json")
-        .then((response) => response.json())
-        .then((data) => (products = data))
-        .catch((error) => console.error("Error loading products:", error));
+      if (!sessionId || !currentUser) {
+        window.location.href = 'index.html';
+      }
+
+      // Tema
+      function toggleTheme() {
+        const current = document.documentElement.getAttribute('data-theme');
+        const next = current === 'dark' ? 'light' : 'dark';
+        document.documentElement.setAttribute('data-theme', next);
+        localStorage.setItem('theme', next);
+        document.querySelector('.theme-toggle').textContent = next === 'dark' ? '☀️' : '🌙';
+      }
+      const savedTheme = localStorage.getItem('theme') || 'light';
+      if (savedTheme === 'dark') {
+        document.documentElement.setAttribute('data-theme', 'dark');
+        document.querySelector('.theme-toggle').textContent = '☀️';
+      }
+
+      // Indicador de conexion
+      function checkConnection() {
+        const dot = document.getElementById('statusDot');
+        const text = document.getElementById('statusText');
+        fetch(`${API_BASE_URL}/api/health`)
+          .then(r => r.ok ? r.json() : Promise.reject())
+          .then(() => { dot.className = 'status-dot online'; text.textContent = 'Online'; })
+          .catch(() => { dot.className = 'status-dot offline'; text.textContent = 'Offline'; });
+      }
+      checkConnection();
+      setInterval(checkConnection, 15000);
+
+      // Cargar productos desde cache o red
+      function loadProductCatalog() {
+        fetch("productos.json")
+          .then(r => r.json())
+          .then(data => {
+            products = data;
+            localStorage.setItem('productosCache', JSON.stringify(data));
+          })
+          .catch(() => {
+            const cached = localStorage.getItem('productosCache');
+            if (cached) {
+              products = JSON.parse(cached);
+              showToast("Usando catalogo offline", "error");
+            }
+          });
+      }
+      loadProductCatalog();
 
       document.getElementById("currentUser").textContent = currentUser;
 
-      function lookupProduct() {
+      // Mostrar badge de rol y boton admin
+      if (userRole === 'admin') {
+        const badge = document.getElementById('roleBadge');
+        badge.textContent = 'ADMIN';
+        badge.style.display = 'inline';
+        document.getElementById('adminBtn').style.display = 'inline-block';
+      }
+
+      function escapeHtml(str) {
+        const div = document.createElement('div');
+        div.textContent = str;
+        return div.innerHTML;
+      }
+
+      function lookupByCode() {
         const code = document.getElementById("code").value.trim();
-        const nameInput = document.getElementById("name");
-        if (code) {
-          // Support both numeric and alphanumeric codes
-          const product = products.find(
-            (p) =>
-              String(p.Codigo).toLowerCase() === code.toLowerCase() ||
-              p.Codigo === parseInt(code),
-          );
-          if (product) nameInput.value = product.Nombre;
-        } else if (nameInput.value) {
-          const product = products.find((p) =>
-            p.Nombre.toLowerCase().includes(nameInput.value.toLowerCase()),
-          );
-          if (product) document.getElementById("code").value = product.Codigo;
-        }
+        if (!code) return;
+        const product = products.find(p =>
+          String(p.Codigo).toLowerCase() === code.toLowerCase() || p.Codigo === parseInt(code)
+        );
+        if (product) document.getElementById("name").value = product.Nombre;
+      }
+
+      function lookupByName() {
+        const nameVal = document.getElementById("name").value.trim();
+        if (!nameVal) return;
+        const product = products.find(p => p.Nombre.toLowerCase().includes(nameVal.toLowerCase()));
+        if (product) document.getElementById("code").value = product.Codigo;
       }
 
       function insert() {
         const codeInput = document.getElementById("code");
         const nameInput = document.getElementById("name");
         const quantityInput = document.getElementById("quantity");
-
         const code = codeInput.value.trim();
         const name = nameInput.value.trim();
         const quantity = quantityInput.value.trim();
 
-        // Validación básica
         if (!code || !name || !quantity) {
-          showError("Todos los campos son requeridos");
+          showToast("Todos los campos son requeridos", "error");
           playErrorFeedback();
           return;
         }
 
-        // Verificar si el código existe en los productos (soporte alfanumérico)
-        const productExists = products.some(
-          (p) =>
-            String(p.Codigo).toLowerCase() === code.toLowerCase() ||
-            p.Codigo === parseInt(code),
+        const productExists = products.some(p =>
+          String(p.Codigo).toLowerCase() === code.toLowerCase() || p.Codigo === parseInt(code)
         );
         if (!productExists) {
-          showError("Código de producto no válido");
+          showToast("Codigo de producto no valido", "error");
           playErrorFeedback();
           return;
         }
 
         setLoading(true);
-
-        // Crear objeto con los datos
-        const productData = {
-          code: code, // Envía tal cual (el servidor lo manejará)
-          name: name,
-          quantity: parseInt(quantity),
-        };
-
-        console.log("Enviando datos:", productData); // Para debugging
-
         fetch(`${API_BASE_URL}/save`, {
           method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: sessionId,
-          },
-          body: JSON.stringify(productData),
+          headers: { "Content-Type": "application/json", Authorization: sessionId },
+          body: JSON.stringify({ code, name, quantity: parseInt(quantity) }),
         })
-          .then((response) => {
-            if (!response.ok) {
-              return response.json().then((err) => {
-                throw err;
-              });
-            }
-            return response.json();
-          })
-          .then((data) => {
+          .then(r => { if (!r.ok) return r.json().then(e => { throw e; }); return r.json(); })
+          .then(data => {
             if (data.id) {
-              renderRow({
-                id: data.id,
-                code: code,
-                name: name,
-                quantity: quantity,
-              });
-              showError("✅ Producto agregado");
+              renderRow({ id: data.id, code, name, quantity });
+              showToast("Producto agregado", "success");
               playSuccessFeedback();
-
-              // Limpiar formulario
               codeInput.value = "";
               nameInput.value = "";
               quantityInput.value = "1";
+              codeInput.focus();
             }
           })
-          .catch((err) => {
-            console.error("Error saving:", err);
-            showError(err.error || "Error al guardar");
+          .catch(err => {
+            showToast(err.error || "Error al guardar", "error");
             playErrorFeedback();
           })
           .finally(() => setLoading(false));
       }
 
-      // Funciones para el feedback
       function playSuccessFeedback() {
-        // Sonido
-        const successSound = document.getElementById("successSound");
-        successSound.currentTime = 0; // Reinicia si ya está sonando
-        successSound
-          .play()
-          .catch((e) => console.log("No se pudo reproducir sonido:", e));
-
-        // Flash verde
+        const s = document.getElementById("successSound");
+        s.currentTime = 0; s.play().catch(() => {});
         document.body.classList.add("flash-green");
-        setTimeout(() => {
-          document.body.classList.remove("flash-green");
-        }, 500);
+        setTimeout(() => document.body.classList.remove("flash-green"), 500);
       }
 
       function playErrorFeedback() {
-        // Sonido
-        const errorSound = document.getElementById("errorSound");
-        errorSound.currentTime = 0;
-        errorSound
-          .play()
-          .catch((e) => console.log("No se pudo reproducir sonido:", e));
-
-        // Flash rojo
+        const s = document.getElementById("errorSound");
+        s.currentTime = 0; s.play().catch(() => {});
         document.body.classList.add("flash-red");
-        setTimeout(() => {
-          document.body.classList.remove("flash-red");
-        }, 500);
+        setTimeout(() => document.body.classList.remove("flash-red"), 500);
       }
 
       function updateQuantity(input) {
@@ -431,278 +489,307 @@
         const newQuantity = parseInt(input.value);
         const id = row.querySelector(".delete-btn").getAttribute("data-id");
 
+        if (!newQuantity || newQuantity < 1) { input.value = input.defaultValue; return; }
+
         setLoading(true);
         input.disabled = true;
-
         fetch(`${API_BASE_URL}/save/${id}`, {
           method: "PUT",
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: sessionId,
-          },
-          body: JSON.stringify({
-            code: code, // Se envía como texto
-            name,
-            quantity: parseInt(quantity),
-          }),
+          headers: { "Content-Type": "application/json", Authorization: sessionId },
+          body: JSON.stringify({ code, name, quantity: newQuantity }),
         })
-          .then((response) => {
-            if (!response.ok) throw new Error("Error en la actualización");
-            return response.json();
+          .then(r => { if (!r.ok) throw new Error("Error"); return r.json(); })
+          .then(() => {
+            input.defaultValue = newQuantity;
+            showToast("Cantidad actualizada", "success");
+            updateTotalUnits();
           })
-          .then((data) => {
-            console.log(data.message || "Cantidad actualizada");
-            showError("✅ Cantidad actualizada");
+          .catch(() => {
+            showToast("Error al actualizar cantidad", "error");
+            input.value = input.defaultValue;
           })
-          .catch((err) => {
-            console.error("Error updating quantity:", err);
-            showError("Error al actualizar cantidad");
-            input.value = input.defaultValue; // Revertir al valor anterior
-          })
-          .finally(() => {
-            setLoading(false);
-            input.disabled = false;
-          });
+          .finally(() => { setLoading(false); input.disabled = false; });
       }
 
-      // Función para eliminar filas - Versión corregida
       function deleteRow(button, event) {
         event.preventDefault();
         event.stopPropagation();
-
         const row = button.closest("tr");
         const id = button.getAttribute("data-id");
-
-        if (!row || !id) {
-          console.error("Error: No se pudo acceder al id o fila del registro");
-          showError("Error al eliminar");
-          return;
-        }
-
-        if (!confirm("¿Está seguro de eliminar este producto?")) {
-          return;
-        }
+        if (!row || !id) { showToast("Error al eliminar", "error"); return; }
+        if (!confirm("Eliminar este producto?")) return;
 
         setLoading(true);
-        row.style.opacity = "0.5"; // Efecto visual
-
+        row.style.opacity = "0.5";
         fetch(`${API_BASE_URL}/delete/${id}`, {
           method: "DELETE",
           headers: { Authorization: sessionId },
         })
-          .then((response) => {
-            if (!response.ok) throw new Error("Error en el servidor");
-            return response.json();
-          })
-          .then((data) => {
+          .then(r => { if (!r.ok) throw new Error(); return r.json(); })
+          .then(data => {
             if (data.message === "Registro eliminado exitosamente") {
               row.remove();
-              showError("✅ Producto eliminado");
-            } else {
-              throw new Error(data.error || "Error desconocido");
-            }
+              updateTotalUnits();
+              showToast("Producto eliminado", "success");
+            } else throw new Error();
           })
-          .catch((err) => {
-            console.error("Error en la solicitud DELETE:", err);
-            showError("Error al eliminar");
-            row.style.opacity = "1"; // Restaurar visual
-          })
+          .catch(() => { showToast("Error al eliminar", "error"); row.style.opacity = "1"; })
           .finally(() => setLoading(false));
       }
 
       function logout() {
+        sessionStorage.clear();
         window.location.href = "index.html";
       }
 
-      function save() {
-        setLoading(true);
-
-        fetch(`${API_BASE_URL}/records`, {
-          headers: { Authorization: sessionId },
-        })
-          .then((response) => {
-            if (!response.ok) throw new Error("Error al cargar registros");
-            return response.json();
-          })
-          .then((data) => {
-            if (data.length > 0) {
-              alert(
-                `Registros guardados (${data.length}):\n${data.map((item) => item.name).join("\n")}`,
-              );
-            } else {
-              alert("No hay registros guardados.");
-            }
-          })
-          .catch((err) => {
-            console.error("Error fetching records:", err);
-            showError("Error al cargar registros");
-          })
-          .finally(() => setLoading(false));
-      }
-
       function finalize() {
+        if (!confirm("Finalizar y exportar inventario a Excel?\nLos datos de esta sesion se eliminaran.")) return;
         setLoading(true);
-
-        fetch(`${API_BASE_URL}/export`, {
-          headers: { Authorization: sessionId },
-        })
-          .then((response) => {
-            if (!response.ok) throw new Error(`Error ${response.status}`);
-            return response.blob();
+        fetch(`${API_BASE_URL}/export`, { headers: { Authorization: sessionId } })
+          .then(r => {
+            if (!r.ok) return r.json().then(e => { throw new Error(e.error); });
+            return r.blob();
           })
-          .then((blob) => {
+          .then(blob => {
             const url = window.URL.createObjectURL(blob);
             const a = document.createElement("a");
             a.href = url;
             a.download = `inventario_${new Date().toISOString().split("T")[0]}.xlsx`;
             document.body.appendChild(a);
             a.click();
+            a.remove();
             window.URL.revokeObjectURL(url);
-            showError("✅ Excel generado");
-            setTimeout(() => (window.location.href = "index.html"), 1500);
+            showToast("Excel generado", "success");
+            return fetch(`${API_BASE_URL}/clear-session`, {
+              method: "DELETE", headers: { Authorization: sessionId },
+            });
           })
-          .catch((err) => {
-            console.error("Error exporting:", err);
-            showError("Error al generar reporte");
-          })
+          .then(() => setTimeout(() => window.location.href = "index.html", 1500))
+          .catch(err => showToast(err.message || "Error al generar reporte", "error"))
           .finally(() => setLoading(false));
       }
 
       function recover() {
         setLoading(true);
-
-        fetch(`${API_BASE_URL}/recover`, {
-          headers: { Authorization: sessionId },
-        })
-          .then((response) => {
-            if (!response.ok) throw new Error("Error del servidor");
-            return response.json();
-          })
-          .then((data) => {
-            const tableBody = document.getElementById("tableBody");
-            tableBody.innerHTML = "";
-
+        fetch(`${API_BASE_URL}/records`, { headers: { Authorization: sessionId } })
+          .then(r => { if (!r.ok) throw new Error(); return r.json(); })
+          .then(data => {
+            document.getElementById("tableBody").innerHTML = "";
             if (data.length > 0) {
-              data.forEach((item) => renderRow(item));
-              showError(`✅ ${data.length} productos recuperados`);
+              data.forEach(item => renderRow(item));
+              showToast(`${data.length} productos recuperados`, "success");
             } else {
-              showError("No hay datos para recuperar");
+              showToast("No hay datos para recuperar", "error");
             }
           })
-          .catch((err) => {
-            console.error("Error recovering data:", err);
-            showError("Error al recuperar datos");
-          })
+          .catch(() => showToast("Error al recuperar datos", "error"))
           .finally(() => setLoading(false));
       }
 
-      document
-        .getElementById("code")
-        .addEventListener("keypress", function (e) {
-          if (e.key === "Enter") {
-            const code = this.value.trim();
-            // Support both numeric and alphanumeric codes
-            const product = products.find(
-              (p) =>
-                String(p.Codigo).toLowerCase() === code.toLowerCase() ||
-                p.Codigo === parseInt(code),
-            );
-
-            if (product) {
-              document.getElementById("name").value = product.Nombre;
-              insert(); // Esto activará el feedback de éxito si todo está bien
-            } else {
-              playErrorFeedback();
-            }
-          }
-        });
-
-      // Nueva función para renderizar filas
-      function renderRow(product) {
-        const tableBody = document.getElementById("tableBody");
-        const existingRow = [...tableBody.rows].find(
-          (row) =>
-            row.cells[0].textContent === product.code.toString() &&
-            row.cells[1].textContent === product.name,
-        );
-
-        if (existingRow) {
-          // Actualizar cantidad si el producto ya existe
-          const quantityInput = existingRow.querySelector(".quantity-input");
-          const currentQty = parseInt(quantityInput.value) || 0;
-          quantityInput.value = currentQty + parseInt(product.quantity);
-        } else {
-          // Crear nueva fila si es un producto nuevo
-          const row = document.createElement("tr");
-          row.innerHTML = `
-              <td>${product.code}</td>
-              <td>${product.name}</td>
-              <td><input type="number" class="quantity-input" value="${product.quantity}" min="1" onchange="updateQuantity(this)"></td>
-              <td class="delete-btn" data-id="${product.id}" onclick="deleteRow(this, event)">x</td>
-          `;
-          tableBody.appendChild(row);
+      document.getElementById("code").addEventListener("keypress", function (e) {
+        if (e.key === "Enter") {
+          const code = this.value.trim();
+          const product = products.find(p =>
+            String(p.Codigo).toLowerCase() === code.toLowerCase() || p.Codigo === parseInt(code)
+          );
+          if (product) {
+            document.getElementById("name").value = product.Nombre;
+            insert();
+          } else playErrorFeedback();
         }
-      }
-
-      // Función para cargar todos los productos al iniciar
-      function loadProducts() {
-        setLoading(true);
-
-        fetch(`${API_BASE_URL}/recover`, {
-          headers: { Authorization: sessionId },
-        })
-          .then((response) => {
-            if (!response.ok) throw new Error(`HTTP ${response.status}`);
-            return response.json();
-          })
-          .then((data) => {
-            const tableBody = document.getElementById("tableBody");
-            if (!tableBody) throw new Error("Elemento tableBody no encontrado");
-
-            tableBody.innerHTML = "";
-            if (data.length > 0) {
-              data.forEach(renderRow);
-              console.log(`${data.length} productos cargados`);
-            }
-          })
-          .catch((err) => {
-            console.error("Error loading products:", err);
-            showError("Error al cargar productos");
-          })
-          .finally(() => setLoading(false));
-      }
-
-      // Llamar a loadProducts cuando la página cargue
-      document.addEventListener("DOMContentLoaded", function () {
-        loadProducts();
       });
 
-      // Agregar esta función para mostrar errores
-      function showError(message) {
-        const errorDiv = document.createElement("div");
-        errorDiv.className = "error-message";
-        errorDiv.textContent = message;
-        document.body.appendChild(errorDiv);
-        setTimeout(() => errorDiv.remove(), 3000);
+      function renderRow(product) {
+        const tableBody = document.getElementById("tableBody");
+        const row = document.createElement("tr");
+        row.innerHTML = `
+          <td>${escapeHtml(String(product.code))}</td>
+          <td>${escapeHtml(String(product.name))}</td>
+          <td><input type="number" class="quantity-input" value="${parseInt(product.quantity)}" min="1" onchange="updateQuantity(this)"></td>
+          <td class="delete-btn" data-id="${parseInt(product.id)}" onclick="deleteRow(this, event)">x</td>
+        `;
+        tableBody.insertBefore(row, tableBody.firstChild);
+        updateTotalUnits();
+      }
+
+      function updateTotalUnits() {
+        let total = 0;
+        document.querySelectorAll(".quantity-input").forEach(i => total += parseInt(i.value) || 0);
+        document.getElementById("totalUnits").textContent = "Total: " + total + " unidades";
+      }
+
+      function loadProducts() {
+        setLoading(true);
+        fetch(`${API_BASE_URL}/records`, { headers: { Authorization: sessionId } })
+          .then(r => { if (!r.ok) throw new Error(); return r.json(); })
+          .then(data => {
+            document.getElementById("tableBody").innerHTML = "";
+            if (data.length > 0) data.forEach(renderRow);
+          })
+          .catch(() => showToast("Error al cargar productos", "error"))
+          .finally(() => setLoading(false));
+      }
+
+      document.addEventListener("DOMContentLoaded", loadProducts);
+
+      function showToast(message, type) {
+        const div = document.createElement("div");
+        div.className = "toast " + (type === "success" ? "toast-success" : "toast-error");
+        div.textContent = message;
+        document.body.appendChild(div);
+        setTimeout(() => div.remove(), 3000);
       }
 
       function setLoading(state) {
-        const buttons = document.querySelectorAll("button");
-        buttons.forEach((btn) => {
+        document.querySelectorAll("button[data-original-text]").forEach(btn => {
           btn.disabled = state;
-          if (state) {
-            btn.innerHTML = '<i class="loading-spinner"></i> Procesando...';
-          } else {
-            btn.innerHTML = btn.getAttribute("data-original-text");
-          }
+          btn.innerHTML = state ? '<i class="loading-spinner"></i>' : btn.getAttribute("data-original-text");
         });
       }
+
+      // --- Admin Panel ---
+      function switchTab(tabName, btn) {
+        document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
+        document.querySelectorAll('.tab-bar button').forEach(b => b.classList.remove('active'));
+        document.getElementById('tab-' + tabName).classList.add('active');
+        btn.classList.add('active');
+        if (tabName === 'users') loadUsers();
+        if (tabName === 'history') loadHistory();
+      }
+
+      function openAdmin() {
+        document.getElementById('adminModal').classList.add('active');
+        loadUsers();
+      }
+
+      function closeAdmin() {
+        document.getElementById('adminModal').classList.remove('active');
+      }
+
+      function loadUsers() {
+        fetch(`${API_BASE_URL}/api/users`, { headers: { Authorization: sessionId } })
+          .then(r => r.json())
+          .then(users => {
+            const tbody = document.getElementById('usersTableBody');
+            tbody.innerHTML = '';
+            users.forEach(u => {
+              const tr = document.createElement('tr');
+              tr.innerHTML = `
+                <td>${escapeHtml(u.usuario)}</td>
+                <td>
+                  <select onchange="updateUser(${u.id}, 'rol', this.value)" style="padding:3px; background:var(--input-bg); color:var(--input-text); border:1px solid var(--border); border-radius:3px;">
+                    <option value="operador" ${u.rol === 'operador' ? 'selected' : ''}>Operador</option>
+                    <option value="admin" ${u.rol === 'admin' ? 'selected' : ''}>Admin</option>
+                  </select>
+                </td>
+                <td>
+                  <select onchange="updateUser(${u.id}, 'autorizado', this.value === 'true')" style="padding:3px; background:var(--input-bg); color:var(--input-text); border:1px solid var(--border); border-radius:3px;">
+                    <option value="true" ${u.autorizado ? 'selected' : ''}>Activo</option>
+                    <option value="false" ${!u.autorizado ? 'selected' : ''}>Inactivo</option>
+                  </select>
+                </td>
+                <td>
+                  <button onclick="resetPassword(${u.id}, '${escapeHtml(u.usuario)}')" style="background:var(--btn-orange);">Clave</button>
+                  <button onclick="deleteUser(${u.id}, '${escapeHtml(u.usuario)}')" style="background:var(--btn-red);">Eliminar</button>
+                </td>
+              `;
+              tbody.appendChild(tr);
+            });
+          })
+          .catch(() => showToast("Error al cargar usuarios", "error"));
+      }
+
+      function createUser() {
+        const usuario = document.getElementById('newUser').value.trim();
+        const password = document.getElementById('newPass').value.trim();
+        const rol = document.getElementById('newRol').value;
+        if (!usuario || !password) { showToast("Complete usuario y contrasena", "error"); return; }
+
+        fetch(`${API_BASE_URL}/api/users`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', Authorization: sessionId },
+          body: JSON.stringify({ usuario, password, rol })
+        })
+          .then(r => r.json().then(d => ({ ok: r.ok, data: d })))
+          .then(({ ok, data }) => {
+            if (!ok) throw new Error(data.error);
+            showToast("Usuario creado", "success");
+            document.getElementById('newUser').value = '';
+            document.getElementById('newPass').value = '';
+            loadUsers();
+          })
+          .catch(err => showToast(err.message, "error"));
+      }
+
+      function updateUser(id, field, value) {
+        const body = {};
+        body[field] = value;
+        fetch(`${API_BASE_URL}/api/users/${id}`, {
+          method: 'PUT',
+          headers: { 'Content-Type': 'application/json', Authorization: sessionId },
+          body: JSON.stringify(body)
+        })
+          .then(r => { if (!r.ok) throw new Error(); return r.json(); })
+          .then(() => showToast("Usuario actualizado", "success"))
+          .catch(() => showToast("Error al actualizar", "error"));
+      }
+
+      function resetPassword(id, usuario) {
+        const newPass = prompt(`Nueva contrasena para ${usuario}:`);
+        if (!newPass) return;
+        fetch(`${API_BASE_URL}/api/users/${id}`, {
+          method: 'PUT',
+          headers: { 'Content-Type': 'application/json', Authorization: sessionId },
+          body: JSON.stringify({ password: newPass })
+        })
+          .then(r => { if (!r.ok) throw new Error(); return r.json(); })
+          .then(() => showToast("Contrasena actualizada", "success"))
+          .catch(() => showToast("Error al cambiar contrasena", "error"));
+      }
+
+      function deleteUser(id, usuario) {
+        if (usuario === currentUser) { showToast("No puede eliminarse a si mismo", "error"); return; }
+        if (!confirm(`Eliminar usuario "${usuario}"?`)) return;
+        fetch(`${API_BASE_URL}/api/users/${id}`, {
+          method: 'DELETE',
+          headers: { Authorization: sessionId }
+        })
+          .then(r => { if (!r.ok) throw new Error(); return r.json(); })
+          .then(() => { showToast("Usuario eliminado", "success"); loadUsers(); })
+          .catch(() => showToast("Error al eliminar usuario", "error"));
+      }
+
+      function loadHistory() {
+        fetch(`${API_BASE_URL}/api/history`, { headers: { Authorization: sessionId } })
+          .then(r => r.json())
+          .then(history => {
+            const tbody = document.getElementById('historyTableBody');
+            tbody.innerHTML = '';
+            if (history.length === 0) {
+              tbody.innerHTML = '<tr><td colspan="4" style="text-align:center;">Sin exportaciones</td></tr>';
+              return;
+            }
+            history.forEach(h => {
+              const date = new Date(h.exported_at).toLocaleString('es-AR');
+              const tr = document.createElement('tr');
+              tr.innerHTML = `
+                <td>${escapeHtml(date)}</td>
+                <td>${escapeHtml(h.usuario)}</td>
+                <td>${h.total_products}</td>
+                <td>${h.total_units}</td>
+              `;
+              tbody.appendChild(tr);
+            });
+          })
+          .catch(() => showToast("Error al cargar historial", "error"));
+      }
+
+      // Cerrar modal al hacer click fuera
+      document.getElementById('adminModal').addEventListener('click', function(e) {
+        if (e.target === this) closeAdmin();
+      });
     </script>
-    <audio
-      id="successSound"
-      src="sounds/beep-success.mp3"
-      preload="auto"
-    ></audio>
+    <audio id="successSound" src="sounds/beep-success.mp3" preload="auto"></audio>
     <audio id="errorSound" src="sounds/beep-error.mp3" preload="auto"></audio>
   </body>
 </html>

@@ -1,156 +1,207 @@
-<script type="text/javascript">
-  var gk_isXlsx = false;
-  var gk_xlsxFileLookup = {};
-  var gk_fileData = {};
-  function filledCell(cell) {
-    return cell !== '' && cell != null;
-  }
-  function loadFileData(filename) {
-  if (gk_isXlsx && gk_xlsxFileLookup[filename]) {
-    try {
-      var workbook = XLSX.read(gk_fileData[filename], { type: 'base64' });
-      var firstSheetName = workbook.SheetNames[0];
-      var worksheet = workbook.Sheets[firstSheetName];
-
-      // Convert sheet to JSON to filter blank rows
-      var jsonData = XLSX.utils.sheet_to_json(worksheet, { header: 1, blankrows: false, defval: '' });
-      // Filter out blank rows (rows where all cells are empty, null, or undefined)
-      var filteredData = jsonData.filter(row => row.some(filledCell));
-
-      // Heuristic to find the header row by ignoring rows with fewer filled cells than the next row
-      var headerRowIndex = filteredData.findIndex((row, index) =>
-        row.filter(filledCell).length >= filteredData[index + 1]?.filter(filledCell).length
-      );
-      // Fallback
-      if (headerRowIndex === -1 || headerRowIndex > 25) {
-        headerRowIndex = 0;
-      }
-
-      // Convert filtered JSON back to CSV
-      var csv = XLSX.utils.aoa_to_sheet(filteredData.slice(headerRowIndex)); // Create a new sheet from filtered array of arrays
-      csv = XLSX.utils.sheet_to_csv(csv, { header: 1 });
-      return csv;
-    } catch (e) {
-      console.error(e);
-      return "";
-    }
-  }
-  return gk_fileData[filename] || "";
-  }
-</script>
 <!DOCTYPE html>
 <html lang="es">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Inicio de Sesión</title>
+  <title>Inicio de Sesion</title>
   <style>
+    :root {
+      --bg: #061F40;
+      --card-bg: #F2F2F2;
+      --text: #051326;
+      --input-bg: #ffffff;
+      --input-text: #051326;
+      --border: #979DA6;
+      --btn: #32CD32;
+      --error: #FF3333;
+    }
+    [data-theme="dark"] {
+      --bg: #0a0a0a;
+      --card-bg: #1e1e1e;
+      --text: #e0e0e0;
+      --input-bg: #2a2a2a;
+      --input-text: #e0e0e0;
+      --border: #555;
+      --btn: #28a745;
+    }
     body {
       margin: 0;
       font-family: Arial, sans-serif;
-      background-color: #061F40;
-      color: #051326;
+      background-color: var(--bg);
+      color: var(--text);
       display: flex;
       justify-content: center;
       align-items: center;
       height: 100vh;
+      transition: background-color 0.3s, color 0.3s;
+    }
+    .theme-toggle {
+      position: fixed;
+      top: 10px;
+      right: 10px;
+      background: var(--border);
+      border: none;
+      color: white;
+      padding: 8px 12px;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 14px;
     }
     .login-container {
-      background-color: #F2F2F2;
+      background-color: var(--card-bg);
       padding: 20px;
       border-radius: 5px;
       text-align: center;
       width: 300px;
+      transition: background-color 0.3s;
     }
-    .login-container h2 {
-      margin-top: 0;
-      color: #051326;
-    }
+    .login-container h2 { margin-top: 0; color: var(--text); }
     .login-container input {
       width: 80%;
       padding: 8px;
       margin: 10px 0;
-      border: 1px solid #979DA6;
+      border: 1px solid var(--border);
       border-radius: 5px;
       box-sizing: border-box;
+      background: var(--input-bg);
+      color: var(--input-text);
     }
     .login-container button {
       width: 80%;
       padding: 10px;
       margin: 10px 0;
-      background-color: #32CD32;
+      background-color: var(--btn);
       border: none;
       border-radius: 5px;
       color: white;
       font-size: 16px;
       cursor: pointer;
     }
+    .login-container button:disabled { opacity: 0.7; cursor: not-allowed; }
     .login-container .error {
-      color: #FF3333;
+      color: var(--error);
       display: none;
       margin-top: 10px;
     }
+    .connection-status {
+      position: fixed;
+      bottom: 10px;
+      left: 10px;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      font-size: 12px;
+      color: #999;
+    }
+    .status-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background-color: #999;
+    }
+    .status-dot.online { background-color: #32CD32; }
+    .status-dot.offline { background-color: #FF3333; }
   </style>
 </head>
 <body>
+  <button class="theme-toggle" onclick="toggleTheme()">🌙</button>
   <div class="login-container">
-    <h2>Inicio de Sesión</h2>
-    <input type="text" id="username" placeholder="Usuario">
-    <input type="password" id="password" placeholder="Contraseña">
-    <button onclick="login()">Ingresar</button>
-    <div id="errorMessage" class="error">Usuario No Registrado/Autorizado</div>
+    <h2>Inicio de Sesion</h2>
+    <input type="text" id="username" placeholder="Usuario" autocomplete="username">
+    <input type="password" id="password" placeholder="Contrasena" autocomplete="current-password">
+    <button id="loginBtn" onclick="login()">Ingresar</button>
+    <div id="errorMessage" class="error"></div>
+  </div>
+  <div class="connection-status">
+    <span class="status-dot" id="statusDot"></span>
+    <span id="statusText">Verificando...</span>
   </div>
 
   <script>
-    let users = []; // Almacena los usuarios del JSON
+    const API_BASE_URL = window.location.hostname === "localhost"
+      ? "http://localhost:10000" : window.location.origin;
 
-    // Carga los usuarios al iniciar
-    fetch('/usuarios.json')
-      .then(response => {
-        if (!response.ok) {
-          throw new Error(`HTTP error! status: ${response.status}`);
-        }
-        return response.json();
-      })
-      .then(data => users = data)
-      .catch(error => {
-        console.error('Error loading users:', error);
-        showError('Error al cargar usuarios. Recarga la página.');
-      });
+    // Tema
+    function toggleTheme() {
+      const current = document.documentElement.getAttribute('data-theme');
+      const next = current === 'dark' ? 'light' : 'dark';
+      document.documentElement.setAttribute('data-theme', next);
+      localStorage.setItem('theme', next);
+      document.querySelector('.theme-toggle').textContent = next === 'dark' ? '☀️' : '🌙';
+    }
+    const savedTheme = localStorage.getItem('theme') || 'light';
+    if (savedTheme === 'dark') {
+      document.documentElement.setAttribute('data-theme', 'dark');
+      document.querySelector('.theme-toggle').textContent = '☀️';
+    }
 
+    // Indicador de conexion
+    function checkConnection() {
+      const dot = document.getElementById('statusDot');
+      const text = document.getElementById('statusText');
+      fetch(`${API_BASE_URL}/api/health`, { method: 'GET' })
+        .then(r => r.ok ? r.json() : Promise.reject())
+        .then(() => {
+          dot.className = 'status-dot online';
+          text.textContent = 'Conectado';
+        })
+        .catch(() => {
+          dot.className = 'status-dot offline';
+          text.textContent = 'Sin conexion';
+        });
+    }
+    checkConnection();
+    setInterval(checkConnection, 15000);
+
+    // Login server-side
     function login() {
       const username = document.getElementById('username').value.trim();
       const password = document.getElementById('password').value.trim();
       const errorMessage = document.getElementById('errorMessage');
+      const btn = document.getElementById('loginBtn');
 
-      const user = users.find(u => u.usuario === username && u.contraseña === password && u.autorizado === true);
-      if (user) {
-        window.location.href = `control.html?user=${encodeURIComponent(username)}`;
-      } else {
+      if (!username || !password) {
+        errorMessage.textContent = 'Ingrese usuario y contrasena';
         errorMessage.style.display = 'block';
-        // Limpia el formulario
-        document.getElementById('username').value = '';
-        document.getElementById('password').value = '';
-        // Oculta el mensaje después de 4000 ms
-        setTimeout(() => {
-          errorMessage.style.display = 'none';
-        }, 4000);
+        setTimeout(() => errorMessage.style.display = 'none', 4000);
+        return;
       }
+
+      btn.disabled = true;
+      btn.textContent = 'Ingresando...';
+
+      fetch(`${API_BASE_URL}/api/login`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ usuario: username, password: password })
+      })
+        .then(r => r.json().then(data => ({ ok: r.ok, data })))
+        .then(({ ok, data }) => {
+          if (!ok) throw new Error(data.error || 'Error de autenticacion');
+          sessionStorage.setItem('sessionId', data.sessionId);
+          sessionStorage.setItem('currentUser', data.usuario);
+          sessionStorage.setItem('userRole', data.rol);
+          window.location.href = 'control.html';
+        })
+        .catch(err => {
+          errorMessage.textContent = err.message;
+          errorMessage.style.display = 'block';
+          document.getElementById('username').value = '';
+          document.getElementById('password').value = '';
+          setTimeout(() => errorMessage.style.display = 'none', 4000);
+        })
+        .finally(() => {
+          btn.disabled = false;
+          btn.textContent = 'Ingresar';
+        });
     }
 
-    function showError(message) {
-      const errorDiv = document.createElement('div');
-      errorDiv.style.position = 'fixed';
-      errorDiv.style.bottom = '20px';
-      errorDiv.style.right = '20px';
-      errorDiv.style.backgroundColor = '#FF3333';
-      errorDiv.style.color = 'white';
-      errorDiv.style.padding = '10px 20px';
-      errorDiv.style.borderRadius = '5px';
-      errorDiv.style.zIndex = '1000';
-      errorDiv.textContent = message;
-      document.body.appendChild(errorDiv);
-      setTimeout(() => errorDiv.remove(), 5000);
+    document.getElementById('password').addEventListener('keypress', e => { if (e.key === 'Enter') login(); });
+    document.getElementById('username').addEventListener('keypress', e => { if (e.key === 'Enter') login(); });
+
+    // Service Worker para modo offline
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('/sw.js').catch(() => {});
     }
   </script>
 </body>
