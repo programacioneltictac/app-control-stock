@@ -1,0 +1,8 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(cd /c/Users/User/desktop/app-control-stock && npm install bcryptjs && npm uninstall express-basic-auth)",
+      "Bash(cd /c/Users/User/desktop/app-control-stock && node -e \"\nconst bcrypt = require\\('bcryptjs'\\);\nconst users = [\n  {usuario: 'manuel', pass: 'manuel5232'},\n  {usuario: 'marcela', pass: 'marcela123'}\n];\nusers.forEach\\(u => {\n  const hash = bcrypt.hashSync\\(u.pass, 10\\);\n  console.log\\(u.usuario + ': ' + hash\\);\n}\\);\n\")"
+    ]
+  }
+}

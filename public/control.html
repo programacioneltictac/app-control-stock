@@ -424,24 +424,26 @@
         const codeInput = document.getElementById("code");
         const nameInput = document.getElementById("name");
         const quantityInput = document.getElementById("quantity");
-        const code = codeInput.value.trim();
+        const inputCode = codeInput.value.trim();
         const name = nameInput.value.trim();
         const quantity = quantityInput.value.trim();
 
-        if (!code || !name || !quantity) {
+        if (!inputCode || !name || !quantity) {
           showToast("Todos los campos son requeridos", "error");
           playErrorFeedback();
           return;
         }
 
-        const productExists = products.some(p =>
-          String(p.Codigo).toLowerCase() === code.toLowerCase() || p.Codigo === parseInt(code)
+        const product = products.find(p =>
+          String(p.Codigo).toLowerCase() === inputCode.toLowerCase() || p.Codigo === parseInt(inputCode)
         );
-        if (!productExists) {
+        if (!product) {
           showToast("Codigo de producto no valido", "error");
           playErrorFeedback();
           return;
         }
+
+        const code = String(product.Codigo);
 
         setLoading(true);
         fetch(`${API_BASE_URL}/save`, {
@@ -593,6 +595,7 @@
             String(p.Codigo).toLowerCase() === code.toLowerCase() || p.Codigo === parseInt(code)
           );
           if (product) {
+            this.value = String(product.Codigo);
             document.getElementById("name").value = product.Nombre;
             insert();
           } else playErrorFeedback();
