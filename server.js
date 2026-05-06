@@ -52,6 +52,37 @@ async function initDatabase() {
         exported_at TIMESTAMP DEFAULT NOW()
       )
     `);
+    await client.query(`
+      CREATE TABLE IF NOT EXISTS product_catalog (
+        id SERIAL PRIMARY KEY,
+        id_producto VARCHAR(50) NOT NULL,
+        codigo VARCHAR(100) NOT NULL,
+        nombre TEXT NOT NULL,
+        rubro TEXT NOT NULL DEFAULT '',
+        fuente VARCHAR(50) NOT NULL DEFAULT 'iduo',
+        updated_at TIMESTAMP DEFAULT NOW()
+      )
+    `);
+    await client.query(`
+      CREATE INDEX IF NOT EXISTS idx_product_catalog_codigo ON product_catalog(codigo)
+    `);
+    await client.query(`
+      CREATE TABLE IF NOT EXISTS catalog_metadata (
+        id INTEGER PRIMARY KEY DEFAULT 1,
+        last_sync_at TIMESTAMP,
+        last_sync_status VARCHAR(20),
+        last_sync_error TEXT,
+        total_products INTEGER DEFAULT 0,
+        source VARCHAR(50) DEFAULT 'iduo',
+        sync_in_progress BOOLEAN DEFAULT false,
+        CONSTRAINT singleton CHECK (id = 1)
+      )
+    `);
+    await client.query(`
+      INSERT INTO catalog_metadata (id) VALUES (1) ON CONFLICT (id) DO NOTHING
+    `);
+    // Resetear lock al arrancar (por si quedo colgado de un crash anterior)
+    await client.query(`UPDATE catalog_metadata SET sync_in_progress = false WHERE id = 1`);
 
     // Migrar usuarios iniciales si la tabla esta vacia
     const { rows } = await client.query('SELECT COUNT(*) as count FROM users');
@@ -76,7 +107,8 @@ async function initDatabase() {
   }
 }
 
-initDatabase();
+// Promesa expuesta para encadenar arranque de sync inicial despues de crear tablas
+const dbReady = initDatabase();
 
 // --- Helpers ---
 function getSessionId(req) {
@@ -381,6 +413,218 @@ app.delete('/api/users/:id', authRequired, adminRequired, async (req, res) => {
   }
 });
 
+// --- Catalogo de productos (API externa Iduo) ---
+
+function buildIduoUrl() {
+  const base = process.env.IDUO_BASE_URL;
+  const idPadre = process.env.IDUO_ID_PADRE;
+  const sucGrupo = process.env.IDUO_SUCURSAL_GRUPO;
+  const deposito = process.env.IDUO_DEPOSITO;
+  const now = new Date();
+  const dia = now.getDate();
+  const mes = now.getMonth() + 1;
+  const anio = now.getFullYear();
+  const params = new URLSearchParams();
+  params.set('PAG', 'Listadostock');
+  params.set('opcionfechahasta', 'Personalizar');
+  params.set('diahasta', String(dia));
+  params.set('meshasta', String(mes));
+  params.set('anohasta', String(anio));
+  params.set('idproducto[0]', idPadre);
+  params.set('filtrostockcero', 'todos');
+  params.set('idsucursalgrupo[0]', sucGrupo);
+  params.set('iddeposito[0]', deposito);
+  return `${base}?${params.toString()}`;
+}
+
+async function fetchIduoCatalog() {
+  const url = buildIduoUrl();
+  const timeoutMs = parseInt(process.env.IDUO_TIMEOUT_MS || '600000');
+  const controller = new AbortController();
+  const timeoutId = setTimeout(() => controller.abort(), timeoutMs);
+  try {
+    const response = await fetch(url, {
+      method: 'GET',
+      headers: { 'Token': process.env.IDUO_TOKEN },
+      signal: controller.signal
+    });
+    if (!response.ok) {
+      throw new Error(`HTTP ${response.status} de la API Iduo`);
+    }
+    const data = await response.json();
+    if (data && data.hayerror) {
+      throw new Error(`API Iduo: ${data.error || 'error desconocido'}`);
+    }
+    if (!Array.isArray(data)) {
+      throw new Error('Respuesta inesperada de la API Iduo (no es array)');
+    }
+    return data;
+  } finally {
+    clearTimeout(timeoutId);
+  }
+}
+
+function normalizeIduoProducts(rawProducts) {
+  const rows = [];
+  for (const p of rawProducts) {
+    if (!p || !p.idproducto || !p.codigos) continue;
+    const idProducto = String(p.idproducto);
+    const nombre = String(p.nombreproducto || '');
+    const codigos = String(p.codigos).split(',').map(c => c.trim()).filter(Boolean);
+    for (const codigo of codigos) {
+      rows.push({ idProducto, codigo, nombre });
+    }
+  }
+  return rows;
+}
+
+async function refreshCatalogFromIduo() {
+  const lockResult = await pool.query(
+    `UPDATE catalog_metadata SET sync_in_progress = true
+     WHERE id = 1 AND sync_in_progress = false RETURNING id`
+  );
+  if (lockResult.rowCount === 0) {
+    const err = new Error('Ya hay una sincronizacion en curso');
+    err.code = 'SYNC_IN_PROGRESS';
+    throw err;
+  }
+
+  const client = await pool.connect();
+  try {
+    const rawProducts = await fetchIduoCatalog();
+    const rows = normalizeIduoProducts(rawProducts);
+    if (rows.length === 0) {
+      throw new Error('La API Iduo devolvio un catalogo vacio');
+    }
+
+    await client.query('BEGIN');
+    await client.query(`
+      CREATE TEMP TABLE product_catalog_tmp (
+        id_producto VARCHAR(50) NOT NULL,
+        codigo VARCHAR(100) NOT NULL,
+        nombre TEXT NOT NULL,
+        rubro TEXT NOT NULL DEFAULT '',
+        fuente VARCHAR(50) NOT NULL DEFAULT 'iduo'
+      ) ON COMMIT DROP
+    `);
+
+    // Insertar en lotes
+    const BATCH = 500;
+    for (let i = 0; i < rows.length; i += BATCH) {
+      const slice = rows.slice(i, i + BATCH);
+      const values = [];
+      const placeholders = [];
+      slice.forEach((r, idx) => {
+        const base = idx * 3;
+        placeholders.push(`($${base + 1}, $${base + 2}, $${base + 3})`);
+        values.push(r.idProducto, r.codigo, r.nombre);
+      });
+      await client.query(
+        `INSERT INTO product_catalog_tmp (id_producto, codigo, nombre)
+         VALUES ${placeholders.join(',')}`,
+        values
+      );
+    }
+
+    await client.query('TRUNCATE product_catalog');
+    await client.query(`
+      INSERT INTO product_catalog (id_producto, codigo, nombre, rubro, fuente)
+      SELECT id_producto, codigo, nombre, rubro, fuente FROM product_catalog_tmp
+    `);
+    await client.query(
+      `UPDATE catalog_metadata SET
+         last_sync_at = NOW(),
+         last_sync_status = 'ok',
+         last_sync_error = NULL,
+         total_products = $1
+       WHERE id = 1`,
+      [rows.length]
+    );
+    await client.query('COMMIT');
+    console.log(`Catalogo sincronizado: ${rows.length} entradas`);
+    return { total: rows.length };
+  } catch (err) {
+    await client.query('ROLLBACK').catch(() => {});
+    await pool.query(
+      `UPDATE catalog_metadata SET
+         last_sync_at = NOW(),
+         last_sync_status = 'error',
+         last_sync_error = $1
+       WHERE id = 1`,
+      [err.message.slice(0, 500)]
+    );
+    throw err;
+  } finally {
+    await pool.query(`UPDATE catalog_metadata SET sync_in_progress = false WHERE id = 1`);
+    client.release();
+  }
+}
+
+// GET catalogo (todos los autenticados)
+app.get('/api/catalogo', authRequired, async (req, res) => {
+  try {
+    const { rows } = await pool.query(
+      `SELECT id_producto AS "Id", codigo AS "Codigo", nombre AS "Nombre", rubro AS "Rubro"
+       FROM product_catalog ORDER BY nombre ASC`
+    );
+    res.json(rows);
+  } catch (err) {
+    console.error('Error al obtener catalogo:', err.message);
+    res.status(500).json({ error: 'Error interno del servidor' });
+  }
+});
+
+// Estado del catalogo
+app.get('/api/catalogo/status', authRequired, async (req, res) => {
+  try {
+    const { rows } = await pool.query('SELECT * FROM catalog_metadata WHERE id = 1');
+    const meta = rows[0] || {};
+    res.json({
+      last_sync_at: meta.last_sync_at,
+      last_sync_status: meta.last_sync_status,
+      last_sync_error: meta.last_sync_error,
+      total_products: meta.total_products || 0,
+      source: meta.source,
+      sync_in_progress: meta.sync_in_progress || false
+    });
+  } catch (err) {
+    console.error('Error al obtener estado catalogo:', err.message);
+    res.status(500).json({ error: 'Error interno del servidor' });
+  }
+});
+
+// Refresh manual (solo admin)
+app.post('/api/catalogo/refresh', authRequired, adminRequired, async (req, res) => {
+  // Verificar lock antes de responder al cliente
+  const { rows } = await pool.query('SELECT sync_in_progress FROM catalog_metadata WHERE id = 1');
+  if (rows[0] && rows[0].sync_in_progress) {
+    return res.status(409).json({ error: 'Ya hay una sincronizacion en curso' });
+  }
+
+  // Responder inmediato y correr en background
+  res.status(202).json({ message: 'Sincronizacion iniciada' });
+  refreshCatalogFromIduo().catch(err => {
+    console.error('Error en refresh de catalogo:', err.message);
+  });
+});
+
+// Sync inicial al arrancar si la tabla esta vacia
+async function initialCatalogSyncIfNeeded() {
+  try {
+    const { rows } = await pool.query('SELECT COUNT(*)::int AS count FROM product_catalog');
+    if (rows[0].count === 0) {
+      console.log('Catalogo vacio, iniciando sincronizacion inicial en background...');
+      refreshCatalogFromIduo().catch(err => {
+        console.error('Error en sync inicial:', err.message);
+      });
+    } else {
+      console.log(`Catalogo cargado con ${rows[0].count} entradas`);
+    }
+  } catch (err) {
+    console.error('Error verificando catalogo inicial:', err.message);
+  }
+}
+
 // Health check para indicador de conexion
 app.get('/api/health', (req, res) => {
   res.json({ status: 'ok', timestamp: Date.now() });
@@ -389,4 +633,5 @@ app.get('/api/health', (req, res) => {
 // Iniciar servidor
 app.listen(PORT, () => {
   console.log(`Servidor listo en puerto ${PORT}`);
+  dbReady.then(() => initialCatalogSyncIfNeeded());
 });

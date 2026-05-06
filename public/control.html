@@ -305,6 +305,7 @@
         <div class="tab-bar">
           <button class="active" onclick="switchTab('users', this)">Usuarios</button>
           <button onclick="switchTab('history', this)">Historial</button>
+          <button onclick="switchTab('catalog', this)">Catalogo</button>
         </div>
 
         <!-- Tab Usuarios -->
@@ -327,6 +328,25 @@
             <thead><tr><th>Fecha</th><th>Usuario</th><th>Productos</th><th>Unidades</th></tr></thead>
             <tbody id="historyTableBody"></tbody>
           </table>
+        </div>
+
+        <!-- Tab Catalogo -->
+        <div class="tab-content" id="tab-catalog">
+          <div style="display: flex; flex-direction: column; gap: 10px;">
+            <div><strong>Ultima sincronizacion:</strong> <span id="catalogLastSync">-</span></div>
+            <div><strong>Estado:</strong> <span id="catalogStatus">-</span></div>
+            <div><strong>Total entradas:</strong> <span id="catalogTotal">-</span></div>
+            <div><strong>Fuente:</strong> <span id="catalogSource">-</span></div>
+            <div id="catalogError" style="color: var(--error); display: none;"></div>
+            <div style="margin-top: 10px;">
+              <button id="refreshCatalogBtn" onclick="refreshCatalog()" style="background: var(--btn-blue); color: white;">
+                Actualizar catalogo desde API
+              </button>
+            </div>
+            <p style="font-size: 12px; color: var(--border); margin-top: 5px;">
+              La sincronizacion puede tardar varios minutos. Los operadores siguen viendo el catalogo anterior hasta que termine.
+            </p>
+          </div>
         </div>
       </div>
     </div>
@@ -370,19 +390,27 @@
       checkConnection();
       setInterval(checkConnection, 15000);
 
-      // Cargar productos desde cache o red
+      // Cargar catalogo desde el servidor (con fallback a cache local ante fallo de red)
       function loadProductCatalog() {
-        fetch("productos.json")
-          .then(r => r.json())
+        fetch(`${API_BASE_URL}/api/catalogo`, { headers: { Authorization: sessionId } })
+          .then(r => {
+            if (!r.ok) throw new Error('http_' + r.status);
+            return r.json();
+          })
           .then(data => {
+            if (!Array.isArray(data) || data.length === 0) {
+              throw new Error('catalogo_vacio');
+            }
             products = data;
             localStorage.setItem('productosCache', JSON.stringify(data));
           })
-          .catch(() => {
+          .catch(err => {
             const cached = localStorage.getItem('productosCache');
             if (cached) {
               products = JSON.parse(cached);
               showToast("Usando catalogo offline", "error");
+            } else {
+              showToast("No se pudo cargar el catalogo", "error");
             }
           });
       }
@@ -658,6 +686,7 @@
         btn.classList.add('active');
         if (tabName === 'users') loadUsers();
         if (tabName === 'history') loadHistory();
+        if (tabName === 'catalog') loadCatalogStatus();
       }
 
       function openAdmin() {
@@ -785,6 +814,73 @@
             });
           })
           .catch(() => showToast("Error al cargar historial", "error"));
+      }
+
+      // --- Catalogo ---
+      let catalogPollTimer = null;
+
+      function loadCatalogStatus() {
+        fetch(`${API_BASE_URL}/api/catalogo/status`, { headers: { Authorization: sessionId } })
+          .then(r => r.json())
+          .then(s => {
+            const lastSync = s.last_sync_at
+              ? new Date(s.last_sync_at).toLocaleString('es-AR')
+              : 'Nunca';
+            document.getElementById('catalogLastSync').textContent = lastSync;
+            document.getElementById('catalogTotal').textContent = s.total_products || 0;
+            document.getElementById('catalogSource').textContent = s.source || '-';
+
+            const statusEl = document.getElementById('catalogStatus');
+            const errorEl = document.getElementById('catalogError');
+            const btn = document.getElementById('refreshCatalogBtn');
+
+            if (s.sync_in_progress) {
+              statusEl.textContent = 'Sincronizando...';
+              btn.disabled = true;
+              btn.textContent = 'Sincronizando...';
+              errorEl.style.display = 'none';
+              if (!catalogPollTimer) {
+                catalogPollTimer = setInterval(loadCatalogStatus, 5000);
+              }
+            } else {
+              statusEl.textContent = s.last_sync_status === 'ok' ? 'OK'
+                : s.last_sync_status === 'error' ? 'Error'
+                : 'Sin sincronizar';
+              btn.disabled = false;
+              btn.textContent = 'Actualizar catalogo desde API';
+              if (s.last_sync_status === 'error' && s.last_sync_error) {
+                errorEl.textContent = 'Ultimo error: ' + s.last_sync_error;
+                errorEl.style.display = 'block';
+              } else {
+                errorEl.style.display = 'none';
+              }
+              if (catalogPollTimer) {
+                clearInterval(catalogPollTimer);
+                catalogPollTimer = null;
+                // Recargar el catalogo en memoria al terminar la sync
+                loadProductCatalog();
+              }
+            }
+          })
+          .catch(() => showToast("Error al cargar estado del catalogo", "error"));
+      }
+
+      function refreshCatalog() {
+        if (!confirm("Iniciar sincronizacion del catalogo desde la API? Puede tardar varios minutos.")) return;
+        fetch(`${API_BASE_URL}/api/catalogo/refresh`, {
+          method: 'POST',
+          headers: { Authorization: sessionId }
+        })
+          .then(r => r.json().then(d => ({ ok: r.ok, status: r.status, data: d })))
+          .then(({ ok, status, data }) => {
+            if (!ok) {
+              showToast(data.error || 'Error al iniciar sincronizacion', "error");
+              return;
+            }
+            showToast("Sincronizacion iniciada", "success");
+            loadCatalogStatus();
+          })
+          .catch(() => showToast("Error al iniciar sincronizacion", "error"));
       }
 
       // Cerrar modal al hacer click fuera

@@ -178,17 +178,32 @@
         .then(r => r.json().then(data => ({ ok: r.ok, data })))
         .then(({ ok, data }) => {
           if (!ok) throw new Error(data.error || 'Error de autenticacion');
-          sessionStorage.setItem('sessionId', data.sessionId);
-          sessionStorage.setItem('currentUser', data.usuario);
-          sessionStorage.setItem('userRole', data.rol);
-          window.location.href = 'control.html';
+          // Verificar estado del catalogo antes de pasar a control
+          return fetch(`${API_BASE_URL}/api/catalogo/status`, {
+            headers: { Authorization: data.sessionId }
+          })
+            .then(r => r.ok ? r.json() : Promise.reject(new Error('No se pudo verificar el catalogo')))
+            .then(status => {
+              if (!status.total_products || status.total_products === 0) {
+                const msg = status.sync_in_progress
+                  ? 'Catalogo cargando, intente en unos minutos'
+                  : (status.last_sync_status === 'error'
+                      ? 'Error al cargar catalogo desde la API. Reintente en unos minutos o contacte al administrador.'
+                      : 'Catalogo no disponible. Reintente en unos minutos.');
+                throw new Error(msg);
+              }
+              sessionStorage.setItem('sessionId', data.sessionId);
+              sessionStorage.setItem('currentUser', data.usuario);
+              sessionStorage.setItem('userRole', data.rol);
+              window.location.href = 'control.html';
+            });
         })
         .catch(err => {
           errorMessage.textContent = err.message;
           errorMessage.style.display = 'block';
           document.getElementById('username').value = '';
           document.getElementById('password').value = '';
-          setTimeout(() => errorMessage.style.display = 'none', 4000);
+          setTimeout(() => errorMessage.style.display = 'none', 6000);
         })
         .finally(() => {
           btn.disabled = false;
