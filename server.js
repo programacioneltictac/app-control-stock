@@ -199,6 +199,14 @@ app.post('/save', authRequired, async (req, res) => {
   }
 
   try {
+    const catalogCheck = await pool.query(
+      `SELECT 1 FROM product_catalog WHERE codigo = $1 AND nombre = $2 LIMIT 1`,
+      [code, name]
+    );
+    if (catalogCheck.rowCount === 0) {
+      return res.status(400).json({ error: 'Producto no valido: el codigo y nombre no coinciden con el catalogo' });
+    }
+
     const result = await pool.query(
       `INSERT INTO scanned_products (code, name, quantity, session_id)
        VALUES ($1::VARCHAR, $2, $3::INTEGER, $4) RETURNING id`,
@@ -222,6 +230,14 @@ app.put('/save/:id', authRequired, async (req, res) => {
   code = String(code);
 
   try {
+    const catalogCheck = await pool.query(
+      `SELECT 1 FROM product_catalog WHERE codigo = $1 AND nombre = $2 LIMIT 1`,
+      [code, name]
+    );
+    if (catalogCheck.rowCount === 0) {
+      return res.status(400).json({ error: 'Producto no valido: el codigo y nombre no coinciden con el catalogo' });
+    }
+
     const result = await pool.query(
       `UPDATE scanned_products SET code = $1::VARCHAR, name = $2, quantity = $3
        WHERE id = $4 AND session_id = $5`,

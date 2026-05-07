@@ -443,9 +443,11 @@
 
       function lookupByName() {
         const nameVal = document.getElementById("name").value.trim();
-        if (!nameVal) return;
+        const codeInput = document.getElementById("code");
+        if (!nameVal) { codeInput.value = ""; return; }
         const product = products.find(p => p.Nombre.toLowerCase().includes(nameVal.toLowerCase()));
-        if (product) document.getElementById("code").value = product.Codigo;
+        if (product) codeInput.value = product.Codigo;
+        else codeInput.value = "";
       }
 
       function insert() {
@@ -463,10 +465,11 @@
         }
 
         const product = products.find(p =>
-          String(p.Codigo).toLowerCase() === inputCode.toLowerCase() || p.Codigo === parseInt(inputCode)
+          (String(p.Codigo).toLowerCase() === inputCode.toLowerCase() || p.Codigo === parseInt(inputCode))
+          && p.Nombre === name
         );
         if (!product) {
-          showToast("Codigo de producto no valido", "error");
+          showToast("Producto no valido: el codigo y nombre deben coincidir con el catalogo", "error");
           playErrorFeedback();
           return;
         }
