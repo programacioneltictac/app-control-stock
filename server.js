@@ -473,8 +473,8 @@ function buildSourceUrl(sourceKey) {
   params.set('anohasta', String(anio));
   params.set('idproducto[0]', idPadre);
   params.set('filtrostockcero', 'todos');
-  params.set('idsucursalgrupo[0]', sucGrupo);
-  params.set('iddeposito[0]', deposito);
+  if (sucGrupo) params.set('idsucursalgrupo[0]', sucGrupo);
+  if (deposito) params.set('iddeposito[0]', deposito);
   return `${base}?${params.toString()}`;
 }
 
