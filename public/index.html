@@ -183,11 +183,16 @@
             headers: { Authorization: data.sessionId }
           })
             .then(r => r.ok ? r.json() : Promise.reject(new Error('No se pudo verificar el catalogo')))
-            .then(status => {
-              if (!status.total_products || status.total_products === 0) {
-                const msg = status.sync_in_progress
+            .then(statusData => {
+              // Verificar que al menos una fuente tenga productos
+              const sources = Object.values(statusData);
+              const totalProducts = sources.reduce((sum, s) => sum + (s.total_products || 0), 0);
+              const anySyncing = sources.some(s => s.sync_in_progress);
+              const anyError = sources.some(s => s.last_sync_status === 'error');
+              if (totalProducts === 0) {
+                const msg = anySyncing
                   ? 'Catalogo cargando, intente en unos minutos'
-                  : (status.last_sync_status === 'error'
+                  : (anyError
                       ? 'Error al cargar catalogo desde la API. Reintente en unos minutos o contacte al administrador.'
                       : 'Catalogo no disponible. Reintente en unos minutos.');
                 throw new Error(msg);
