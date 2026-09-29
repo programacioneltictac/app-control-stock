@@ -344,6 +344,13 @@
                 Actualizar TIC TAC desde API
               </button>
             </div>
+            <div style="margin-top: 10px; padding-top: 10px; border-top: 1px solid var(--border);">
+              <div style="font-size: 12px; margin-bottom: 5px;">Carga manual (Excel/CSV con columnas Codigo, Nombre, Rubro):</div>
+              <input type="file" id="catalogFile-iduo" accept=".xlsx,.xls,.csv">
+              <button id="uploadCatalogBtn-iduo" onclick="uploadCatalog('iduo')" style="background: var(--btn-green); color: white;">
+                Subir archivo
+              </button>
+            </div>
           </div>
           <!-- VISION -->
           <div style="margin-bottom: 20px; padding: 15px; border: 1px solid var(--border); border-radius: 8px;">
@@ -355,6 +362,13 @@
             <div style="margin-top: 10px;">
               <button id="refreshCatalogBtn-vision" onclick="refreshCatalog('vision')" style="background: var(--btn-blue); color: white;">
                 Actualizar VISION desde API
+              </button>
+            </div>
+            <div style="margin-top: 10px; padding-top: 10px; border-top: 1px solid var(--border);">
+              <div style="font-size: 12px; margin-bottom: 5px;">Carga manual (Excel/CSV con columnas Codigo, Nombre, Rubro):</div>
+              <input type="file" id="catalogFile-vision" accept=".xlsx,.xls,.csv">
+              <button id="uploadCatalogBtn-vision" onclick="uploadCatalog('vision')" style="background: var(--btn-green); color: white;">
+                Subir archivo
               </button>
             </div>
           </div>
@@ -907,6 +921,47 @@
             loadCatalogStatus();
           })
           .catch(() => showToast("Error al iniciar sincronizacion", "error"));
+      }
+
+      function uploadCatalog(sourceKey) {
+        const label = catalogLabels[sourceKey] || sourceKey;
+        const fileInput = document.getElementById(`catalogFile-${sourceKey}`);
+        const file = fileInput.files[0];
+        if (!file) {
+          showToast("Elegi un archivo primero", "error");
+          return;
+        }
+        if (!confirm(`Reemplazar el catalogo de ${label} con el contenido de "${file.name}"? Esta accion no se puede deshacer.`)) return;
+
+        const btn = document.getElementById(`uploadCatalogBtn-${sourceKey}`);
+        btn.disabled = true;
+        btn.textContent = 'Subiendo...';
+
+        const formData = new FormData();
+        formData.append('archivo', file);
+        formData.append('fuente', sourceKey);
+
+        fetch(`${API_BASE_URL}/api/catalogo/upload`, {
+          method: 'POST',
+          headers: { Authorization: sessionId },
+          body: formData
+        })
+          .then(r => r.json().then(d => ({ ok: r.ok, data: d })))
+          .then(({ ok, data }) => {
+            if (!ok) {
+              showToast(data.error || 'Error al subir el catalogo', "error");
+              return;
+            }
+            showToast(`Catalogo ${label} actualizado: ${data.total} productos`, "success");
+            fileInput.value = '';
+            loadCatalogStatus();
+            loadProductCatalog();
+          })
+          .catch(() => showToast("Error al subir el catalogo", "error"))
+          .finally(() => {
+            btn.disabled = false;
+            btn.textContent = 'Subir archivo';
+          });
       }
 
       // Cerrar modal al hacer click fuera

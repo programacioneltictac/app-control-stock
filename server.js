@@ -4,9 +4,11 @@ const express = require('express');
 const { Pool } = require('pg');
 const exceljs = require('exceljs');
 const bcrypt = require('bcryptjs');
+const multer = require('multer');
 
 const app = express();
 const PORT = process.env.PORT || 10000;
+const upload = multer({ storage: multer.memoryStorage(), limits: { fileSize: 10 * 1024 * 1024 } });
 
 const isRemoteDb = (process.env.DATABASE_URL || '').includes('render.com');
 const pool = new Pool({
@@ -520,7 +522,7 @@ function normalizeProducts(rawProducts) {
   return rows;
 }
 
-async function refreshCatalogFromSource(sourceKey) {
+async function applyCatalogRows(sourceKey, rows) {
   const config = SOURCE_CONFIG[sourceKey];
   const metaId = config.id;
 
@@ -537,10 +539,8 @@ async function refreshCatalogFromSource(sourceKey) {
 
   const client = await pool.connect();
   try {
-    const rawProducts = await fetchSourceCatalog(sourceKey);
-    const rows = normalizeProducts(rawProducts);
     if (rows.length === 0) {
-      throw new Error(`La API ${config.label} devolvio un catalogo vacio`);
+      throw new Error(`El catalogo a cargar para ${config.label} esta vacio`);
     }
 
     await client.query('BEGIN');
@@ -561,12 +561,12 @@ async function refreshCatalogFromSource(sourceKey) {
       const values = [];
       const placeholders = [];
       slice.forEach((r, idx) => {
-        const base = idx * 4;
-        placeholders.push(`($${base + 1}, $${base + 2}, $${base + 3}, $${base + 4})`);
-        values.push(r.idProducto, r.codigo, r.nombre, sourceKey);
+        const base = idx * 5;
+        placeholders.push(`($${base + 1}, $${base + 2}, $${base + 3}, $${base + 4}, $${base + 5})`);
+        values.push(r.idProducto, r.codigo, r.nombre, r.rubro || '', sourceKey);
       });
       await client.query(
-        `INSERT INTO product_catalog_tmp (id_producto, codigo, nombre, fuente)
+        `INSERT INTO product_catalog_tmp (id_producto, codigo, nombre, rubro, fuente)
          VALUES ${placeholders.join(',')}`,
         values
       );
@@ -605,6 +605,74 @@ async function refreshCatalogFromSource(sourceKey) {
     await pool.query(`UPDATE catalog_metadata SET sync_in_progress = false WHERE id = $1`, [metaId]);
     client.release();
   }
+}
+
+async function refreshCatalogFromSource(sourceKey) {
+  const config = SOURCE_CONFIG[sourceKey];
+  const rawProducts = await fetchSourceCatalog(sourceKey);
+  const rows = normalizeProducts(rawProducts);
+  if (rows.length === 0) {
+    throw new Error(`La API ${config.label} devolvio un catalogo vacio`);
+  }
+  return applyCatalogRows(sourceKey, rows);
+}
+
+// Detecta si un buffer de texto es UTF-8 valido; si no, asume Latin-1/Windows-1252
+// (tipico de CSV exportados por Excel en configuracion regional espanola)
+function decodeTextBuffer(buffer) {
+  const utf8 = buffer.toString('utf8');
+  const isValidUtf8 = Buffer.from(utf8, 'utf8').equals(buffer);
+  return isValidUtf8 ? utf8 : buffer.toString('latin1');
+}
+
+// Parsear un archivo Excel/CSV subido a filas { idProducto, codigo, nombre, rubro }
+// Columnas esperadas (insensible a mayusculas/acentos): Codigo, Nombre, Rubro (opcional), Id/IdProducto (opcional)
+async function parseCatalogFile(buffer, originalName) {
+  const workbook = new exceljs.Workbook();
+  const isCsv = /\.csv$/i.test(originalName || '');
+  if (isCsv) {
+    const text = decodeTextBuffer(buffer);
+    const firstLine = text.split(/\r?\n/, 1)[0] || '';
+    const delimiter = (firstLine.match(/;/g) || []).length > (firstLine.match(/,/g) || []).length ? ';' : ',';
+    await workbook.csv.read(require('stream').Readable.from(text), { parserOptions: { delimiter } });
+  } else {
+    await workbook.xlsx.load(buffer);
+  }
+  const worksheet = workbook.worksheets[0];
+  if (!worksheet) throw new Error('El archivo no contiene hojas');
+
+  const normalizeHeader = (h) => String(h || '')
+    .normalize('NFD').replace(/[̀-ͯ]/g, '')
+    .trim().toLowerCase();
+
+  const headerRow = worksheet.getRow(1);
+  const colIndex = {};
+  headerRow.eachCell((cell, colNumber) => {
+    const h = normalizeHeader(cell.value);
+    if (['codigo', 'code'].includes(h)) colIndex.codigo = colNumber;
+    else if (['nombre', 'producto', 'name'].includes(h)) colIndex.nombre = colNumber;
+    else if (['rubro', 'categoria'].includes(h)) colIndex.rubro = colNumber;
+    else if (['id', 'idproducto'].includes(h)) colIndex.idProducto = colNumber;
+  });
+
+  if (!colIndex.codigo || !colIndex.nombre) {
+    throw new Error('El archivo debe tener columnas "Codigo" y "Nombre"');
+  }
+
+  const rows = [];
+  worksheet.eachRow((row, rowNumber) => {
+    if (rowNumber === 1) return;
+    const codigo = String(row.getCell(colIndex.codigo).value || '').trim();
+    const nombre = String(row.getCell(colIndex.nombre).value || '').trim();
+    if (!codigo || !nombre) return;
+    const rubro = colIndex.rubro ? String(row.getCell(colIndex.rubro).value || '').trim() : '';
+    const idProducto = colIndex.idProducto
+      ? String(row.getCell(colIndex.idProducto).value || '').trim()
+      : codigo;
+    rows.push({ idProducto: idProducto || codigo, codigo, nombre, rubro });
+  });
+
+  return rows;
 }
 
 // GET catalogo (todos los autenticados)
@@ -678,6 +746,34 @@ app.post('/api/catalogo/refresh', authRequired, adminRequired, async (req, res) 
     refreshCatalogFromSource(s).catch(err => {
       console.error(`Error en refresh de ${s}:`, err.message);
     });
+  }
+});
+
+// Carga manual de catalogo desde Excel/CSV (solo admin)
+// Se usa cuando la API de la fuente no esta disponible.
+app.post('/api/catalogo/upload', authRequired, adminRequired, upload.single('archivo'), async (req, res) => {
+  const fuente = req.body.fuente;
+  if (!fuente || !SOURCE_CONFIG[fuente]) {
+    return res.status(400).json({ error: `Fuente desconocida: ${fuente}` });
+  }
+  if (!req.file) {
+    return res.status(400).json({ error: 'No se recibio ningun archivo' });
+  }
+
+  const config = SOURCE_CONFIG[fuente];
+  try {
+    const rows = await parseCatalogFile(req.file.buffer, req.file.originalname);
+    if (rows.length === 0) {
+      return res.status(400).json({ error: 'No se encontraron filas validas en el archivo (se requieren columnas Codigo y Nombre)' });
+    }
+    const result = await applyCatalogRows(fuente, rows);
+    res.status(200).json({ message: `Catalogo ${config.label} actualizado manualmente`, total: result.total });
+  } catch (err) {
+    if (err.code === 'SYNC_IN_PROGRESS') {
+      return res.status(409).json({ error: err.message });
+    }
+    console.error(`Error al cargar catalogo manual de ${fuente}:`, err.message);
+    res.status(400).json({ error: err.message || 'Error al procesar el archivo' });
   }
 });
 
