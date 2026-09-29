@@ -662,14 +662,20 @@ async function parseCatalogFile(buffer, originalName) {
   const rows = [];
   worksheet.eachRow((row, rowNumber) => {
     if (rowNumber === 1) return;
-    const codigo = String(row.getCell(colIndex.codigo).value || '').trim();
+    const codigoCelda = String(row.getCell(colIndex.codigo).value || '').trim();
     const nombre = String(row.getCell(colIndex.nombre).value || '').trim();
-    if (!codigo || !nombre) return;
+    if (!codigoCelda || !nombre) return;
     const rubro = colIndex.rubro ? String(row.getCell(colIndex.rubro).value || '').trim() : '';
     const idProducto = colIndex.idProducto
       ? String(row.getCell(colIndex.idProducto).value || '').trim()
-      : codigo;
-    rows.push({ idProducto: idProducto || codigo, codigo, nombre, rubro });
+      : '';
+
+    // Un producto puede tener varios codigos en la misma celda, separados por coma
+    // (igual que el campo "codigos" de la API de IDUO). Se expande en una fila por codigo.
+    const codigos = codigoCelda.split(',').map(c => c.trim()).filter(Boolean);
+    for (const codigo of codigos) {
+      rows.push({ idProducto: idProducto || codigo, codigo, nombre, rubro });
+    }
   });
 
   return rows;
