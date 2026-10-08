@@ -460,12 +460,20 @@
         return div.innerHTML;
       }
 
+      // Normaliza un codigo para comparar: quita espacios y ceros a la izquierda.
+      // Asi "7012" y "007012" se consideran el mismo codigo. Si el codigo es todo
+      // ceros (o queda vacio al quitarlos), se conserva un "0".
+      function normalizeCode(code) {
+        const trimmed = String(code).trim().toLowerCase();
+        const stripped = trimmed.replace(/^0+/, '');
+        return stripped === '' ? '0' : stripped;
+      }
+
       function lookupByCode() {
         const code = document.getElementById("code").value.trim();
         if (!code) return;
-        const product = products.find(p =>
-          String(p.Codigo).toLowerCase() === code.toLowerCase() || p.Codigo === parseInt(code)
-        );
+        const normalized = normalizeCode(code);
+        const product = products.find(p => normalizeCode(p.Codigo) === normalized);
         if (product) document.getElementById("name").value = product.Nombre;
       }
 
@@ -492,9 +500,9 @@
           return;
         }
 
+        const normalizedInput = normalizeCode(inputCode);
         const product = products.find(p =>
-          (String(p.Codigo).toLowerCase() === inputCode.toLowerCase() || p.Codigo === parseInt(inputCode))
-          && p.Nombre === name
+          normalizeCode(p.Codigo) === normalizedInput && p.Nombre === name
         );
         if (!product) {
           showToast("Producto no valido: el codigo y nombre deben coincidir con el catalogo", "error");

@@ -118,6 +118,23 @@ function getSessionId(req) {
   return req.headers['authorization'] || 'anonymous';
 }
 
+// Fragmento SQL para comparar un codigo ($1) contra product_catalog.codigo
+// ignorando ceros a la izquierda: "7012" y "007012" se consideran iguales.
+// NULLIF(..., '') + COALESCE preservan un "0" cuando el codigo es todo ceros,
+// igual que normalizeCode() en el frontend.
+//
+// Contexto: IDUO guarda los codigos sin ceros a la izquierda y VISION con ellos,
+// asi que el mismo producto queda duplicado entre fuentes (p. ej. 1528 / 001528).
+// Este match tolerante los unifica de cara al operador. Es seguro salvo cuando dos
+// productos REALMENTE distintos comparten el mismo numero con distinto padding
+// (unico caso conocido hoy: "533" lente de sol vs "000533" lente de contacto).
+// La causa de raiz (dedup cross-fuente) quedo identificada pero sin resolver: si
+// se decide limpiar, normalizar el codigo al sincronizar en applyCatalogRows().
+const CODE_MATCH_SQL = `
+  COALESCE(NULLIF(LTRIM(codigo, '0'), ''), '0')
+    = COALESCE(NULLIF(LTRIM(TRIM($1::text), '0'), ''), '0')
+`;
+
 // Middleware: verificar que el usuario esta autenticado
 function authRequired(req, res, next) {
   const sessionId = req.headers['authorization'];
@@ -203,12 +220,15 @@ app.post('/save', authRequired, async (req, res) => {
 
   try {
     const catalogCheck = await pool.query(
-      `SELECT 1 FROM product_catalog WHERE codigo = $1 AND nombre = $2 LIMIT 1`,
+      `SELECT codigo FROM product_catalog
+       WHERE ${CODE_MATCH_SQL} AND nombre = $2 LIMIT 1`,
       [code, name]
     );
     if (catalogCheck.rowCount === 0) {
       return res.status(400).json({ error: 'Producto no valido: el codigo y nombre no coinciden con el catalogo' });
     }
+    // Guardar siempre el codigo canonico del catalogo (tolerante a ceros a la izquierda)
+    code = catalogCheck.rows[0].codigo;
 
     const result = await pool.query(
       `INSERT INTO scanned_products (code, name, quantity, session_id)
@@ -234,12 +254,15 @@ app.put('/save/:id', authRequired, async (req, res) => {
 
   try {
     const catalogCheck = await pool.query(
-      `SELECT 1 FROM product_catalog WHERE codigo = $1 AND nombre = $2 LIMIT 1`,
+      `SELECT codigo FROM product_catalog
+       WHERE ${CODE_MATCH_SQL} AND nombre = $2 LIMIT 1`,
       [code, name]
     );
     if (catalogCheck.rowCount === 0) {
       return res.status(400).json({ error: 'Producto no valido: el codigo y nombre no coinciden con el catalogo' });
     }
+    // Guardar siempre el codigo canonico del catalogo (tolerante a ceros a la izquierda)
+    code = catalogCheck.rows[0].codigo;
 
     const result = await pool.query(
       `UPDATE scanned_products SET code = $1::VARCHAR, name = $2, quantity = $3
