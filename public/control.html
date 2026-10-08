@@ -658,9 +658,8 @@
       document.getElementById("code").addEventListener("keypress", function (e) {
         if (e.key === "Enter") {
           const code = this.value.trim();
-          const product = products.find(p =>
-            String(p.Codigo).toLowerCase() === code.toLowerCase() || p.Codigo === parseInt(code)
-          );
+          const normalized = normalizeCode(code);
+          const product = products.find(p => normalizeCode(p.Codigo) === normalized);
           if (product) {
             this.value = String(product.Codigo);
             document.getElementById("name").value = product.Nombre;
